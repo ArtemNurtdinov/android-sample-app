@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.nefrit.example"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':data')
+    implementation project(':logger')
+    implementation project(':feature-main')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation androidDeps.values()
+
+    implementation kotlinDeps.values()
+
+    implementation daggerDeps.values()
+    kapt daggerKapt.values()
+
+    implementation lifecycleDeps.values()
+    kapt lifecycleKapt.values()
+
+    testImplementation unitTestsDeps.values()
+    androidTestImplementation espressoDeps.values()
+}

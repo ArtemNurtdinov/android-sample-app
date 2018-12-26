@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField('String', 'HOST', "\"http://host.com\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            buildConfigField('String', 'HOST', "\"http://host.com\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':logger')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation kotlinDeps.values()
+
+    implementation roomDeps.values()
+    kapt roomKapt.values()
+
+    implementation lifecycleDeps.values()
+    kapt roomKapt.values()
+
+    implementation daggerDeps.values()
+    kapt daggerKapt.values()
+
+    implementation networkDeps.values()
+
+    testImplementation unitTestsDeps.values()
+    testImplementation project(':test-shared')
+}

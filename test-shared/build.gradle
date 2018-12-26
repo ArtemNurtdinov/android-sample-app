@@ -1,0 +1,9 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation project(":model")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation kotlinDeps.values()
+}
