@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nefrit.common.utils.findComponentDependencies
 import com.nefrit.main.di.DaggerMainComponent
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -20,5 +21,7 @@ class MainActivity : AppCompatActivity() {
             .withDependencies(findComponentDependencies())
             .build()
             .inject(this)
+
+        clickMeBtn.setOnClickListener { mainViewModel.openSecond(this) }
     }
 }

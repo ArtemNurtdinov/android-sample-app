@@ -13,6 +13,7 @@ import dagger.Component
     modules = [
         ApiModule::class,
         AppModule::class,
+        RouterModule::class,
         RepoModule::class,
         ComponentDependenciesModule::class
     ]
