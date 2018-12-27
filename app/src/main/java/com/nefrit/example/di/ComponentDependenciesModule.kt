@@ -2,6 +2,7 @@ package com.nefrit.example.di
 
 import com.nefrit.core.interfaces.ComponentDependencies
 import com.nefrit.main.di.MainDependencies
+import com.nefrit.second.di.SecondDependencies
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,4 +14,9 @@ abstract class ComponentDependenciesModule private constructor() {
     @IntoMap
     @ComponentDependenciesKey(MainDependencies::class)
     abstract fun provideMainDependencies(component: AppComponent): ComponentDependencies
+
+    @Binds
+    @IntoMap
+    @ComponentDependenciesKey(SecondDependencies::class)
+    abstract fun provideSecondDependencies(component: AppComponent): ComponentDependencies
 }
