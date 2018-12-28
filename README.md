@@ -1,6 +1,6 @@
 # Android feature-modules
 
-![alt tag](https://i.imgur.com/tjw7dcW.png)
+![alt tag](https://i.imgur.com/qPSJExj.png)
 
 This scheme demonstrates a dependency graph in a project built by feature-modules architecture.
 
