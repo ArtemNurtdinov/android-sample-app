@@ -6,6 +6,7 @@ import com.nefrit.data.di.RepoModule
 import com.nefrit.main.di.MainDependencies
 import com.nefrit.example.App
 import com.nefrit.second.di.SecondDependencies
+import com.nefrit.splash.di.SplashDependencies
 import dagger.Component
 
 @ApplicationScope
@@ -18,7 +19,7 @@ import dagger.Component
         ComponentDependenciesModule::class
     ]
 )
-interface AppComponent : MainDependencies, SecondDependencies {
+interface AppComponent : MainDependencies, SecondDependencies, SplashDependencies {
 
     fun inject(app: App)
 }

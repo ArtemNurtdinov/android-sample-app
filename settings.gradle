@@ -1,1 +1,1 @@
-include ':app', ':model', ':test-shared', ':core', ':logger', ':data', ':ui', ':feature-main', ':common', ':feature-second'
+include ':app', ':model', ':test-shared', ':core', ':logger', ':data', ':ui', ':feature-main', ':common', ':feature-second', ':feature-splash'
