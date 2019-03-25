@@ -1,10 +1,10 @@
-package com.nefrit.example.di
+package com.nefrit.app.di
 
 import com.nefrit.core.di.ApplicationScope
 import com.nefrit.data.di.ApiModule
 import com.nefrit.data.di.RepoModule
 import com.nefrit.main.di.MainDependencies
-import com.nefrit.example.App
+import com.nefrit.app.App
 import com.nefrit.second.di.SecondDependencies
 import com.nefrit.splash.di.SplashDependencies
 import dagger.Component

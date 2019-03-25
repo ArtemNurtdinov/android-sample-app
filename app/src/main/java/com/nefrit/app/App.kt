@@ -1,10 +1,10 @@
-package com.nefrit.example
+package com.nefrit.app
 
 import android.app.Application
 import com.nefrit.core.interfaces.ComponentDependenciesProvider
 import com.nefrit.core.interfaces.HasComponentDependencies
-import com.nefrit.example.di.AppModule
-import com.nefrit.example.di.DaggerAppComponent
+import com.nefrit.app.di.AppModule
+import com.nefrit.app.di.DaggerAppComponent
 import javax.inject.Inject
 
 open class App : Application(), HasComponentDependencies {

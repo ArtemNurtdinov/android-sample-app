@@ -1,4 +1,4 @@
-package com.nefrit.example.router
+package com.nefrit.app.router
 
 import com.nefrit.main.MainRouter
 import com.nefrit.splash.SplashRouter

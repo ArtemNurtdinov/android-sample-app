@@ -1,4 +1,4 @@
-package com.nefrit.example.di
+package com.nefrit.app.di
 
 import android.content.Context
 import com.nefrit.core.di.ApplicationScope

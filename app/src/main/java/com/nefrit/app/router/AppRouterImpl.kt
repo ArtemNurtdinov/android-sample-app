@@ -1,4 +1,4 @@
-package com.nefrit.example.router
+package com.nefrit.app.router
 
 import android.content.Context
 import com.nefrit.main.MainActivity

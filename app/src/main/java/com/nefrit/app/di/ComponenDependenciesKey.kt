@@ -1,4 +1,4 @@
-package com.nefrit.example.di
+package com.nefrit.app.di
 
 import com.nefrit.core.interfaces.ComponentDependencies
 import dagger.MapKey

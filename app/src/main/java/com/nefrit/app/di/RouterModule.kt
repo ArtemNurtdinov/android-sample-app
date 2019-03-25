@@ -1,7 +1,7 @@
-package com.nefrit.example.di
+package com.nefrit.app.di
 
 import com.nefrit.core.di.ApplicationScope
-import com.nefrit.example.router.AppRouterImpl
+import com.nefrit.app.router.AppRouterImpl
 import com.nefrit.main.MainRouter
 import com.nefrit.splash.SplashRouter
 import dagger.Binds

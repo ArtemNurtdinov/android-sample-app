@@ -1,4 +1,4 @@
-package com.nefrit.example;
+package com.nefrit.app;
 
 import org.junit.Test;
 
