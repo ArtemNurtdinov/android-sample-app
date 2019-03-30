@@ -1,4 +1,4 @@
-package com.nefrit.main
+package com.nefrit.core.interactors
 
 import javax.inject.Inject
 

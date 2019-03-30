@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nefrit.common.utils.Event
+import javax.inject.Inject
 
-class SplashViewModel(
+class SplashViewModel @Inject constructor(
     private val router: SplashRouter
 ) : ViewModel() {
 

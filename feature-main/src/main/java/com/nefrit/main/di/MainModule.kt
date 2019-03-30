@@ -1,16 +1,17 @@
 package com.nefrit.main.di
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModel
+import com.nefrit.common.di.ViewModelKey
 import com.nefrit.main.MainViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
-class MainModule {
+abstract class MainModule {
 
-    @Provides
-    internal fun provideMainViewModel(activity: AppCompatActivity, factory: MainViewModelFactory): MainViewModel {
-        return ViewModelProviders.of(activity, factory).get(MainViewModel::class.java)
-    }
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    internal abstract fun provideMainViewModel(viewModel: MainViewModel): ViewModel
 }

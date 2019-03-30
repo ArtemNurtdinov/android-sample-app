@@ -1,16 +1,17 @@
 package com.nefrit.splash.di
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModel
+import com.nefrit.common.di.ViewModelKey
 import com.nefrit.splash.SplashViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
-class SplashModule {
+abstract class SplashModule {
 
-    @Provides
-    internal fun provideSplashViewModel(activity: AppCompatActivity, factory: SplashViewModelFactory): SplashViewModel {
-        return ViewModelProviders.of(activity, factory).get(SplashViewModel::class.java)
-    }
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    internal abstract fun provideSplashViewModel(viewModel: SplashViewModel): ViewModel
 }
