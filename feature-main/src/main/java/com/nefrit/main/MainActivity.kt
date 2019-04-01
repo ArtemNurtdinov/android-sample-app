@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.nefrit.common.base.BaseActivity
 import com.nefrit.common.utils.findComponentDependencies
+import com.nefrit.common.utils.viewModelProvider
 import com.nefrit.main.di.DaggerMainComponent
+import com.nefrit.main.di.MainComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     companion object {
 
@@ -19,19 +23,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Inject lateinit var mainViewModel: MainViewModel
+    override val layoutId: Int
+        get() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-        DaggerMainComponent
-            .builder()
-            .withActivity(this)
-            .withDependencies(findComponentDependencies())
-            .build()
-            .inject(this)
+    private lateinit var mainViewModel: MainViewModel
 
+    override fun inject() {
+        MainComponent.init(this).inject(this)
+
+        mainViewModel = viewModelProvider(viewModelFactory)
+    }
+
+    override fun setupViews() {
         clickMeBtn.setOnClickListener { mainViewModel.openSecond(this) }
     }
 }

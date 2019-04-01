@@ -2,13 +2,13 @@ package com.nefrit.second
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.common.utils.findComponentDependencies
-import com.nefrit.second.di.DaggerSecondComponent
+import androidx.lifecycle.ViewModelProvider
+import com.nefrit.common.base.BaseActivity
+import com.nefrit.common.utils.viewModelProvider
+import com.nefrit.second.di.SecondComponent
 import javax.inject.Inject
 
-class SecondActivity: AppCompatActivity() {
+class SecondActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context) {
@@ -16,17 +16,18 @@ class SecondActivity: AppCompatActivity() {
         }
     }
 
-    @Inject lateinit var secondViewModel: SecondViewModel
+    override val layoutId: Int
+        get() = R.layout.activity_second
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-        DaggerSecondComponent
-            .builder()
-            .withActivity(this)
-            .withDependencies(findComponentDependencies())
-            .build()
-            .inject(this)
+    private lateinit var secondViewModel: SecondViewModel
+
+    override fun inject() {
+        SecondComponent.init(this).inject(this)
+        secondViewModel = viewModelProvider(viewModelFactory)
+    }
+
+    override fun setupViews() {
     }
 }
