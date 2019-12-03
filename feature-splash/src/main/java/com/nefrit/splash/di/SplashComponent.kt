@@ -2,29 +2,36 @@ package com.nefrit.splash.di
 
 import androidx.appcompat.app.AppCompatActivity
 import com.nefrit.core.di.FeatureScope
-import com.nefrit.splash.SplashActivity
+import com.nefrit.splash.presentation.SplashActivity
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(dependencies = [
-    SplashDependencies::class
-], modules = [
-    SplashModule::class
-])
+@Component(
+    dependencies = [
+        SplashDependencies::class
+    ],
+    modules = [
+        SplashModule::class
+    ]
+)
 @FeatureScope
 interface SplashComponent {
 
-    @Component.Builder
-    interface Builder {
+    companion object {
 
-        fun withDependencies(dep: SplashDependencies): Builder
+        fun init(activity: AppCompatActivity, deps: SplashDependencies): SplashComponent {
+            return DaggerSplashComponent.factory().create(activity, deps)
+        }
+    }
 
-        @BindsInstance
-        fun withActivity(activity: AppCompatActivity): Builder
+    @Component.Factory
+    interface Factory {
 
-        fun build(): SplashComponent
+        fun create(
+            @BindsInstance activity: AppCompatActivity,
+            deps: SplashDependencies
+        ): SplashComponent
     }
 
     fun inject(activity: SplashActivity)
-
 }

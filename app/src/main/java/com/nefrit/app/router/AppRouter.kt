@@ -1,6 +1,6 @@
 package com.nefrit.app.router
 
-import com.nefrit.main.MainRouter
-import com.nefrit.splash.SplashRouter
+import com.nefrit.users.domain.UsersRouter
+import com.nefrit.splash.domain.SplashRouter
 
-interface AppRouter : MainRouter, SplashRouter
+interface AppRouter : UsersRouter, SplashRouter

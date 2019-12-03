@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
 		// Context of the app under test.
 		Context appContext = InstrumentationRegistry.getTargetContext();
 
-		assertEquals("com.technokratos.qrsales", appContext.getPackageName());
+		assertEquals("com.nefrit.app", appContext.getPackageName());
 	}
 }

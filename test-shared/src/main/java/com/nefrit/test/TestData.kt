@@ -1,4 +1,3 @@
 package com.nefrit.test
 
-object TestData {
-}
+object TestData

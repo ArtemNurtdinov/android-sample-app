@@ -2,6 +2,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -9,8 +10,9 @@
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
 
-        <item name="android:textViewStyle">@style/Widget.Example.TextView</item>
-        <item name="editTextStyle">@style/Widget.Example.EditText</item>
+        <item name="android:textViewStyle">@style/Widget.Template.TextView</item>
+        <item name="editTextStyle">@style/Widget.Template.EditText</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -26,28 +28,39 @@
 
     </style>
 
-    <style name="Widget.Example.TextView" parent="@android:style/Widget.TextView">
-        <item name="android:textAppearance">@style/TextAppearance.Example.Body</item>
+    <style name="Widget.Template.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Template.Body</item>
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
     </style>
 
-    <style name="TextAppearance.Example.Body" parent="@style/TextAppearance.AppCompat.Body1">
+    <style name="Widget.Template.ChoiceTextView" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Template.Body" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>
 
-    <style name="TextAppearance.Example.Title" parent="@style/TextAppearance.AppCompat.Title">
+    <style name="TextAppearance.Template.Title" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextAppearance.Example.Toolbar.Title" parent="@style/TextAppearance.AppCompat.Title">
+    <style name="TextAppearance.Template.Toolbar.Title" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextAppearance.Example.SubTitle" parent="@style/TextAppearance.AppCompat.Body1">
+    <style name="TextAppearance.Template.ColoredTitle" parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Template.SubTitle" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">16sp</item>
@@ -66,13 +79,7 @@
         <item name="android:minWidth">120dp</item>
     </style>
 
-    <style name="BottomSheetDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textViewStyle">@style/Widget.Example.TextView</item>
-        <item name="editTextStyle">@style/Widget.Example.EditText</item>
-    </style>
-
-    <style name="Widget.Example.EditText" parent="@android:style/Widget.EditText">
+    <style name="Widget.Template.EditText" parent="@android:style/Widget.EditText">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>

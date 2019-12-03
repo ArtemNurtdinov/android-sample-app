@@ -1,7 +1,7 @@
 package com.nefrit.splash.di
 
-import com.nefrit.core.interfaces.ComponentDependencies
-import com.nefrit.splash.SplashRouter
+import com.nefrit.core.di.ComponentDependencies
+import com.nefrit.splash.domain.SplashRouter
 
 interface SplashDependencies : ComponentDependencies {
 

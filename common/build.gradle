@@ -32,9 +32,6 @@ dependencies {
     implementation daggerDeps.values()
     kapt daggerKapt.values()
 
-    implementation lifecycleDeps.values()
-    kapt lifecycleKapt.values()
-
     testImplementation unitTestsDeps.values()
     androidTestImplementation espressoDeps.values()
 }

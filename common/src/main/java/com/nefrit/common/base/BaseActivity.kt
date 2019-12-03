@@ -1,23 +1,31 @@
 package com.nefrit.common.base
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.nefrit.common.utils.setBarColorBackground
+import javax.inject.Inject
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
-    protected abstract val layoutId: Int
+    @Inject protected open lateinit var viewModel: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutId)
+        setContentView(layoutResource())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setBarColorBackground(android.R.color.black)
+        }
         inject()
-        setupViews()
-        subscribe()
+        initViews()
+        subscribe(viewModel)
     }
 
-    protected abstract fun inject()
+    abstract fun inject()
 
-    protected abstract fun setupViews()
+    abstract fun layoutResource(): Int
 
-    protected open fun subscribe() {}
+    abstract fun initViews()
+
+    abstract fun subscribe(viewModel: T)
 }
