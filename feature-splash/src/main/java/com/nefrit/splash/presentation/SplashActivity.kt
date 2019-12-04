@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
             .init(this, findComponentDependencies())
             .inject(this)
 
-        splashViewModel.openScannerEvent.observe(this, EventObserver {
+        splashViewModel.openUsersEvent.observe(this, EventObserver {
             splashViewModel.openScanner(this)
             finish()
         })

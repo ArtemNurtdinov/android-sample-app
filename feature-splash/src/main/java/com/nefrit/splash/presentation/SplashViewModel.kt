@@ -1,6 +1,7 @@
 package com.nefrit.splash.presentation
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nefrit.common.utils.Event
@@ -10,10 +11,11 @@ class SplashViewModel(
     private val router: SplashRouter
 ) : ViewModel() {
 
-    val openScannerEvent = MutableLiveData<Event<Unit>>()
+    private val _openUsersEvent = MutableLiveData<Event<Unit>>()
+    val openUsersEvent: LiveData<Event<Unit>> = _openUsersEvent
 
     init {
-        openScannerEvent.value = Event(Unit)
+        _openUsersEvent.value = Event(Unit)
     }
 
     fun openScanner(context: Context) {
