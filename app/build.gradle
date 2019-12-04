@@ -22,17 +22,20 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core')
     implementation project(':data')
     implementation project(':logger')
     implementation project(':feature-users')
     implementation project(':feature-user')
     implementation project(':feature-splash')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation androidDeps.values()
 
     implementation kotlinDeps.values()
+
+    implementation roomDeps.values()
+    kapt roomKapt.values()
 
     implementation daggerDeps.values()
     kapt daggerKapt.values()

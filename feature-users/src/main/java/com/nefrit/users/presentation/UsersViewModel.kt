@@ -24,7 +24,7 @@ class UsersViewModel(
     fun getUsers() {
         disposables.add(
             interactor.getUsers()
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread(), true)
                 .subscribe({
                     _usersLiveData.value = it
                 }, {
