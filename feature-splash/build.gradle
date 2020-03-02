@@ -26,19 +26,20 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core')
+    implementation project(':core-di')
     implementation project(':ui')
     implementation project(':common')
 
-    implementation androidDeps.values()
+    implementation kotlinDep
 
-    implementation kotlinDeps.values()
+    implementation androidDep
 
-    implementation daggerDeps.values()
-    kapt daggerKapt.values()
+    implementation daggerDep
+    kapt daggerKapt
 
-    implementation lifecycleDeps.values()
-    kapt lifecycleKapt.values()
+    implementation lifecycleDep
+    kapt lifecycleKapt
 
-    testImplementation unitTestsDeps.values()
-    androidTestImplementation espressoDeps.values()
+    testImplementation jUnitDep
+    testImplementation mockitoDep
 }

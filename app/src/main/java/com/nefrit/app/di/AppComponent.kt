@@ -1,13 +1,13 @@
 package com.nefrit.app.di
 
+import com.nefrit.app.App
 import com.nefrit.data.di.ApiModule
 import com.nefrit.data.di.RepoModule
-import com.nefrit.users.di.UsersDependencies
-import com.nefrit.app.App
-import com.nefrit.core.di.ApplicationScope
-import com.nefrit.user.di.UserDependencies
 import com.nefrit.splash.di.SplashDependencies
+import com.nefrit.user.di.UserDependencies
+import com.nefrit.users.di.UsersDependencies
 import dagger.Component
+import jp.co.soramitsu.core_di.scope.ApplicationScope
 
 @ApplicationScope
 @Component(

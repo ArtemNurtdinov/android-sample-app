@@ -23,12 +23,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation androidDeps.values()
+    implementation kotlinDep
 
-    implementation kotlinDeps.values()
+    implementation androidDep
+    implementation materialDep
+    implementation cardViewDep
+    implementation constraintDep
 
-    implementation lifecycleDeps.values()
-    kapt lifecycleKapt.values()
+    implementation lifecycleDep
+    kapt lifecycleKapt
 
-    testImplementation unitTestsDeps.values()
+    testImplementation jUnitDep
+    testImplementation mockitoDep
 }

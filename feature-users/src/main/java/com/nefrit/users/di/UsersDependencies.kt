@@ -1,10 +1,9 @@
 package com.nefrit.users.di
 
-import com.nefrit.core.di.ComponentDependencies
 import com.nefrit.core.interfaces.UserRepository
 import com.nefrit.users.domain.UsersRouter
 
-interface UsersDependencies : ComponentDependencies {
+interface UsersDependencies : jp.co.soramitsu.core_di.ComponentDependencies {
 
     fun provideRouter(): UsersRouter
 

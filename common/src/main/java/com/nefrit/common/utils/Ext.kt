@@ -10,9 +10,9 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.nefrit.core.di.ComponentDependencies
-import com.nefrit.core.di.ComponentDependenciesProvider
-import com.nefrit.core.di.HasComponentDependencies
+import jp.co.soramitsu.core_di.ComponentDependencies
+import jp.co.soramitsu.core_di.ComponentDependenciesProvider
+import jp.co.soramitsu.core_di.HasComponentDependencies
 
 inline fun <reified T : ComponentDependencies> Fragment.findComponentDependencies(): T {
     return findComponentDependenciesProvider()[T::class.java] as T

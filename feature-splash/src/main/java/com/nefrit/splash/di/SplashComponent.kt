@@ -1,10 +1,10 @@
 package com.nefrit.splash.di
 
 import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.core.di.FeatureScope
 import com.nefrit.splash.presentation.SplashActivity
 import dagger.BindsInstance
 import dagger.Component
+import jp.co.soramitsu.core_di.scope.FeatureScope
 
 @Component(
     dependencies = [

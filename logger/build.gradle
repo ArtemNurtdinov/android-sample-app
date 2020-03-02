@@ -24,7 +24,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation kotlinDeps.values()
+    implementation kotlinDep
 
-    testImplementation unitTestsDeps.values()
+    testImplementation jUnitDep
 }

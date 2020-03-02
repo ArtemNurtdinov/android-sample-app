@@ -33,22 +33,28 @@ android {
 
 dependencies {
     implementation project(':core')
+    implementation project(':core-di')
     implementation project(':logger')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation kotlinDeps.values()
+    implementation kotlinDep
 
-    implementation roomDeps.values()
-    kapt roomKapt.values()
+    implementation roomDep
+    implementation rxRoomDep
+    kapt roomKapt
 
-    implementation lifecycleDeps.values()
-    kapt roomKapt.values()
+    implementation lifecycleDep
+    kapt lifecycleKapt
 
-    implementation daggerDeps.values()
-    kapt daggerKapt.values()
+    implementation daggerDep
+    kapt daggerKapt
 
-    implementation networkDeps.values()
+    implementation retrofitDep
+    implementation rxCallAdapterDep
+    implementation gsonConvertedDep
+    implementation gsonDep
 
-    testImplementation unitTestsDeps.values()
+    testImplementation jUnitDep
+    testImplementation mockitoDep
     testImplementation project(':test-shared')
 }

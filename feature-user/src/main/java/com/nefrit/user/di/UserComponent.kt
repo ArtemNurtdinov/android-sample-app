@@ -1,10 +1,10 @@
 package com.nefrit.user.di
 
 import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.core.di.FeatureScope
 import com.nefrit.user.presentation.UserActivity
 import dagger.BindsInstance
 import dagger.Component
+import jp.co.soramitsu.core_di.scope.FeatureScope
 
 @Component(
     dependencies = [

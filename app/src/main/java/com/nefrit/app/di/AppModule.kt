@@ -1,10 +1,10 @@
 package com.nefrit.app.di
 
 import android.content.Context
-import com.nefrit.core.di.ApplicationScope
 import com.nefrit.data.db.AppDatabase
 import dagger.Module
 import dagger.Provides
+import jp.co.soramitsu.core_di.scope.ApplicationScope
 
 @Module
 class AppModule(

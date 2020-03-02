@@ -24,14 +24,20 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core')
+    implementation project(':core-di')
 
-    implementation androidDeps.values()
+    implementation kotlinDep
 
-    implementation kotlinDeps.values()
+    implementation androidDep
+    implementation cardViewDep
+    implementation recyclerViewDep
+    implementation constraintDep
 
-    implementation daggerDeps.values()
-    kapt daggerKapt.values()
+    implementation rxJavaDep
 
-    testImplementation unitTestsDeps.values()
-    androidTestImplementation espressoDeps.values()
+    implementation daggerDep
+    kapt daggerKapt
+
+    testImplementation jUnitDep
+    testImplementation mockitoDep
 }

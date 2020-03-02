@@ -1,9 +1,8 @@
 package com.nefrit.user.di
 
-import com.nefrit.core.di.ComponentDependencies
 import com.nefrit.core.interfaces.UserRepository
 
-interface UserDependencies : ComponentDependencies {
+interface UserDependencies : jp.co.soramitsu.core_di.ComponentDependencies {
 
     fun provideUserRepository(): UserRepository
 }

@@ -1,11 +1,11 @@
 package com.nefrit.app.di
 
 import com.nefrit.app.router.AppRouterImpl
-import com.nefrit.core.di.ApplicationScope
 import com.nefrit.splash.domain.SplashRouter
 import com.nefrit.users.domain.UsersRouter
 import dagger.Binds
 import dagger.Module
+import jp.co.soramitsu.core_di.scope.ApplicationScope
 
 @Module
 abstract class RouterModule {

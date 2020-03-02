@@ -1,9 +1,8 @@
 package com.nefrit.splash.di
 
-import com.nefrit.core.di.ComponentDependencies
 import com.nefrit.splash.domain.SplashRouter
 
-interface SplashDependencies : ComponentDependencies {
+interface SplashDependencies : jp.co.soramitsu.core_di.ComponentDependencies {
 
     fun provideSplashRouter(): SplashRouter
 }

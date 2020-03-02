@@ -1,1 +1,2 @@
 include ':app', ':model', ':test-shared', ':core', ':logger', ':data', ':ui', ':feature-users', ':common', ':feature-user', ':feature-splash'
+include ':core-di'

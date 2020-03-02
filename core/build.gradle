@@ -5,9 +5,9 @@ dependencies {
     api project(":model")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rxDeps.values()
-    implementation daggerDeps.inject
+    implementation kotlinDep
+    implementation rxJavaDep
 
-    testImplementation unitTestsDeps.values()
+    testImplementation jUnitDep
     testImplementation project(':test-shared')
 }
