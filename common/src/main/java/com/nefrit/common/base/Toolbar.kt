@@ -1,12 +1,12 @@
-package com.nefrit.ui.view
+package com.nefrit.common.base
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
-import com.nefrit.ui.R
-import com.nefrit.ui.util.makeGone
-import com.nefrit.ui.util.makeVisible
+import com.nefrit.common.R
+import com.nefrit.common.utils.makeGone
+import com.nefrit.common.utils.makeVisible
 import kotlinx.android.synthetic.main.tool_bar.view.backImg
 import kotlinx.android.synthetic.main.tool_bar.view.titleTv
 

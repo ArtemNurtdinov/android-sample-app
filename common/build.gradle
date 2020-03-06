@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -32,10 +33,14 @@ dependencies {
     implementation recyclerViewDep
     implementation constraintDep
 
+
     implementation rxJavaDep
 
     implementation daggerDep
     kapt daggerKapt
+
+    implementation lifecycleDep
+    kapt lifecycleKapt
 
     testImplementation jUnitDep
     testImplementation mockitoDep

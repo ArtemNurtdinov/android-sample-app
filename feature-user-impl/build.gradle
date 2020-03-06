@@ -27,7 +27,6 @@ dependencies {
     implementation project(':core-di')
     implementation project(':core-db')
     implementation project(':core-network-api')
-    implementation project(':ui')
     implementation project(':common')
     implementation project(':feature-user-api')
 
