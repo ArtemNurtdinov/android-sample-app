@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        applicationId "com.techokratos.example"
+        applicationId "com.nefrit.example"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
@@ -23,17 +23,22 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':core')
     implementation project(':core-di')
-    implementation project(':data')
+    implementation project(':core-db')
+    implementation project(':core-network-api')
+    implementation project(':core-network-impl')
     implementation project(':logger')
-    implementation project(':feature-users')
-    implementation project(':feature-user')
+    implementation project(':common')
     implementation project(':feature-splash')
+    implementation project(':feature-user-api')
+    implementation project(':feature-user-impl')
 
     implementation kotlinDep
 
     implementation androidDep
+
+    implementation navigationFragmentDep
+    implementation navigationUiDep
 
     implementation roomDep
 

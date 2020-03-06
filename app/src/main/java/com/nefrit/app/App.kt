@@ -1,24 +1,30 @@
 package com.nefrit.app
 
 import android.app.Application
-import com.nefrit.app.di.AppModule
 import com.nefrit.app.di.DaggerAppComponent
+import com.nefrit.core_di.FeatureContainer
+import com.nefrit.core_di.FeatureHolderManager
 import javax.inject.Inject
 
-open class App : Application(), jp.co.soramitsu.core_di.HasComponentDependencies {
+open class App : Application(), FeatureContainer {
 
-    @Inject
-    override lateinit var dependencies: jp.co.soramitsu.core_di.ComponentDependenciesProvider
-        protected set
+    @Inject lateinit var featureHolderManager: FeatureHolderManager
 
     override fun onCreate() {
         super.onCreate()
 
-        val appComponent = DaggerAppComponent
+        DaggerAppComponent
             .builder()
-            .appModule(AppModule(this))
+            .application(this)
             .build()
+            .inject(this)
+    }
 
-        appComponent.inject(this)
+    override fun <T> getFeature(key: Class<*>): T {
+        return featureHolderManager.getFeature<T>(key)!!
+    }
+
+    override fun releaseFeature(key: Class<*>) {
+        featureHolderManager.releaseFeature(key)
     }
 }

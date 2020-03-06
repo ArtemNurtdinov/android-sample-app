@@ -1,25 +1,29 @@
 package com.nefrit.app.di
 
 import com.nefrit.app.App
-import com.nefrit.data.di.ApiModule
-import com.nefrit.data.di.RepoModule
-import com.nefrit.splash.di.SplashDependencies
-import com.nefrit.user.di.UserDependencies
-import com.nefrit.users.di.UsersDependencies
+import com.nefrit.core_di.scope.ApplicationScope
+import dagger.BindsInstance
 import dagger.Component
-import jp.co.soramitsu.core_di.scope.ApplicationScope
 
 @ApplicationScope
 @Component(
     modules = [
-        ApiModule::class,
         AppModule::class,
-        RouterModule::class,
-        RepoModule::class,
-        ComponentDependenciesModule::class
+        NavigationModule::class,
+        ComponentHolderModule::class,
+        FeatureManagerModule::class
     ]
 )
-interface AppComponent : UsersDependencies, UserDependencies, SplashDependencies {
+interface AppComponent {
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun application(application: App): Builder
+
+        fun build(): AppComponent
+    }
 
     fun inject(app: App)
 }

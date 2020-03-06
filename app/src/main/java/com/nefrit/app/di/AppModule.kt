@@ -1,23 +1,20 @@
 package com.nefrit.app.di
 
+import android.app.Application
 import android.content.Context
-import com.nefrit.data.db.AppDatabase
+import com.nefrit.app.App
+import com.nefrit.core_di.scope.ApplicationScope
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import jp.co.soramitsu.core_di.scope.ApplicationScope
 
 @Module
-class AppModule(
-    private val context: Context
-) {
+interface AppModule {
 
     @ApplicationScope
-    @Provides
-    fun provideContext(): Context = context
+    @Binds
+    fun bindApplication(application: App): Application
 
     @ApplicationScope
-    @Provides
-    fun provideAppDatabase(context: Context): AppDatabase {
-        return AppDatabase.get(context)
-    }
+    @Binds
+    fun bindContext(application: App): Context
 }

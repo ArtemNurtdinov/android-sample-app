@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nefrit.common.utils.Event
-import com.nefrit.splash.domain.SplashRouter
+import com.nefrit.splash.SplashRouter
 
 class SplashViewModel(
     private val router: SplashRouter
