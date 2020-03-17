@@ -1,7 +1,7 @@
 package com.nefrit.users.presentation.list.di
 
 import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.core_di.scope.FeatureScope
+import com.nefrit.core_di.scope.ScreenScope
 import com.nefrit.users.presentation.list.UsersActivity
 import dagger.BindsInstance
 import dagger.Subcomponent
@@ -11,7 +11,7 @@ import dagger.Subcomponent
         UsersModule::class
     ]
 )
-@FeatureScope
+@ScreenScope
 interface UsersComponent {
 
     @Subcomponent.Factory
