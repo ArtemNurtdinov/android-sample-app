@@ -6,6 +6,7 @@ import com.nefrit.common.base.BaseViewModel
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class UserViewModel(
     private val interactor: UserInteractor,
@@ -18,6 +19,7 @@ class UserViewModel(
     init {
         disposables.add(
             interactor.getUser(userId)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread(), true)
                 .subscribe({
                     _userLiveData.value = it
