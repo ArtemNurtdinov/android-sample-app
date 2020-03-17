@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.nefrit.common.di.ViewModelKey
 import com.nefrit.common.di.ViewModelModule
+import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.users.UsersRouter
-import com.nefrit.users.domain.UsersInteractorImpl
 import com.nefrit.users.presentation.list.UsersViewModel
 import dagger.Module
 import dagger.Provides
@@ -28,7 +28,7 @@ class UsersModule {
     @Provides
     @IntoMap
     @ViewModelKey(UsersViewModel::class)
-    fun provideSignInViewModel(interactor: UsersInteractorImpl, router: UsersRouter): ViewModel {
+    fun provideSignInViewModel(interactor: UserInteractor, router: UsersRouter): ViewModel {
         return UsersViewModel(interactor, router)
     }
 }

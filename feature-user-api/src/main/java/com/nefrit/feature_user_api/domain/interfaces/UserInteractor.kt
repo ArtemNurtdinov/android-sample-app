@@ -6,4 +6,6 @@ import io.reactivex.Observable
 interface UserInteractor {
 
     fun getUser(id: Int): Observable<User>
+
+    fun getUsers(): Observable<List<User>>
 }

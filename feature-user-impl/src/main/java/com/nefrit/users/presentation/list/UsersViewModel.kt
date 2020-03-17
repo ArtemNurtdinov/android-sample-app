@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
+import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.UsersRouter
-import com.nefrit.users.domain.UsersInteractorImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 
 class UsersViewModel(
-    private val interactor: UsersInteractorImpl,
+    private val interactor: UserInteractor,
     private val router: UsersRouter
 ) : BaseViewModel() {
 

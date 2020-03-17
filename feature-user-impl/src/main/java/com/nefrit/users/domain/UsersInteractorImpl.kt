@@ -11,7 +11,7 @@ class UsersInteractorImpl @Inject constructor(
     private val userRepository: UserRepository
 ) : UserInteractor {
 
-    fun getUsers(): Observable<List<User>> {
+    override fun getUsers(): Observable<List<User>> {
         return userRepository.getUsers()
             .subscribeOn(Schedulers.io())
     }
