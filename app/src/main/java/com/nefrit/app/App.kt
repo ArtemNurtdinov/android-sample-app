@@ -2,8 +2,8 @@ package com.nefrit.app
 
 import android.app.Application
 import com.nefrit.app.di.DaggerAppComponent
-import com.nefrit.core_di.FeatureContainer
-import com.nefrit.core_di.FeatureHolderManager
+import com.nefrit.common.di.FeatureContainer
+import com.nefrit.app.di.FeatureHolderManager
 import javax.inject.Inject
 
 open class App : Application(), FeatureContainer {

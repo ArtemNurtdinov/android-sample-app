@@ -1,4 +1,4 @@
-package com.nefrit.core_di.scope
+package com.nefrit.common.di.scope
 
 import javax.inject.Scope
 

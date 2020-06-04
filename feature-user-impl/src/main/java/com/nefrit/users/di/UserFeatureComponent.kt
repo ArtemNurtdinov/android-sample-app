@@ -2,9 +2,9 @@ package com.nefrit.users.di
 
 import com.nefrit.common.di.CommonApi
 import com.nefrit.core_db.di.DbApi
-import com.nefrit.core_di.scope.ApplicationScope
-import com.nefrit.core_network_api.di.NetworkApi
+import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.feature_user_api.di.UserFeatureApi
+import com.nefrit.network.di.NetworkApi
 import com.nefrit.users.UsersRouter
 import com.nefrit.users.presentation.details.di.UserComponent
 import com.nefrit.users.presentation.list.di.UsersComponent

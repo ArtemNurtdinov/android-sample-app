@@ -1,7 +1,7 @@
 package com.nefrit.splash.di
 
 import com.nefrit.common.di.CommonApi
-import com.nefrit.core_di.scope.ApplicationScope
+import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.splash.SplashRouter
 import com.nefrit.splash.presentation.di.SplashComponent
 import dagger.BindsInstance

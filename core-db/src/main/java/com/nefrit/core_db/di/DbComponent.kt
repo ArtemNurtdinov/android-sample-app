@@ -1,7 +1,7 @@
 package com.nefrit.core_db.di
 
 import com.nefrit.common.di.CommonApi
-import com.nefrit.core_di.scope.ApplicationScope
+import com.nefrit.common.di.scope.ApplicationScope
 import dagger.Component
 
 @Component(

@@ -1,7 +1,7 @@
 package com.nefrit.app.di
 
 import com.nefrit.app.navigation.Navigator
-import com.nefrit.core_di.scope.ApplicationScope
+import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.splash.SplashRouter
 import com.nefrit.users.UsersRouter
 import dagger.Module

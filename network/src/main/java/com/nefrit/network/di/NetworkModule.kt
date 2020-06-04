@@ -1,10 +1,9 @@
-package com.nefrit.core_network_impl.di
+package com.nefrit.network.di
 
 import com.nefrit.common.resources.ResourceManager
-import com.nefrit.core_di.scope.ApplicationScope
-import com.nefrit.core_network_api.NetworkApiCreator
-import com.nefrit.core_network_impl.NetworkApiCreatorImpl
-import com.nefrit.core_network_impl.data.RxCallAdapterFactory
+import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.network.NetworkApiCreator
+import com.nefrit.network.RxCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,6 +35,6 @@ class NetworkModule {
         okHttpClient: OkHttpClient,
         rxCallAdapterFactory: RxCallAdapterFactory
     ): NetworkApiCreator {
-        return NetworkApiCreatorImpl(okHttpClient, "test url", rxCallAdapterFactory)
+        return NetworkApiCreator(okHttpClient, "test url", rxCallAdapterFactory)
     }
 }

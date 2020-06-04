@@ -1,7 +1,7 @@
 package com.nefrit.splash.presentation.di
 
 import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.core_di.scope.ScreenScope
+import com.nefrit.common.di.scope.ScreenScope
 import com.nefrit.splash.presentation.SplashActivity
 import dagger.BindsInstance
 import dagger.Subcomponent

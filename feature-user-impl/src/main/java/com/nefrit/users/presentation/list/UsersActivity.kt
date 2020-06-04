@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nefrit.common.base.BaseActivity
-import com.nefrit.core_di.FeatureUtils
+import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
 import com.nefrit.users.di.UserFeatureComponent

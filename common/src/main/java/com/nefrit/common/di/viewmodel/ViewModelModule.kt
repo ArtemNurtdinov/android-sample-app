@@ -1,4 +1,4 @@
-package com.nefrit.common.di
+package com.nefrit.common.di.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds

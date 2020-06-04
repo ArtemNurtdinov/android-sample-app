@@ -1,4 +1,6 @@
-package com.nefrit.core_di
+package com.nefrit.app.di
+
+import com.nefrit.common.di.FeatureApiHolder
 
 class FeatureHolderManager(
     private val mFeatureHolders: Map<Class<*>, FeatureApiHolder>

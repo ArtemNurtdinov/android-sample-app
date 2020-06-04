@@ -1,4 +1,1 @@
-include ':app', ':test-shared', ':logger', ':feature-user-impl', ':common', ':feature-splash', ':feature-user-api', ':core-di'
-include ':core-network-api'
-include ':core-network-impl'
-include ':core-db'
+include ':app', ':test-shared', ':logger', ':feature-user-impl', ':common', ':feature-splash', ':feature-user-api', ':core-db', ':network'

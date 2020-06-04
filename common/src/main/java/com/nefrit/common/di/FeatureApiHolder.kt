@@ -1,4 +1,4 @@
-package com.nefrit.core_di
+package com.nefrit.common.di
 
 import java.util.concurrent.locks.ReentrantLock
 

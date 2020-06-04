@@ -23,32 +23,18 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':core-db')
-    implementation project(':network')
-    implementation project(':common')
-    implementation project(':feature-user-api')
+    implementation project(":common")
 
     implementation kotlinDep
 
     implementation androidDep
-    implementation materialDep
-    implementation cardViewDep
-    implementation constraintDep
-
-    implementation rxJavaDep
-    implementation rxAndroidDep
 
     implementation daggerDep
     kapt daggerKapt
 
-    implementation roomDep
-    implementation rxRoomDep
-    kapt roomKapt
+    implementation retrofitDep
+    implementation gsonConvertedDep
+    implementation rxCallAdapterDep
 
-    implementation lifecycleDep
-    kapt lifecycleKapt
-
-    testImplementation jUnitDep
-    testImplementation mockitoDep
+    implementation gsonDep
 }

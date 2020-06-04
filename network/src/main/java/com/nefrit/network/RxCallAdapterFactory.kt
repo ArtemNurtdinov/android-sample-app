@@ -1,4 +1,4 @@
-package com.nefrit.core_network_impl.data
+package com.nefrit.network
 
 import com.nefrit.common.domain.BaseException
 import com.nefrit.common.resources.ResourceManager

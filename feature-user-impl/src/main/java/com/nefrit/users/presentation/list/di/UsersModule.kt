@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.nefrit.common.di.ViewModelKey
-import com.nefrit.common.di.ViewModelModule
+import com.nefrit.common.di.viewmodel.ViewModelKey
+import com.nefrit.common.di.viewmodel.ViewModelModule
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.users.UsersRouter
 import com.nefrit.users.presentation.list.UsersViewModel

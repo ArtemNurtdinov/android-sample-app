@@ -1,4 +1,4 @@
-package com.nefrit.core_di
+package com.nefrit.common.di
 
 import android.app.Activity
 import android.content.Context
@@ -30,7 +30,7 @@ object FeatureUtils {
         getHolder(fragment.context!!).releaseFeature(key)
     }
 
-    private fun getHolder(context: Context): FeatureContainer {
-        return context.applicationContext as FeatureContainer
+    private fun getHolder(context: Context): com.nefrit.common.di.FeatureContainer {
+        return context.applicationContext as com.nefrit.common.di.FeatureContainer
     }
 }

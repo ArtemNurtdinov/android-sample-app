@@ -2,10 +2,10 @@ package com.nefrit.users.di
 
 import com.nefrit.common.di.CommonApi
 import com.nefrit.core_db.di.DbApi
-import com.nefrit.core_di.FeatureApiHolder
-import com.nefrit.core_di.FeatureContainer
-import com.nefrit.core_di.scope.ApplicationScope
-import com.nefrit.core_network_api.di.NetworkApi
+import com.nefrit.common.di.FeatureApiHolder
+import com.nefrit.common.di.FeatureContainer
+import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.network.di.NetworkApi
 import com.nefrit.users.UsersRouter
 import javax.inject.Inject
 

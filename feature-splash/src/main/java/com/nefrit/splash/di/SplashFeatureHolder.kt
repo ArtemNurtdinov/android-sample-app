@@ -1,9 +1,9 @@
 package com.nefrit.splash.di
 
 import com.nefrit.common.di.CommonApi
-import com.nefrit.core_di.FeatureApiHolder
-import com.nefrit.core_di.FeatureContainer
-import com.nefrit.core_di.scope.ApplicationScope
+import com.nefrit.common.di.FeatureApiHolder
+import com.nefrit.common.di.FeatureContainer
+import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.splash.SplashRouter
 import javax.inject.Inject
 

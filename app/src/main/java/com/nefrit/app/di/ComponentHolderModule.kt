@@ -1,15 +1,11 @@
 package com.nefrit.app.di
 
 import com.nefrit.app.App
-import com.nefrit.common.di.CommonApi
-import com.nefrit.common.di.CommonHolder
 import com.nefrit.core_db.di.DbApi
 import com.nefrit.core_db.di.DbHolder
-import com.nefrit.core_di.FeatureApiHolder
-import com.nefrit.core_di.FeatureContainer
-import com.nefrit.core_di.scope.ApplicationScope
-import com.nefrit.core_network_api.di.NetworkApi
-import com.nefrit.core_network_impl.di.NetworkHolder
+import com.nefrit.common.di.FeatureApiHolder
+import com.nefrit.common.di.FeatureContainer
+import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.splash.di.SplashFeatureApi
 import com.nefrit.splash.di.SplashFeatureHolder
@@ -25,18 +21,6 @@ interface ComponentHolderModule {
     @ApplicationScope
     @Binds
     fun provideFeatureContainer(application: App): FeatureContainer
-
-    @ApplicationScope
-    @Binds
-    @ClassKey(NetworkApi::class)
-    @IntoMap
-    fun provideNetworkHolder(networkHolder: NetworkHolder): FeatureApiHolder
-
-    @ApplicationScope
-    @Binds
-    @ClassKey(CommonApi::class)
-    @IntoMap
-    fun provideCommonHolder(commonHolder: CommonHolder): FeatureApiHolder
 
     @ApplicationScope
     @Binds
