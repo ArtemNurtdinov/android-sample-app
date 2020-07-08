@@ -14,6 +14,7 @@ open class App : Application(), FeatureContainer, HasComponentDependencies {
 
     @Inject lateinit var featureHolderManager: FeatureHolderManager
 
+    @Inject
     override lateinit var dependencies: ComponentDependenciesProvider
         protected set
 

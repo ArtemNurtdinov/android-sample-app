@@ -1,6 +1,5 @@
 package com.nefrit.users.presentation.list
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
@@ -18,8 +17,8 @@ class UsersViewModel(
     private val _usersLiveData = MutableLiveData<List<User>>()
     val usersLiveData: LiveData<List<User>> = _usersLiveData
 
-    fun userClicked(context: Context, user: User) {
-        router.openUser(context, user.id)
+    fun userClicked(user: User) {
+        router.openUser(user.id)
     }
 
     fun getUsers() {

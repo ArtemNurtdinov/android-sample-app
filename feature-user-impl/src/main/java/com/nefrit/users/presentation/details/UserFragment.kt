@@ -1,34 +1,36 @@
 package com.nefrit.users.presentation.details
 
-import android.content.Context
-import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.nefrit.common.base.BaseActivity
+import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
 import com.nefrit.users.di.UserFeatureComponent
-import kotlinx.android.synthetic.main.activity_user.firstNameTv
-import kotlinx.android.synthetic.main.activity_user.lastNameTv
-import kotlinx.android.synthetic.main.activity_user.toolbar
+import kotlinx.android.synthetic.main.fragment_user.firstNameTv
+import kotlinx.android.synthetic.main.fragment_user.lastNameTv
+import kotlinx.android.synthetic.main.fragment_user.toolbar
 
-class UserActivity : BaseActivity<UserViewModel>() {
+class UserFragment : BaseFragment<UserViewModel>() {
 
     companion object {
-
         private const val KEY_USER_ID = "user_id"
 
-        fun start(context: Context, userId: Int) {
-            val intent = Intent(context, UserActivity::class.java).apply {
-                putExtra(KEY_USER_ID, userId)
-            }
-            context.startActivity(intent)
+        fun createBundle(userId: Int): Bundle {
+            return Bundle().apply { putInt(KEY_USER_ID, userId) }
         }
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_user, container, false)
+    }
+
     override fun inject() {
-        val userId = intent.getIntExtra(KEY_USER_ID, 0)
+        val userId = arguments!!.getInt(KEY_USER_ID, 0)
 
         FeatureUtils.getFeature<UserFeatureComponent>(this, UserFeatureApi::class.java)
             .userComponentFactory()
@@ -36,13 +38,9 @@ class UserActivity : BaseActivity<UserViewModel>() {
             .inject(this)
     }
 
-    override fun layoutResource(): Int {
-        return R.layout.activity_user
-    }
-
     override fun initViews() {
         toolbar.setTitle(getString(R.string.user_title))
-        toolbar.setHomeButtonListener { finish() }
+     //   toolbar.setHomeButtonListener { finish() }
         toolbar.showHomeButton()
     }
 
@@ -55,7 +53,7 @@ class UserActivity : BaseActivity<UserViewModel>() {
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId == android.R.id.home) {
-            finish()
+     //       finish()
         }
         return super.onOptionsItemSelected(menuItem)
     }

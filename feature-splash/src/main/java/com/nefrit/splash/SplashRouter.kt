@@ -4,5 +4,5 @@ import android.content.Context
 
 interface SplashRouter {
 
-    fun openUsers(context: Context)
+    fun openMain(context: Context)
 }

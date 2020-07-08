@@ -3,14 +3,14 @@
 
     <application>
         <activity
-            android:name="com.nefrit.users.presentation.list.UsersActivity"
+            android:name="com.nefrit.users.presentation.list.UsersFragment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 
         <activity
-            android:name="com.nefrit.users.presentation.details.UserActivity"
+            android:name="com.nefrit.users.presentation.details.UserFragment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 

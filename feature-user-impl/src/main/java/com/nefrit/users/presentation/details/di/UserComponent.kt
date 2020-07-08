@@ -1,8 +1,8 @@
 package com.nefrit.users.presentation.details.di
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.nefrit.common.di.scope.ScreenScope
-import com.nefrit.users.presentation.details.UserActivity
+import com.nefrit.users.presentation.details.UserFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 
@@ -18,10 +18,10 @@ interface UserComponent {
     interface Factory {
 
         fun create(
-            @BindsInstance activity: AppCompatActivity,
+            @BindsInstance fragment: Fragment,
             @BindsInstance userId: Int
         ): UserComponent
     }
 
-    fun inject(activity: UserActivity)
+    fun inject(fragment: UserFragment)
 }

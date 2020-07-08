@@ -19,6 +19,6 @@ class SplashViewModel(
     }
 
     fun openScanner(context: Context) {
-        router.openUsers(context)
+        router.openMain(context)
     }
 }

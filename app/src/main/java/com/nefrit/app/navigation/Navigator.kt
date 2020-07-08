@@ -2,10 +2,11 @@ package com.nefrit.app.navigation
 
 import android.content.Context
 import androidx.navigation.NavController
+import com.nefrit.app.MainActivity
+import com.nefrit.app.R
 import com.nefrit.splash.SplashRouter
 import com.nefrit.users.UsersRouter
-import com.nefrit.users.presentation.details.UserActivity
-import com.nefrit.users.presentation.list.UsersActivity
+import com.nefrit.users.presentation.details.UserFragment
 
 class Navigator : UsersRouter, SplashRouter {
 
@@ -22,11 +23,11 @@ class Navigator : UsersRouter, SplashRouter {
         }
     }
 
-    override fun openUser(context: Context, userId: Int) {
-        UserActivity.start(context, userId)
+    override fun openUser(userId: Int) {
+        navController?.navigate(R.id.userFragment, UserFragment.createBundle(userId))
     }
 
-    override fun openUsers(context: Context) {
-        UsersActivity.start(context)
+    override fun openMain(context: Context) {
+        MainActivity.start(context)
     }
 }

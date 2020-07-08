@@ -1,6 +1,6 @@
 package com.nefrit.users.presentation.list.di
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -21,8 +21,8 @@ import dagger.multibindings.IntoMap
 class UsersModule {
 
     @Provides
-    fun provideMainViewModel(activity: AppCompatActivity, factory: ViewModelProvider.Factory): UsersViewModel {
-        return ViewModelProviders.of(activity, factory).get(UsersViewModel::class.java)
+    fun provideMainViewModel(fragment: Fragment, factory: ViewModelProvider.Factory): UsersViewModel {
+        return ViewModelProviders.of(fragment, factory).get(UsersViewModel::class.java)
     }
 
     @Provides

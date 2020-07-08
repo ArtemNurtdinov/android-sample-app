@@ -21,7 +21,7 @@ import dagger.Component
 )
 interface UserFeatureComponent : UserFeatureApi {
 
-    fun usersComponentFactory(): UsersComponent.Builder
+    fun usersComponentFactory(): UsersComponent.Factory
 
     fun userComponentFactory(): UserComponent.Factory
 
