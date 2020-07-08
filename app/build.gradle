@@ -23,8 +23,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':core')
     implementation project(':core-db')
-    implementation project(':network')
     implementation project(':logger')
     implementation project(':common')
     implementation project(':feature-splash')

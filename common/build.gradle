@@ -24,6 +24,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':core')
 
     implementation kotlinDep
 
@@ -39,6 +40,10 @@ dependencies {
 
     implementation lifecycleDep
     kapt lifecycleKapt
+
+    implementation retrofitDep
+    implementation gsonConvertedDep
+    implementation rxCallAdapterDep
 
     testImplementation jUnitDep
     testImplementation mockitoDep

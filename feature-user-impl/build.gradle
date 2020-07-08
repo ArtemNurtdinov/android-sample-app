@@ -25,7 +25,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core-db')
-    implementation project(':network')
     implementation project(':common')
     implementation project(':feature-user-api')
 

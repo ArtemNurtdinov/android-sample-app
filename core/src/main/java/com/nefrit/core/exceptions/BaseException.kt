@@ -1,7 +1,5 @@
-package com.nefrit.common.domain
+package com.nefrit.core.exceptions
 
-import com.nefrit.common.R
-import com.nefrit.common.resources.ResourceManager
 import java.io.IOException
 
 class BaseException(
@@ -23,12 +21,12 @@ class BaseException(
             return BaseException(Kind.BUSINESS, message)
         }
 
-        fun httpError(resourceManager: ResourceManager): BaseException {
-            return BaseException(Kind.HTTP, resourceManager.getString(R.string.common_error_general_message))
+        fun httpError(errorCode: Int, message: String): BaseException {
+            return BaseException(Kind.HTTP, message)
         }
 
-        fun networkError(resourceManager: ResourceManager, exception: IOException): BaseException {
-            return BaseException(Kind.NETWORK, resourceManager.getString(R.string.common_error_network), exception)
+        fun networkError(message: String, exception: IOException): BaseException {
+            return BaseException(Kind.NETWORK, message, exception)
         }
 
         fun unexpectedError(exception: Throwable): BaseException {

@@ -1,7 +1,7 @@
-package com.nefrit.network
+package com.nefrit.common.data.network
 
-import com.nefrit.common.domain.BaseException
 import com.nefrit.common.resources.ResourceManager
+import com.nefrit.core.exceptions.BaseException
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -44,9 +44,9 @@ class RxCallAdapterFactory(
                 is HttpException -> {
                     val errorCode = throwable.response().code()
                     throwable.response().errorBody()?.close()
-                    BaseException.httpError(resourceManager)
+                    BaseException.httpError(errorCode, resourceManager.getString(com.nefrit.common.R.string.common_error_general_message))
                 }
-                is IOException -> BaseException.networkError(resourceManager, throwable)
+                is IOException -> BaseException.networkError(resourceManager.getString(com.nefrit.common.R.string.common_error_network), throwable)
                 else -> BaseException.unexpectedError(throwable)
             }
         }
