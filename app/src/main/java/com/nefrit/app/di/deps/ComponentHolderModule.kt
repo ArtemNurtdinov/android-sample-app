@@ -1,4 +1,4 @@
-package com.nefrit.app.di
+package com.nefrit.app.di.deps
 
 import com.nefrit.app.App
 import com.nefrit.core_db.di.DbApi

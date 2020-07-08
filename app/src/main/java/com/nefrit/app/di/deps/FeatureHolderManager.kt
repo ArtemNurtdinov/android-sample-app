@@ -1,4 +1,4 @@
-package com.nefrit.app.di
+package com.nefrit.app.di.deps
 
 import com.nefrit.common.di.FeatureApiHolder
 

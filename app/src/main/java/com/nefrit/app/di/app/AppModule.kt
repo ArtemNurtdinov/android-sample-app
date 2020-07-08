@@ -1,4 +1,4 @@
-package com.nefrit.app.di
+package com.nefrit.app.di.app
 
 import android.content.Context
 import com.nefrit.app.App

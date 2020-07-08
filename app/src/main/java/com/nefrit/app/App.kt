@@ -1,14 +1,19 @@
 package com.nefrit.app
 
 import android.app.Application
-import com.nefrit.app.di.DaggerAppComponent
+import com.nefrit.app.di.deps.ComponentDependenciesProvider
+import com.nefrit.app.di.deps.FeatureHolderManager
+import com.nefrit.app.di.deps.HasComponentDependencies
+import com.nefrit.app.di.app.DaggerAppComponent
 import com.nefrit.common.di.FeatureContainer
-import com.nefrit.app.di.FeatureHolderManager
 import javax.inject.Inject
 
-open class App : Application(), FeatureContainer {
+open class App : Application(), FeatureContainer, HasComponentDependencies {
 
     @Inject lateinit var featureHolderManager: FeatureHolderManager
+
+    override lateinit var dependencies: ComponentDependenciesProvider
+        protected set
 
     override fun onCreate() {
         super.onCreate()

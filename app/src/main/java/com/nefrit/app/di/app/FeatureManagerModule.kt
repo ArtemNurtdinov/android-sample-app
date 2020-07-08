@@ -1,5 +1,6 @@
-package com.nefrit.app.di
+package com.nefrit.app.di.app
 
+import com.nefrit.app.di.deps.FeatureHolderManager
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.scope.ApplicationScope
 import dagger.Module

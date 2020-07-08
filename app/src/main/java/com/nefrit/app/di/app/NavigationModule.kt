@@ -1,4 +1,4 @@
-package com.nefrit.app.di
+package com.nefrit.app.di.app
 
 import com.nefrit.app.navigation.Navigator
 import com.nefrit.common.di.scope.ApplicationScope
