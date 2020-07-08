@@ -27,6 +27,10 @@ class Navigator : UsersRouter, SplashRouter {
         navController?.navigate(R.id.userFragment, UserFragment.createBundle(userId))
     }
 
+    override fun returnToUsers() {
+        navController?.popBackStack()
+    }
+
     override fun openMain(context: Context) {
         MainActivity.start(context)
     }

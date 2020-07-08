@@ -40,7 +40,7 @@ class UserFragment : BaseFragment<UserViewModel>() {
 
     override fun initViews() {
         toolbar.setTitle(getString(R.string.user_title))
-     //   toolbar.setHomeButtonListener { finish() }
+        toolbar.setHomeButtonListener { viewModel.backClicked() }
         toolbar.showHomeButton()
     }
 
@@ -53,7 +53,7 @@ class UserFragment : BaseFragment<UserViewModel>() {
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId == android.R.id.home) {
-     //       finish()
+            viewModel.backClicked()
         }
         return super.onOptionsItemSelected(menuItem)
     }
