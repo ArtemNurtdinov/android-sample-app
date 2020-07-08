@@ -1,7 +1,7 @@
 package com.nefrit.splash.di
 
 import com.nefrit.common.di.CommonApi
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.di.scope.FeatureScope
 import com.nefrit.splash.SplashRouter
 import com.nefrit.splash.presentation.di.SplashComponent
 import dagger.BindsInstance
@@ -15,7 +15,7 @@ import dagger.Component
         SplashFeatureModule::class
     ]
 )
-@ApplicationScope
+@FeatureScope
 interface SplashFeatureComponent : SplashFeatureApi {
 
     fun splashComponentFactory(): SplashComponent.Factory

@@ -1,6 +1,5 @@
 package com.nefrit.splash.di
 
-import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
@@ -15,7 +14,7 @@ class SplashFeatureHolder @Inject constructor(
 
     override fun initializeDependencies(): Any {
         val splashFeatureDependencies = DaggerSplashFeatureComponent_SplashFeatureDependenciesComponent.builder()
-            .commonApi(getFeature(CommonApi::class.java))
+            .commonApi(commonApi())
             .build()
         return DaggerSplashFeatureComponent.builder()
             .withDependencies(splashFeatureDependencies)

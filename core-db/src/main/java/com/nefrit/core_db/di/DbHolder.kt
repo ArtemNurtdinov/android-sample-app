@@ -1,6 +1,5 @@
 package com.nefrit.core_db.di
 
-import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
@@ -13,7 +12,7 @@ class DbHolder @Inject constructor(
 
     override fun initializeDependencies(): Any {
         val dbDependencies = DaggerDbComponent_DbDependenciesComponent.builder()
-            .commonApi(getFeature(CommonApi::class.java))
+            .commonApi(commonApi())
             .build()
         return DaggerDbComponent.builder()
             .dbDependencies(dbDependencies)

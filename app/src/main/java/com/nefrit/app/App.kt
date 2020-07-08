@@ -1,10 +1,12 @@
 package com.nefrit.app
 
 import android.app.Application
+import com.nefrit.app.di.app.AppComponent
 import com.nefrit.app.di.deps.ComponentDependenciesProvider
 import com.nefrit.app.di.deps.FeatureHolderManager
 import com.nefrit.app.di.deps.HasComponentDependencies
 import com.nefrit.app.di.app.DaggerAppComponent
+import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.FeatureContainer
 import javax.inject.Inject
 
@@ -15,14 +17,16 @@ open class App : Application(), FeatureContainer, HasComponentDependencies {
     override lateinit var dependencies: ComponentDependenciesProvider
         protected set
 
+    private lateinit var appComponent: AppComponent
+
     override fun onCreate() {
         super.onCreate()
 
-        DaggerAppComponent
+        appComponent = DaggerAppComponent
             .builder()
             .application(this)
             .build()
-            .inject(this)
+        appComponent.inject(this)
     }
 
     override fun <T> getFeature(key: Class<*>): T {
@@ -31,5 +35,9 @@ open class App : Application(), FeatureContainer, HasComponentDependencies {
 
     override fun releaseFeature(key: Class<*>) {
         featureHolderManager.releaseFeature(key)
+    }
+
+    override fun commonApi(): CommonApi {
+        return appComponent
     }
 }

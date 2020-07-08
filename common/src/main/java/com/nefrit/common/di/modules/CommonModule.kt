@@ -19,30 +19,4 @@ class CommonModule {
     fun provideResourceManager(context: Context): ResourceManager {
         return ResourceManagerImpl(context)
     }
-
-    @Provides
-    @ApplicationScope
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true)
-            .build()
-    }
-
-    @Provides
-    @ApplicationScope
-    fun provideRxCallAdapterFactory(resourceManager: ResourceManager): RxCallAdapterFactory {
-        return RxCallAdapterFactory(resourceManager)
-    }
-
-    @Provides
-    @ApplicationScope
-    fun provideApiCreator(
-        okHttpClient: OkHttpClient,
-        rxCallAdapterFactory: RxCallAdapterFactory
-    ): NetworkApiCreator {
-        return NetworkApiCreator(okHttpClient, "test url", rxCallAdapterFactory)
-    }
 }

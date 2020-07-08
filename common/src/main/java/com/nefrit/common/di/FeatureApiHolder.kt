@@ -25,6 +25,10 @@ abstract class FeatureApiHolder(
         mFeatureLocker.unlock()
     }
 
+    fun commonApi(): CommonApi {
+        return mFeatureContainer.commonApi()
+    }
+
     protected fun <T> getFeature(key: Class<T>): T {
         return mFeatureContainer.getFeature<T>(key) ?: throw RuntimeException()
     }
