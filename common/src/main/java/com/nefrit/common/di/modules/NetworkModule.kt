@@ -3,7 +3,7 @@ package com.nefrit.common.di.modules
 import com.nefrit.common.data.network.NetworkApiCreator
 import com.nefrit.common.data.network.RxCallAdapterFactory
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.common.resources.ResourceManager
+import com.nefrit.core.ResourceManager
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

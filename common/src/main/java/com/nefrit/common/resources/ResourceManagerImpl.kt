@@ -2,6 +2,7 @@ package com.nefrit.common.resources
 
 import android.content.Context
 import androidx.core.content.ContextCompat
+import com.nefrit.core.ResourceManager
 import javax.inject.Inject
 import javax.inject.Singleton
 

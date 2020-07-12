@@ -1,6 +1,6 @@
 package com.nefrit.common.data.network
 
-import com.nefrit.common.resources.ResourceManager
+import com.nefrit.core.ResourceManager
 import com.nefrit.core.exceptions.BaseException
 import io.reactivex.Single
 import retrofit2.Call
