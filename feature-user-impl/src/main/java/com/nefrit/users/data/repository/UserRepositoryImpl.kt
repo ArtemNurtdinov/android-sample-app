@@ -1,7 +1,6 @@
 package com.nefrit.users.data.repository
 
 import com.nefrit.core_db.AppDatabase
-import com.nefrit.core_db.dao.UserDao
 import com.nefrit.feature_user_api.domain.interfaces.UserRepository
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.data.mappers.mapUserLocalToUser

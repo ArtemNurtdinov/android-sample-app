@@ -21,8 +21,7 @@ class MainModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun provideViewModel(
-    ): ViewModel {
+    fun provideViewModel(): ViewModel {
         return MainViewModel()
     }
 

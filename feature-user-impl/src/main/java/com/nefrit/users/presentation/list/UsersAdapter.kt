@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_user.view.lastNameTv
 
 class UsersAdapter(
     private val userClickListener: (User) -> Unit
-): ListAdapter<User, UserViewHolder>(DiffCallback) {
+) : ListAdapter<User, UserViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
@@ -25,10 +25,10 @@ class UsersAdapter(
     }
 }
 
-class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(user: User, userClickListener: (User) -> Unit) {
-        with (itemView) {
+        with(itemView) {
             firstNameTv.text = user.firstName
             lastNameTv.text = user.lastName
 

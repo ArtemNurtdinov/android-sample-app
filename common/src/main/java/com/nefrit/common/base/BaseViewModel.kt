@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.nefrit.common.utils.Event
 import io.reactivex.disposables.CompositeDisposable
 
-open class BaseViewModel: ViewModel() {
+open class BaseViewModel : ViewModel() {
 
     private val _errorLiveData = MutableLiveData<Event<String>>()
     val errorLiveData: LiveData<Event<String>> = _errorLiveData

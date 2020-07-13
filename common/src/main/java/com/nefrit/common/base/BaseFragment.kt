@@ -9,7 +9,7 @@ import com.nefrit.common.R
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject
 
-abstract class BaseFragment<T: BaseViewModel> : Fragment() {
+abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     @Inject protected open lateinit var viewModel: T
 

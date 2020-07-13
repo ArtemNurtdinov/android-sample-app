@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import com.nefrit.app.di.deps.findComponentDependencies
 import com.nefrit.app.di.main.MainComponent
 import com.nefrit.app.navigation.Navigator
