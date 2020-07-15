@@ -2,8 +2,8 @@ package com.nefrit.splash.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.nefrit.common.utils.EventObserver
 import com.nefrit.common.di.FeatureUtils
+import com.nefrit.common.utils.EventObserver
 import com.nefrit.splash.di.SplashFeatureApi
 import com.nefrit.splash.di.SplashFeatureComponent
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
             .inject(this)
 
         splashViewModel.openUsersEvent.observe(this, EventObserver {
-            splashViewModel.openScanner(this)
+            splashViewModel.openMain(this)
             finish()
         })
     }

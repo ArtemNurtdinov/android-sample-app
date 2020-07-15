@@ -1,8 +1,8 @@
 package com.nefrit.users.di
 
 import com.nefrit.common.di.CommonApi
+import com.nefrit.common.di.scope.FeatureScope
 import com.nefrit.core_db.di.DbApi
-import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.UsersRouter
 import com.nefrit.users.presentation.details.di.UserComponent
@@ -10,7 +10,7 @@ import com.nefrit.users.presentation.list.di.UsersComponent
 import dagger.BindsInstance
 import dagger.Component
 
-@ApplicationScope
+@FeatureScope
 @Component(
     dependencies = [
         UserFeatureDependencies::class

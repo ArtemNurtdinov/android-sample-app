@@ -1,7 +1,7 @@
 package com.nefrit.users.di
 
 import com.nefrit.common.data.network.NetworkApiCreator
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.di.scope.FeatureScope
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.interfaces.UserRepository
 import com.nefrit.users.data.network.UserApi
@@ -15,15 +15,15 @@ import dagger.Provides
 class UserFeatureModule {
 
     @Provides
-    @ApplicationScope
+    @FeatureScope
     fun provideUserRepository(userRepository: UserRepositoryImpl): UserRepository = userRepository
 
     @Provides
-    @ApplicationScope
+    @FeatureScope
     fun provideUserInteractor(userInteractor: UsersInteractorImpl): UserInteractor = userInteractor
 
     @Provides
-    @ApplicationScope
+    @FeatureScope
     fun provideUserApi(apiCreator: NetworkApiCreator): UserApi {
         return UserApiImpl()
     }
