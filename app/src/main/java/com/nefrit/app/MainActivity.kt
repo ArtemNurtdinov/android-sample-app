@@ -25,8 +25,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
     private var navController: NavController? = null
 
     override fun inject() {
-        MainComponent
-            .init(this, findComponentDependencies())
+        MainComponent.init(this, findComponentDependencies())
             .inject(this)
     }
 

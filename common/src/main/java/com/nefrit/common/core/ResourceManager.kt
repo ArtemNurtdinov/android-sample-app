@@ -1,25 +1,24 @@
-package com.nefrit.common.resources
+package com.nefrit.common.core
 
 import android.content.Context
 import androidx.core.content.ContextCompat
-import com.nefrit.core.ResourceManager
+import com.nefrit.common.di.scope.ApplicationScope
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class ResourceManagerImpl @Inject constructor(
+class ResourceManager(
     private val context: Context
-) : ResourceManager {
+) {
 
-    override fun getString(resource: Int): String {
+    fun getString(resource: Int): String {
         return context.getString(resource)
     }
 
-    override fun getColor(res: Int): Int {
+    fun getColor(res: Int): Int {
         return ContextCompat.getColor(context, res)
     }
 
-    override fun getQuantityString(id: Int, quantity: Int): String {
+    fun getQuantityString(id: Int, quantity: Int): String {
         return context.resources.getQuantityString(id, quantity)
     }
 }

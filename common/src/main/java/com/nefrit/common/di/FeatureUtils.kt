@@ -15,7 +15,7 @@ object FeatureUtils {
     }
 
     fun <T> getFeature(fragment: Fragment, key: Class<*>): T {
-        return getHolder(fragment.context!!).getFeature(key)
+        return getHolder(fragment.requireContext()).getFeature(key)
     }
 
     fun releaseFeature(context: Context, key: Class<*>) {
@@ -30,7 +30,7 @@ object FeatureUtils {
         getHolder(fragment.context!!).releaseFeature(key)
     }
 
-    private fun getHolder(context: Context): com.nefrit.common.di.FeatureContainer {
-        return context.applicationContext as com.nefrit.common.di.FeatureContainer
+    private fun getHolder(context: Context): FeatureContainer {
+        return context.applicationContext as FeatureContainer
     }
 }

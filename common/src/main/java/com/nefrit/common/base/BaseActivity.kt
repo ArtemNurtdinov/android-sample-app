@@ -1,6 +1,5 @@
 package com.nefrit.common.base
 
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nefrit.common.utils.setBarColorBackground
@@ -13,9 +12,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutResource())
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setBarColorBackground(android.R.color.black)
-        }
+        setBarColorBackground(android.R.color.black)
         inject()
         initViews()
         subscribe(viewModel)

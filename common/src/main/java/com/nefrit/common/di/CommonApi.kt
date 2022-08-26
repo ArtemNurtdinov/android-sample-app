@@ -1,8 +1,9 @@
 package com.nefrit.common.di
 
 import android.content.Context
+import com.nefrit.common.core.ResourceManager
+import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.data.network.NetworkApiCreator
-import com.nefrit.core.ResourceManager
 
 interface CommonApi {
 
@@ -11,4 +12,6 @@ interface CommonApi {
     fun provideResourceManager(): ResourceManager
 
     fun provideNetworkApiCreator(): NetworkApiCreator
+
+    fun provideAppProperties(): AppProperties
 }
