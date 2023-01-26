@@ -54,6 +54,6 @@ class NetworkModule {
         rxCallAdapterFactory: RxCallAdapterFactory,
         appProperties: AppProperties
     ): NetworkApiCreator {
-        return NetworkApiCreator(okHttpClient, appProperties.BASE_URL, rxCallAdapterFactory)
+        return NetworkApiCreator(okHttpClient, appProperties.getBaseUrl(), rxCallAdapterFactory)
     }
 }

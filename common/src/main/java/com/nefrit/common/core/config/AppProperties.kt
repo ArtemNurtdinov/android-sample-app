@@ -4,11 +4,10 @@ import android.content.Context
 import com.nefrit.common.R
 import java.util.Properties
 
+@Suppress("UNCHECKED_CAST")
 class AppProperties(context: Context) {
 
     private val properties: Map<String, String> = initProperties(context)
-
-    val BASE_URL: String = properties["base_url"] ?: ""
 
     private fun initProperties(context: Context): Map<String, String> {
         return context.resources.openRawResource(R.raw.config).use {
@@ -24,4 +23,6 @@ class AppProperties(context: Context) {
         val writeTimeout = properties["http.timeout.write"]?.toLong() ?: 0
         return NetworkProperties(connectTimeout, readTimeout, writeTimeout)
     }
+
+    fun getBaseUrl(): String = properties["base_url"] ?: ""
 }

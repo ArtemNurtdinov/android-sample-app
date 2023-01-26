@@ -1,23 +1,20 @@
 package com.nefrit.users.presentation.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nefrit.feature_user_api.domain.model.User
-import com.nefrit.users.R
-import kotlinx.android.synthetic.main.item_user.view.firstNameTv
-import kotlinx.android.synthetic.main.item_user.view.lastNameTv
+import com.nefrit.users.databinding.ItemUserBinding
 
 class UsersAdapter(
-    private val userClickListener: (User) -> Unit
+    private val userClickListener: (User) -> Unit,
 ) : ListAdapter<User, UserViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
-        return UserViewHolder(view)
+        val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UserViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
@@ -25,14 +22,14 @@ class UsersAdapter(
     }
 }
 
-class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class UserViewHolder(private val itemBinding: ItemUserBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
     fun bind(user: User, userClickListener: (User) -> Unit) {
-        with(itemView) {
+        with(itemBinding) {
             firstNameTv.text = user.firstName
             lastNameTv.text = user.lastName
 
-            setOnClickListener {
+            itemView.setOnClickListener {
                 userClickListener(user)
             }
         }

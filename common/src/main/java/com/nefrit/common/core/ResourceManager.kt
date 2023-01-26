@@ -2,9 +2,6 @@ package com.nefrit.common.core
 
 import android.content.Context
 import androidx.core.content.ContextCompat
-import com.nefrit.common.di.scope.ApplicationScope
-import javax.inject.Inject
-import javax.inject.Singleton
 
 class ResourceManager(
     private val context: Context
