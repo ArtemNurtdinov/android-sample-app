@@ -27,14 +27,14 @@ fun <T> MutableLiveData<T>.postValueIfNew(newValue: T) {
     if (this.value != newValue) postValue(newValue)
 }
 
-fun View.makeVisible() {
+fun View.show() {
     this.visibility = View.VISIBLE
 }
 
-fun View.makeInvisible() {
+fun View.hide() {
     this.visibility = View.INVISIBLE
 }
 
-fun View.makeGone() {
+fun View.gone() {
     this.visibility = View.GONE
 }

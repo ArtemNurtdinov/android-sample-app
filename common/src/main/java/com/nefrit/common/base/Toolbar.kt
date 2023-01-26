@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.nefrit.common.databinding.ToolBarBinding
-import com.nefrit.common.utils.makeGone
-import com.nefrit.common.utils.makeVisible
+import com.nefrit.common.utils.gone
+import com.nefrit.common.utils.show
 
 class Toolbar @JvmOverloads constructor(
     context: Context,
@@ -22,11 +22,11 @@ class Toolbar @JvmOverloads constructor(
     }
 
     fun showHomeButton() {
-        binding.backImg.makeVisible()
+        binding.backImg.show()
     }
 
     fun hideHomeButton() {
-        binding.backImg.makeGone()
+        binding.backImg.gone()
     }
 
     fun setHomeButtonListener(listener: (View) -> Unit) {

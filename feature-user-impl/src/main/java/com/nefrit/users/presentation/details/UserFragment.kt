@@ -47,11 +47,8 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun subscribe(viewModel: UserViewModel) {
-        viewModel.userLiveData.observe(this) {
-            with(binding) {
-                firstNameTv.text = it.firstName
-                lastNameTv.text = it.lastName
-            }
+        viewModel.userLiveData.observe {
+            binding.userView.populate(it.userPayload)
         }
     }
 

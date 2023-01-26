@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
+import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.R
 import com.nefrit.users.databinding.FragmentUsersBinding
 import com.nefrit.users.di.UserFeatureComponent
 
-class UsersFragment : BaseFragment<UsersViewModel>() {
+class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHandler {
 
     private lateinit var binding: FragmentUsersBinding
 
@@ -29,7 +30,7 @@ class UsersFragment : BaseFragment<UsersViewModel>() {
     }
 
     override fun initViews() {
-        with (binding) {
+        with(binding) {
             toolbar.setTitle(getString(R.string.users_title))
 
             usersRv.layoutManager = LinearLayoutManager(requireActivity())
@@ -38,15 +39,19 @@ class UsersFragment : BaseFragment<UsersViewModel>() {
     }
 
     override fun subscribe(viewModel: UsersViewModel) {
-        viewModel.usersLiveData.observe(this) {
+        viewModel.usersLiveData.observe {
             with(binding) {
                 if (usersRv.adapter == null) {
-                    usersRv.adapter = UsersAdapter(viewModel::userClicked)
+                    usersRv.adapter = UsersAdapter(this@UsersFragment)
                 }
                 (usersRv.adapter as UsersAdapter).submitList(it)
             }
         }
 
         viewModel.getUsers()
+    }
+
+    override fun clicked(user: User) {
+        viewModel.userClicked(user)
     }
 }
