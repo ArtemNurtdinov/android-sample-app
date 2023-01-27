@@ -22,16 +22,19 @@ class UserViewModel(
 
     init {
         disposables.add(
-            interactor.getUser(userId)
+            interactor.observeUser(userId)
                 .subscribeOn(Schedulers.io())
                 .map(::mapUserDetailsModel)
-                .observeOn(AndroidSchedulers.mainThread(), true)
-                .subscribe({
-                    _userLiveData.value = it
-                }, {
-                    it.printStackTrace()
-                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(::observeUserSuccess, ::observeUserError)
         )
+    }
+
+    private fun observeUserSuccess(user: UserDetailsModel) {
+        _userLiveData.value = user
+    }
+
+    private fun observeUserError(error: Throwable) {
     }
 
     private fun mapUserDetailsModel(user: User): UserDetailsModel {
@@ -43,5 +46,18 @@ class UserViewModel(
 
     fun backClicked() {
         router.returnToUsers()
+    }
+
+    fun updateUser() {
+        disposables += interactor.updateUser(userId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::userUpdateSuccess, ::userUpdateError)
+    }
+
+    private fun userUpdateSuccess() {
+    }
+
+    private fun userUpdateError(error: Throwable) {
     }
 }

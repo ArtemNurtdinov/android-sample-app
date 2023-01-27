@@ -39,10 +39,10 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun initViews() {
-        with(binding) {
-            toolbar.setTitle(getString(R.string.user_title))
-            toolbar.setHomeButtonListener { viewModel.backClicked() }
-            toolbar.showHomeButton()
+        with(binding.toolbar) {
+            setTitle(getString(R.string.user_title))
+            setHomeButtonListener { viewModel.backClicked() }
+            showHomeButton()
         }
     }
 
@@ -50,6 +50,8 @@ class UserFragment : BaseFragment<UserViewModel>() {
         viewModel.userLiveData.observe {
             binding.userView.populate(it.userPayload)
         }
+
+        viewModel.updateUser()
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {

@@ -48,7 +48,7 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHa
             }
         }
 
-        viewModel.getUsers()
+        viewModel.updateUsers()
     }
 
     override fun clicked(user: User) {
