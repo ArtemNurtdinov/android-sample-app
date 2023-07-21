@@ -26,6 +26,8 @@ buildscript {
         okhttpVersion = '3.8.0'
         gsonVersion = '2.8.2'
 
+        splashScreenVersion = '1.0.0'
+
         zXingVersion = '3.5.0'
 
         navControllerVersion = '2.0.0-rc02'
@@ -62,6 +64,8 @@ buildscript {
         rxCallAdapterDep = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
         gsonConvertedDep = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         gsonDep = "com.google.code.gson:gson:$gsonVersion"
+
+        splashScreenDep = "androidx.core:core-splashscreen:$splashScreenVersion"
 
         jUnitDep = "junit:junit:$junitVersion"
         mockitoDep = "org.mockito:mockito-inline:$mockitoVersion"
