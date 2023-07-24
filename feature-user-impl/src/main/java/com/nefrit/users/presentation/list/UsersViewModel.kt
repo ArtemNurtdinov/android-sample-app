@@ -11,26 +11,40 @@ import io.reactivex.schedulers.Schedulers
 
 class UsersViewModel(
     private val interactor: UserInteractor,
-    private val router: UsersRouter
+    private val router: UsersRouter,
 ) : BaseViewModel() {
 
     private val _usersLiveData = MutableLiveData<List<User>>()
     val usersLiveData: LiveData<List<User>> = _usersLiveData
 
+    init {
+        disposables += interactor.observeUsers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::observeUsersSuccess, ::observeUsersError)
+    }
+
+    private fun observeUsersSuccess(users: List<User>) {
+        _usersLiveData.value = users
+    }
+
+    private fun observeUsersError(error: Throwable) {
+    }
+
     fun userClicked(user: User) {
         router.openUser(user.id)
     }
 
-    fun getUsers() {
-        disposables.add(
-            interactor.getUsers()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread(), true)
-                .subscribe({
-                    _usersLiveData.value = it
-                }, {
-                    it.printStackTrace()
-                })
-        )
+    fun updateUsers() {
+        disposables += interactor.updateUsers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::updateUsersSuccess, ::updateUsersError)
+    }
+
+    private fun updateUsersSuccess() {
+    }
+
+    private fun updateUsersError(error: Throwable) {
     }
 }

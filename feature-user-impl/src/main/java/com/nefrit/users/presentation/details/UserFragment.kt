@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
+import com.nefrit.users.databinding.FragmentUserBinding
 import com.nefrit.users.di.UserFeatureComponent
-import kotlinx.android.synthetic.main.fragment_user.firstNameTv
-import kotlinx.android.synthetic.main.fragment_user.lastNameTv
-import kotlinx.android.synthetic.main.fragment_user.toolbar
 
 class UserFragment : BaseFragment<UserViewModel>() {
 
@@ -25,12 +22,15 @@ class UserFragment : BaseFragment<UserViewModel>() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user, container, false)
+    private lateinit var binding: FragmentUserBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentUserBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun inject() {
-        val userId = arguments!!.getInt(KEY_USER_ID, 0)
+        val userId = requireArguments().getInt(KEY_USER_ID, 0)
 
         FeatureUtils.getFeature<UserFeatureComponent>(this, UserFeatureApi::class.java)
             .userComponentFactory()
@@ -39,16 +39,19 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun initViews() {
-        toolbar.setTitle(getString(R.string.user_title))
-        toolbar.setHomeButtonListener { viewModel.backClicked() }
-        toolbar.showHomeButton()
+        with(binding.toolbar) {
+            setTitle(getString(R.string.user_title))
+            setHomeButtonListener { viewModel.backClicked() }
+            showHomeButton()
+        }
     }
 
     override fun subscribe(viewModel: UserViewModel) {
-        viewModel.userLiveData.observe(this, Observer {
-            firstNameTv.text = it.firstName
-            lastNameTv.text = it.lastName
-        })
+        viewModel.userLiveData.observe {
+            binding.userView.populate(it.userPayload)
+        }
+
+        viewModel.updateUser()
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {

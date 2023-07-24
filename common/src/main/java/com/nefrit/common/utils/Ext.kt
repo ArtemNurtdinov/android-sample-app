@@ -1,6 +1,5 @@
 package com.nefrit.common.utils
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.View
 import android.widget.Toast
@@ -16,7 +15,6 @@ fun Activity.showShortToast(@StringRes msg: Int) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
 
-@SuppressLint("NewApi")
 fun Activity.setBarColorBackground(colorId: Int) {
     window.statusBarColor = ContextCompat.getColor(this, colorId)
 }
@@ -29,14 +27,14 @@ fun <T> MutableLiveData<T>.postValueIfNew(newValue: T) {
     if (this.value != newValue) postValue(newValue)
 }
 
-fun View.makeVisible() {
+fun View.show() {
     this.visibility = View.VISIBLE
 }
 
-fun View.makeInvisible() {
+fun View.hide() {
     this.visibility = View.INVISIBLE
 }
 
-fun View.makeGone() {
+fun View.gone() {
     this.visibility = View.GONE
 }

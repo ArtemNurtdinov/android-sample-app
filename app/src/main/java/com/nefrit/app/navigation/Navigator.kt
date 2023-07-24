@@ -1,14 +1,11 @@
 package com.nefrit.app.navigation
 
-import android.content.Context
 import androidx.navigation.NavController
-import com.nefrit.app.MainActivity
 import com.nefrit.app.R
-import com.nefrit.splash.SplashRouter
 import com.nefrit.users.UsersRouter
 import com.nefrit.users.presentation.details.UserFragment
 
-class Navigator : UsersRouter, SplashRouter {
+class Navigator : UsersRouter {
 
     private var navController: NavController? = null
 
@@ -29,9 +26,5 @@ class Navigator : UsersRouter, SplashRouter {
 
     override fun returnToUsers() {
         navController?.popBackStack()
-    }
-
-    override fun openMain(context: Context) {
-        MainActivity.start(context)
     }
 }

@@ -21,21 +21,21 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         initViews()
         subscribe(viewModel)
 
-        observe(viewModel.errorLiveData, EventObserver {
+        viewModel.errorLiveData.observe(EventObserver {
             showError(it)
         })
 
-        observe(viewModel.errorWithTitleLiveData, EventObserver {
+        viewModel.errorWithTitleLiveData.observe(EventObserver {
             showErrorWithTitle(it.first, it.second)
         })
 
-        observe(viewModel.errorFromResourceLiveData, EventObserver {
+        viewModel.errorFromResourceLiveData.observe(EventObserver {
             showErrorFromResponse(it)
         })
     }
 
     protected fun showError(errorMessage: String) {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.common_error_general_title)
             .setMessage(errorMessage)
             .setPositiveButton(R.string.common_ok) { _, _ -> }
@@ -43,7 +43,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     }
 
     protected fun showErrorFromResponse(resId: Int) {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.common_error_general_title)
             .setMessage(resId)
             .setPositiveButton(android.R.string.ok) { _, _ -> }
@@ -51,7 +51,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     }
 
     protected fun showErrorWithTitle(title: String, errorMessage: String) {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(title)
             .setMessage(errorMessage)
             .setPositiveButton(android.R.string.ok) { _, _ -> }
@@ -63,10 +63,9 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         super.onDestroyView()
     }
 
-    @Suppress("unchecked_cast")
-    protected fun <V : Any?> observe(source: LiveData<V>, observer: Observer<V>) {
-        source.observe(this, observer as Observer<in Any?>)
-        observables.add(source)
+    protected fun <T> LiveData<T>.observe(observer: Observer<T>) {
+        observe(viewLifecycleOwner, observer)
+        observables.add(this)
     }
 
     abstract fun initViews()

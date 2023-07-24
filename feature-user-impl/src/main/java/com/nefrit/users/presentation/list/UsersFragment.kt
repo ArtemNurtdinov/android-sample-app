@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
+import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.R
+import com.nefrit.users.databinding.FragmentUsersBinding
 import com.nefrit.users.di.UserFeatureComponent
-import kotlinx.android.synthetic.main.fragment_users.toolbar
-import kotlinx.android.synthetic.main.fragment_users.usersRv
 
-class UsersFragment : BaseFragment<UsersViewModel>() {
+class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHandler {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_users, container, false)
+    private lateinit var binding: FragmentUsersBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentUsersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun inject() {
@@ -28,20 +29,25 @@ class UsersFragment : BaseFragment<UsersViewModel>() {
     }
 
     override fun initViews() {
-        toolbar.setTitle(getString(R.string.users_title))
-
-        usersRv.layoutManager = LinearLayoutManager(activity!!)
-        usersRv.setHasFixedSize(true)
+        with(binding) {
+            toolbar.setTitle(getString(R.string.users_title))
+        }
     }
 
     override fun subscribe(viewModel: UsersViewModel) {
-        viewModel.usersLiveData.observe(this, Observer {
-            if (usersRv.adapter == null) {
-                usersRv.adapter = UsersAdapter { viewModel.userClicked(it) }
+        viewModel.usersLiveData.observe {
+            with(binding) {
+                if (usersRv.adapter == null) {
+                    usersRv.adapter = UsersAdapter(this@UsersFragment)
+                }
+                (usersRv.adapter as UsersAdapter).submitList(it)
             }
-            (usersRv.adapter as UsersAdapter).submitList(it)
-        })
+        }
 
-        viewModel.getUsers()
+        viewModel.updateUsers()
+    }
+
+    override fun clicked(user: User) {
+        viewModel.userClicked(user)
     }
 }

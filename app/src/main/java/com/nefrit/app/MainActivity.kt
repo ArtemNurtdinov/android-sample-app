@@ -2,6 +2,7 @@ package com.nefrit.app
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.nefrit.app.di.deps.findComponentDependencies
@@ -12,21 +13,12 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel>() {
 
-    companion object {
-
-        fun start(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
-        }
-    }
-
     @Inject lateinit var navigator: Navigator
 
     private var navController: NavController? = null
 
     override fun inject() {
-        MainComponent
-            .init(this, findComponentDependencies())
+        MainComponent.init(this, findComponentDependencies())
             .inject(this)
     }
 

@@ -25,6 +25,16 @@ import dagger.Component
 )
 interface AppComponent : MainDependencies, CommonApi {
 
+    companion object {
+
+        fun init(application: App): AppComponent {
+            return DaggerAppComponent
+                .builder()
+                .application(application)
+                .build()
+        }
+    }
+
     @Component.Builder
     interface Builder {
 

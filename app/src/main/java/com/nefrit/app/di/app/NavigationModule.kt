@@ -2,7 +2,6 @@ package com.nefrit.app.di.app
 
 import com.nefrit.app.navigation.Navigator
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.splash.SplashRouter
 import com.nefrit.users.UsersRouter
 import dagger.Module
 import dagger.Provides
@@ -17,8 +16,4 @@ class NavigationModule {
     @ApplicationScope
     @Provides
     fun provideMainRouter(navigator: Navigator): UsersRouter = navigator
-
-    @ApplicationScope
-    @Provides
-    fun provideSplashRouter(navigator: Navigator): SplashRouter = navigator
 }

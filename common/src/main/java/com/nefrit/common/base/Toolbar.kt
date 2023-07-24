@@ -2,13 +2,12 @@ package com.nefrit.common.base
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.nefrit.common.R
-import com.nefrit.common.utils.makeGone
-import com.nefrit.common.utils.makeVisible
-import kotlinx.android.synthetic.main.tool_bar.view.backImg
-import kotlinx.android.synthetic.main.tool_bar.view.titleTv
+import com.nefrit.common.databinding.ToolBarBinding
+import com.nefrit.common.utils.gone
+import com.nefrit.common.utils.show
 
 class Toolbar @JvmOverloads constructor(
     context: Context,
@@ -16,23 +15,21 @@ class Toolbar @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    init {
-        View.inflate(context, R.layout.tool_bar, this)
-    }
+    private val binding: ToolBarBinding = ToolBarBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun setTitle(title: String) {
-        titleTv.text = title
+        binding.titleTv.text = title
     }
 
     fun showHomeButton() {
-        backImg.makeVisible()
+        binding.backImg.show()
     }
 
     fun hideHomeButton() {
-        backImg.makeGone()
+        binding.backImg.gone()
     }
 
     fun setHomeButtonListener(listener: (View) -> Unit) {
-        backImg.setOnClickListener(listener)
+        binding.backImg.setOnClickListener(listener)
     }
 }

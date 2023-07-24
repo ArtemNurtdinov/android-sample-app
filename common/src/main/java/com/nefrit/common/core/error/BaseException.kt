@@ -1,4 +1,4 @@
-package com.nefrit.core.exceptions
+package com.nefrit.common.core.error
 
 import java.io.IOException
 
@@ -21,7 +21,7 @@ class BaseException(
             return BaseException(Kind.BUSINESS, message)
         }
 
-        fun httpError(errorCode: Int, message: String): BaseException {
+        fun connectionError(errorCode: Int, message: String): BaseException {
             return BaseException(Kind.HTTP, message)
         }
 

@@ -14,19 +14,14 @@ open class App : Application(), FeatureContainer, HasComponentDependencies {
 
     @Inject lateinit var featureHolderManager: FeatureHolderManager
 
-    @Inject
-    override lateinit var dependencies: ComponentDependenciesProvider
-        protected set
+    @Inject override lateinit var dependencies: ComponentDependenciesProvider
 
     private lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent
-            .builder()
-            .application(this)
-            .build()
+        appComponent = AppComponent.init(this)
         appComponent.inject(this)
     }
 
