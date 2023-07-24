@@ -18,12 +18,10 @@ class UsersViewModel(
     val usersLiveData: LiveData<List<User>> = _usersLiveData
 
     init {
-        disposables.add(
-            interactor.observeUsers()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(::observeUsersSuccess, ::observeUsersError)
-        )
+        disposables += interactor.observeUsers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::observeUsersSuccess, ::observeUsersError)
     }
 
     private fun observeUsersSuccess(users: List<User>) {

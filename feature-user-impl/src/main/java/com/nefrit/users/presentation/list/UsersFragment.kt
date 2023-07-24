@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
@@ -32,9 +31,6 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHa
     override fun initViews() {
         with(binding) {
             toolbar.setTitle(getString(R.string.users_title))
-
-            usersRv.layoutManager = LinearLayoutManager(requireActivity())
-            usersRv.setHasFixedSize(true)
         }
     }
 

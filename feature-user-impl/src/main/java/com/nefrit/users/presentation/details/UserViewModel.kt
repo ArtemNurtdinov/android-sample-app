@@ -21,13 +21,11 @@ class UserViewModel(
     val userLiveData: LiveData<UserDetailsModel> = _userLiveData
 
     init {
-        disposables.add(
-            interactor.observeUser(userId)
-                .subscribeOn(Schedulers.io())
-                .map(::mapUserDetailsModel)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(::observeUserSuccess, ::observeUserError)
-        )
+        disposables += interactor.observeUser(userId)
+            .subscribeOn(Schedulers.io())
+            .map(::mapUserDetailsModel)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::observeUserSuccess, ::observeUserError)
     }
 
     private fun observeUserSuccess(user: UserDetailsModel) {
@@ -38,7 +36,7 @@ class UserViewModel(
     }
 
     private fun mapUserDetailsModel(user: User): UserDetailsModel {
-        return with (user) {
+        return with(user) {
             val payload = UserView.Payload(firstName, lastName)
             UserDetailsModel(payload)
         }
