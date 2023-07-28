@@ -1,12 +1,11 @@
-package com.nefrit.core_db.dao
+package com.nefrit.common.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.nefrit.core_db.model.UserLocal
+import com.nefrit.common.data.db.model.UserLocal
 import io.reactivex.Observable
-import io.reactivex.Single
 
 @Dao
 abstract class UserDao {

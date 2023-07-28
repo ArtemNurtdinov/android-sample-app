@@ -1,8 +1,8 @@
-package com.nefrit.core_db.di
+package com.nefrit.common.data.db.di
 
 import android.content.Context
-import com.nefrit.core_db.AppDatabase
-import com.nefrit.core_db.dao.UserDao
+import com.nefrit.common.data.db.AppDatabase
+import com.nefrit.common.data.db.dao.UserDao
 import com.nefrit.common.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides

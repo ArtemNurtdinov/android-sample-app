@@ -40,10 +40,7 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideRxCallAdapterFactoryWrapped(
-        resourceManager: ResourceManager,
-        origin: RxJava2CallAdapterFactory
-    ): RxCallAdapterFactory {
+    fun provideRxCallAdapterFactoryWrapped(resourceManager: ResourceManager, origin: RxJava2CallAdapterFactory): RxCallAdapterFactory {
         return RxCallAdapterFactory(resourceManager, origin)
     }
 

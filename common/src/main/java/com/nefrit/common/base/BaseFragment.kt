@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.nefrit.common.R
+import com.nefrit.common.base.model.DialogPayload
+import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject
 
@@ -21,17 +23,9 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         initViews()
         subscribe(viewModel)
 
-        viewModel.errorLiveData.observe(EventObserver {
-            showError(it)
-        })
-
-        viewModel.errorWithTitleLiveData.observe(EventObserver {
-            showErrorWithTitle(it.first, it.second)
-        })
-
-        viewModel.errorFromResourceLiveData.observe(EventObserver {
-            showErrorFromResponse(it)
-        })
+        viewModel.errorLiveData.observeEvent(::showError)
+        viewModel.errorWithTitleLiveData.observeEvent(::showErrorWithTitle)
+        viewModel.errorFromResourceLiveData.observeEvent(::showErrorFromResponse)
     }
 
     protected fun showError(errorMessage: String) {
@@ -50,10 +44,10 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
             .show()
     }
 
-    protected fun showErrorWithTitle(title: String, errorMessage: String) {
+    protected fun showErrorWithTitle(payload: DialogPayload) {
         AlertDialog.Builder(requireContext())
-            .setTitle(title)
-            .setMessage(errorMessage)
+            .setTitle(payload.title)
+            .setMessage(payload.message)
             .setPositiveButton(android.R.string.ok) { _, _ -> }
             .show()
     }
@@ -65,6 +59,18 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     protected fun <T> LiveData<T>.observe(observer: Observer<T>) {
         observe(viewLifecycleOwner, observer)
+        observables.add(this)
+    }
+
+    protected fun <T> LiveData<Event<T>>.observeEvent(observer: EventObserver<T>) {
+        observe(viewLifecycleOwner, observer)
+        observables.add(this)
+    }
+
+    protected fun <T> LiveData<Event<T>>.observeEvent(observer: (T) -> Unit) {
+        observe(viewLifecycleOwner, EventObserver {
+            observer(it)
+        })
         observables.add(this)
     }
 

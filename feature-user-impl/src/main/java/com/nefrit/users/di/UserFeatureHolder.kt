@@ -3,7 +3,7 @@ package com.nefrit.users.di
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.core_db.di.DbApi
+import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.users.UsersRouter
 import javax.inject.Inject
 

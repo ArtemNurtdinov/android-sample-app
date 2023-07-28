@@ -1,6 +1,6 @@
 package com.nefrit.users.data.mappers
 
-import com.nefrit.core_db.model.UserLocal
+import com.nefrit.common.data.db.model.UserLocal
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.data.network.model.UserRemote
 import javax.inject.Inject

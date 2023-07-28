@@ -47,6 +47,10 @@ dependencies {
     implementation gsonConvertedDep
     implementation rxCallAdapterDep
 
+    implementation roomDep
+    implementation rxRoomDep
+    kapt roomKapt
+
     testImplementation jUnitDep
     testImplementation mockitoDep
 

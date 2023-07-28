@@ -1,4 +1,4 @@
-package com.nefrit.core_db.di
+package com.nefrit.common.data.db.di
 
 import android.content.Context
 

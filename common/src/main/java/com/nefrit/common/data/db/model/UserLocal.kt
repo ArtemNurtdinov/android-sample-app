@@ -1,4 +1,4 @@
-package com.nefrit.core_db.model
+package com.nefrit.common.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
