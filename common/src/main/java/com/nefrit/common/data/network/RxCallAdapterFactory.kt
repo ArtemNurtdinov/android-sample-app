@@ -2,7 +2,7 @@ package com.nefrit.common.data.network
 
 import com.nefrit.common.R
 import com.nefrit.common.core.error.BaseException
-import com.nefrit.common.core.ResourceManager
+import com.nefrit.common.core.resources.ResourceManager
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -15,7 +15,7 @@ import java.lang.reflect.Type
 @Suppress("UNCHECKED_CAST")
 class RxCallAdapterFactory(
     private val resourceManager: ResourceManager,
-    private val origin: RxJava2CallAdapterFactory
+    private val origin: RxJava2CallAdapterFactory,
 ) : CallAdapter.Factory() {
 
     override fun get(returnType: Type, annotations: Array<Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
@@ -25,7 +25,7 @@ class RxCallAdapterFactory(
     }
 
     private inner class RxCallAdapterWrapper<T>(
-        private val wrapped: CallAdapter<T, Any>
+        private val wrapped: CallAdapter<T, Any>,
     ) : CallAdapter<T, Any> {
 
         override fun responseType(): Type {

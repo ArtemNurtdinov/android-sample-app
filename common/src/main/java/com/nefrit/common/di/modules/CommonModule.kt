@@ -2,10 +2,12 @@ package com.nefrit.common.di.modules
 
 import android.content.Context
 import com.nefrit.common.core.config.AppProperties
-import com.nefrit.common.core.ResourceManager
+import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.core.resources.ResourceManagerImpl
 import com.nefrit.common.core.storage.Preferences
 import com.nefrit.common.data.storage.PreferencesImpl
 import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.utils.DateFormatter
 import dagger.Module
 import dagger.Provides
 
@@ -15,7 +17,7 @@ class CommonModule {
     @Provides
     @ApplicationScope
     fun provideResourceManager(context: Context): ResourceManager {
-        return ResourceManager(context)
+        return ResourceManagerImpl(context)
     }
 
     @Provides
@@ -28,5 +30,10 @@ class CommonModule {
     @ApplicationScope
     fun providePreferences(context: Context): Preferences {
         return PreferencesImpl(context)
+    }
+
+    @Provides
+    fun provideDateFormatter(): DateFormatter {
+        return DateFormatter()
     }
 }

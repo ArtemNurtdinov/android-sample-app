@@ -1,8 +1,8 @@
 package com.nefrit.common.di.modules
 
-import com.nefrit.common.core.ResourceManager
 import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.core.config.NetworkProperties
+import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.data.network.NetworkApiCreator
 import com.nefrit.common.data.network.RxCallAdapterFactory
 import com.nefrit.common.di.scope.ApplicationScope
@@ -49,7 +49,7 @@ class NetworkModule {
     fun provideApiCreator(
         okHttpClient: OkHttpClient,
         rxCallAdapterFactory: RxCallAdapterFactory,
-        appProperties: AppProperties
+        appProperties: AppProperties,
     ): NetworkApiCreator {
         return NetworkApiCreator(okHttpClient, appProperties.getBaseUrl(), rxCallAdapterFactory)
     }
