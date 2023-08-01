@@ -4,7 +4,7 @@ import android.content.Context
 import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.core.resources.ResourceManagerImpl
-import com.nefrit.common.core.storage.Preferences
+import com.nefrit.common.core.preferences.Preferences
 import com.nefrit.common.data.storage.PreferencesImpl
 import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.common.utils.DateFormatter
