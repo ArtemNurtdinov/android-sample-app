@@ -7,7 +7,7 @@ import com.nefrit.common.data.network.NetworkApiCreator
 
 interface CommonApi {
 
-    fun context(): Context
+    fun applicationContext(): Context
 
     fun provideResourceManager(): ResourceManager
 

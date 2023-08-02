@@ -1,4 +1,4 @@
-package com.nefrit.common.core.storage
+package com.nefrit.common.core.preferences
 
 interface Preferences {
 

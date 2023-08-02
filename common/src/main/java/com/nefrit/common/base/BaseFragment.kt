@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.nefrit.common.R
-import com.nefrit.common.base.model.DialogPayload
+import com.nefrit.common.base.model.DialogData
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject
@@ -44,7 +44,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
             .show()
     }
 
-    protected fun showErrorWithTitle(payload: DialogPayload) {
+    protected fun showErrorWithTitle(payload: DialogData) {
         AlertDialog.Builder(requireContext())
             .setTitle(payload.title)
             .setMessage(payload.message)
