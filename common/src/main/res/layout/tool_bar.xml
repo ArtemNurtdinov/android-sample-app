@@ -11,8 +11,8 @@
         android:id="@+id/backImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/x1"
-        android:src="@drawable/ic_arrow_back_24dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_back_white_24dp"
         android:visibility="gone" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1"
-        android:padding="@dimen/x1"
+        android:padding="8dp"
         tools:text="Title" />
 
 </LinearLayout>

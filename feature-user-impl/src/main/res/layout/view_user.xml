@@ -10,14 +10,14 @@
         android:id="@+id/firstNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/x1"
+        android:padding="8dp"
         tools:text="Василий"/>
 
     <TextView
         android:id="@+id/lastNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/x1"
+        android:padding="8dp"
         tools:text="Пупкин"/>
 
 </merge>

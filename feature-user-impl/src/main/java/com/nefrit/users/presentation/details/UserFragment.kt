@@ -9,8 +9,10 @@ import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
+import com.nefrit.users.UsersRouter
 import com.nefrit.users.databinding.FragmentUserBinding
 import com.nefrit.users.di.UserFeatureComponent
+import javax.inject.Inject
 
 class UserFragment : BaseFragment<UserViewModel>() {
 
@@ -23,6 +25,8 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     private lateinit var binding: FragmentUserBinding
+
+    @Inject lateinit var router: UsersRouter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentUserBinding.inflate(inflater, container, false)
@@ -49,6 +53,10 @@ class UserFragment : BaseFragment<UserViewModel>() {
     override fun subscribe(viewModel: UserViewModel) {
         viewModel.userLiveData.observe {
             binding.userView.populate(it.userPayload)
+        }
+
+        viewModel.returnToUsersLiveData.observe {
+            router.returnToUsers()
         }
 
         viewModel.updateUser()

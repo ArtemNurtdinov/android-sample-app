@@ -7,7 +7,6 @@ import com.nefrit.feature_user_api.domain.interfaces.UserRepository
 import com.nefrit.users.data.network.UserApi
 import com.nefrit.users.data.network.UserApiImpl
 import com.nefrit.users.data.repository.UserRepositoryImpl
-import com.nefrit.users.domain.UsersInteractorImpl
 import dagger.Module
 import dagger.Provides
 
@@ -20,7 +19,9 @@ class UserFeatureModule {
 
     @Provides
     @FeatureScope
-    fun provideUserInteractor(userInteractor: UsersInteractorImpl): UserInteractor = userInteractor
+    fun provideUserInteractor(repository: UserRepository): UserInteractor {
+        return UserInteractor(repository)
+    }
 
     @Provides
     @FeatureScope

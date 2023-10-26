@@ -1,7 +1,7 @@
 package com.nefrit.common.data.network
 
 import com.nefrit.common.R
-import com.nefrit.common.core.error.BaseException
+import com.nefrit.common.core.error.BaseError
 import com.nefrit.common.core.resources.ResourceManager
 import io.reactivex.Single
 import retrofit2.Call
@@ -42,15 +42,15 @@ class RxCallAdapterFactory(
             return Single.error(mapException(error))
         }
 
-        private fun mapException(throwable: Throwable): BaseException {
+        private fun mapException(throwable: Throwable): BaseError {
             return when (throwable) {
                 is HttpException -> {
                     val errorCode = throwable.response().code()
                     throwable.response().errorBody()?.close()
-                    BaseException.connectionError(errorCode, resourceManager.getString(R.string.common_error_general_message))
+                    BaseError.connection(errorCode, resourceManager.getString(R.string.common_error_general_message))
                 }
-                is IOException -> BaseException.networkError(resourceManager.getString(R.string.common_error_network), throwable)
-                else -> BaseException.unexpectedError(throwable)
+                is IOException -> BaseError.network(resourceManager.getString(R.string.common_error_network), throwable)
+                else -> BaseError.unexpected(throwable)
             }
         }
     }

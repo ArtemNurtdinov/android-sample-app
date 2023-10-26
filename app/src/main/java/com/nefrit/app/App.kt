@@ -4,17 +4,15 @@ import android.app.Application
 import com.nefrit.app.di.app.AppComponent
 import com.nefrit.app.di.deps.ComponentDependenciesProvider
 import com.nefrit.app.di.deps.FeatureHolderManager
-import com.nefrit.app.di.deps.HasComponentDependencies
-import com.nefrit.app.di.app.DaggerAppComponent
 import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.FeatureContainer
 import javax.inject.Inject
 
-open class App : Application(), FeatureContainer, HasComponentDependencies {
+open class App : Application(), FeatureContainer {
 
     @Inject lateinit var featureHolderManager: FeatureHolderManager
 
-    @Inject override lateinit var dependencies: ComponentDependenciesProvider
+    @Inject lateinit var dependencies: ComponentDependenciesProvider
 
     private lateinit var appComponent: AppComponent
 

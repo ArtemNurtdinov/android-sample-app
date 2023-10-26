@@ -1,8 +1,5 @@
 package com.nefrit.app
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.nefrit.app.di.deps.findComponentDependencies

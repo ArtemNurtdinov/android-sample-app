@@ -25,7 +25,6 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
         viewModel.errorLiveData.observeEvent(::showError)
         viewModel.errorWithTitleLiveData.observeEvent(::showErrorWithTitle)
-        viewModel.errorFromResourceLiveData.observeEvent(::showErrorFromResponse)
     }
 
     protected fun showError(errorMessage: String) {
@@ -33,14 +32,6 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
             .setTitle(R.string.common_error_general_title)
             .setMessage(errorMessage)
             .setPositiveButton(R.string.common_ok) { _, _ -> }
-            .show()
-    }
-
-    protected fun showErrorFromResponse(resId: Int) {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.common_error_general_title)
-            .setMessage(resId)
-            .setPositiveButton(android.R.string.ok) { _, _ -> }
             .show()
     }
 

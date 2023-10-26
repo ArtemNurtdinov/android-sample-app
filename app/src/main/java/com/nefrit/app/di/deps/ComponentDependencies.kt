@@ -1,16 +1,13 @@
 package com.nefrit.app.di.deps
 
 import android.app.Activity
+import com.nefrit.app.App
 import dagger.MapKey
 import kotlin.reflect.KClass
 
 interface ComponentDependencies
 
 typealias ComponentDependenciesProvider = Map<Class<out ComponentDependencies>, @JvmSuppressWildcards ComponentDependencies>
-
-interface HasComponentDependencies {
-    val dependencies: ComponentDependenciesProvider
-}
 
 @MapKey
 @Target(AnnotationTarget.FUNCTION)
@@ -21,9 +18,5 @@ inline fun <reified T : ComponentDependencies> Activity.findComponentDependencie
 }
 
 fun Activity.findComponentDependenciesProvider(): ComponentDependenciesProvider {
-    val hasDaggerProviders = when (application) {
-        is HasComponentDependencies -> application as HasComponentDependencies
-        else -> throw IllegalStateException("Can not find suitable dagger provider for $this")
-    }
-    return hasDaggerProviders.dependencies
+    return (application as? App)?.dependencies ?: throw IllegalStateException("Can not find suitable dagger provider for $this")
 }

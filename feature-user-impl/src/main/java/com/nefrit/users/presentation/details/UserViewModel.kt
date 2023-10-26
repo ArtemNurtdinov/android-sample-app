@@ -3,6 +3,8 @@ package com.nefrit.users.presentation.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
+import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.utils.Event
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.UsersRouter
@@ -14,11 +16,14 @@ import io.reactivex.schedulers.Schedulers
 class UserViewModel(
     private val interactor: UserInteractor,
     private val userId: Int,
-    private val router: UsersRouter,
+    private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 
     private val _userLiveData = MutableLiveData<UserDetailsModel>()
     val userLiveData: LiveData<UserDetailsModel> = _userLiveData
+
+    private val _returnToUsersLiveData = MutableLiveData<Event<String>>()
+    val returnToUsersLiveData: LiveData<Event<String>> = _returnToUsersLiveData
 
     init {
         disposables += interactor.observeUser(userId)
@@ -42,15 +47,15 @@ class UserViewModel(
         }
     }
 
-    fun backClicked() {
-        router.returnToUsers()
-    }
-
     fun updateUser() {
         disposables += interactor.updateUser(userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::userUpdateSuccess, ::userUpdateError)
+    }
+
+    fun backClicked() {
+        _returnToUsersLiveData.value = Event("")
     }
 
     private fun userUpdateSuccess() {

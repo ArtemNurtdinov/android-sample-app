@@ -3,6 +3,7 @@ package com.nefrit.users.presentation.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
+import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.UsersRouter
@@ -12,6 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class UsersViewModel(
     private val interactor: UserInteractor,
     private val router: UsersRouter,
+    private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 
     private val _usersLiveData = MutableLiveData<List<User>>()

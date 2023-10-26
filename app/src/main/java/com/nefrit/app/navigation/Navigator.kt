@@ -21,7 +21,8 @@ class Navigator : UsersRouter {
     }
 
     override fun openUser(userId: Int) {
-        navController?.navigate(R.id.userFragment, UserFragment.createBundle(userId))
+        val userBundle = UserFragment.createBundle(userId)
+        navController?.navigate(R.id.userFragment, userBundle)
     }
 
     override fun returnToUsers() {

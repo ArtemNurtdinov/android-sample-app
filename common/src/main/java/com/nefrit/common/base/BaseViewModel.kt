@@ -13,9 +13,6 @@ open class BaseViewModel : ViewModel() {
     private val _errorLiveData = MutableLiveData<Event<String>>()
     val errorLiveData: LiveData<Event<String>> = _errorLiveData
 
-    private val _errorFromResourceLiveData = MutableLiveData<Event<Int>>()
-    val errorFromResourceLiveData: LiveData<Event<Int>> = _errorFromResourceLiveData
-
     private val _errorWithTitleLiveData = MutableLiveData<Event<DialogData>>()
     val errorWithTitleLiveData: LiveData<Event<DialogData>> = _errorWithTitleLiveData
 
