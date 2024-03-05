@@ -1,6 +1,7 @@
 package com.nefrit.common.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -17,8 +18,8 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     private val observables = mutableListOf<LiveData<*>>()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         inject()
         initViews()
         subscribe(viewModel)
@@ -59,9 +60,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     }
 
     protected fun <T> LiveData<Event<T>>.observeEvent(observer: (T) -> Unit) {
-        observe(viewLifecycleOwner, EventObserver {
-            observer(it)
-        })
+        observe(viewLifecycleOwner, EventObserver { observer(it) })
         observables.add(this)
     }
 

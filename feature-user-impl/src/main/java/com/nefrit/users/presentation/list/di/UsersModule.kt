@@ -23,13 +23,13 @@ class UsersModule {
 
     @Provides
     fun provideMainViewModel(fragment: Fragment, factory: ViewModelProvider.Factory): UsersViewModel {
-        return ViewModelProviders.of(fragment, factory)[UsersViewModel::class.java]
+        return ViewModelProvider(fragment, factory)[UsersViewModel::class.java]
     }
 
     @Provides
     @IntoMap
     @ViewModelKey(UsersViewModel::class)
-    fun provideSignInViewModel(interactor: UserInteractor, router: UsersRouter, resourceManager: ResourceManager): ViewModel {
-        return UsersViewModel(interactor, router, resourceManager)
+    fun provideSignInViewModel(interactor: UserInteractor, resourceManager: ResourceManager): ViewModel {
+        return UsersViewModel(interactor, resourceManager)
     }
 }

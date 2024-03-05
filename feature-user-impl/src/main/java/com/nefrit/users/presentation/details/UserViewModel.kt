@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.utils.Event
+import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.UsersRouter
@@ -22,13 +23,13 @@ class UserViewModel(
     private val _userLiveData = MutableLiveData<UserDetailsModel>()
     val userLiveData: LiveData<UserDetailsModel> = _userLiveData
 
-    private val _returnToUsersLiveData = MutableLiveData<Event<String>>()
-    val returnToUsersLiveData: LiveData<Event<String>> = _returnToUsersLiveData
+    private val _returnToUsersLiveData = MutableLiveData<Event<SimpleEvent>>()
+    val returnToUsersLiveData: LiveData<Event<SimpleEvent>> = _returnToUsersLiveData
 
     init {
         disposables += interactor.observeUser(userId)
             .subscribeOn(Schedulers.io())
-            .map(::mapUserDetailsModel)
+            .map(::mapUserDetails)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::observeUserSuccess, ::observeUserError)
     }
@@ -40,7 +41,7 @@ class UserViewModel(
     private fun observeUserError(error: Throwable) {
     }
 
-    private fun mapUserDetailsModel(user: User): UserDetailsModel {
+    private fun mapUserDetails(user: User): UserDetailsModel {
         return with(user) {
             val payload = UserView.Payload(firstName, lastName)
             UserDetailsModel(payload)
@@ -55,7 +56,7 @@ class UserViewModel(
     }
 
     fun backClicked() {
-        _returnToUsersLiveData.value = Event("")
+        _returnToUsersLiveData.value = Event(SimpleEvent())
     }
 
     private fun userUpdateSuccess() {

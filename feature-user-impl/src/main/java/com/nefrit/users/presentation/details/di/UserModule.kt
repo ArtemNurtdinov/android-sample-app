@@ -23,7 +23,7 @@ class UserModule {
 
     @Provides
     fun provideMainViewModel(fragment: Fragment, factory: ViewModelProvider.Factory): UserViewModel {
-        return ViewModelProviders.of(fragment, factory).get(UserViewModel::class.java)
+        return ViewModelProvider(fragment, factory)[UserViewModel::class.java]
     }
 
     @Provides

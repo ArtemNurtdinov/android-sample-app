@@ -9,12 +9,11 @@ import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.databinding.ItemUserBinding
 
 class UsersAdapter(
-    private val interactionHandler: InteractionHandler
-) : ListAdapter<User, UserViewHolder>(DiffCallback) {
+    private val clickHandler: ClickHandler
+) : ListAdapter<User, UserViewHolder>(UserDiffCallback) {
 
-    interface InteractionHandler {
-
-        fun clicked(user: User)
+    interface ClickHandler {
+        fun userClicked(user: User)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -23,25 +22,25 @@ class UsersAdapter(
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.bind(getItem(position), interactionHandler)
+        holder.bind(getItem(position), clickHandler)
     }
 }
 
 class UserViewHolder(private val itemBinding: ItemUserBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
-    fun bind(user: User, interactionHandler: UsersAdapter.InteractionHandler) {
+    fun bind(user: User, interactionHandler: UsersAdapter.ClickHandler) {
         with(itemBinding) {
             firstNameTv.text = user.firstName
             lastNameTv.text = user.lastName
 
             itemView.setOnClickListener {
-                interactionHandler.clicked(user)
+                interactionHandler.userClicked(user)
             }
         }
     }
 }
 
-object DiffCallback : DiffUtil.ItemCallback<User>() {
+object UserDiffCallback : DiffUtil.ItemCallback<User>() {
     override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem.id == newItem.id
     }

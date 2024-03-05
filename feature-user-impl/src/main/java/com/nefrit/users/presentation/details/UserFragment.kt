@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
+import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
 import com.nefrit.users.UsersRouter
 import com.nefrit.users.databinding.FragmentUserBinding
 import com.nefrit.users.di.UserFeatureComponent
+import com.nefrit.users.presentation.details.model.UserDetailsModel
 import javax.inject.Inject
 
 class UserFragment : BaseFragment<UserViewModel>() {
@@ -24,9 +26,9 @@ class UserFragment : BaseFragment<UserViewModel>() {
         }
     }
 
-    private lateinit var binding: FragmentUserBinding
-
     @Inject lateinit var router: UsersRouter
+
+    private lateinit var binding: FragmentUserBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentUserBinding.inflate(inflater, container, false)
@@ -51,15 +53,18 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun subscribe(viewModel: UserViewModel) {
-        viewModel.userLiveData.observe {
-            binding.userView.populate(it.userPayload)
-        }
-
-        viewModel.returnToUsersLiveData.observe {
-            router.returnToUsers()
-        }
+        viewModel.userLiveData.observe(::updateUserDetails)
+        viewModel.returnToUsersLiveData.observeEvent(::navigateBackToUsers)
 
         viewModel.updateUser()
+    }
+
+    private fun updateUserDetails(userDetails: UserDetailsModel) {
+        binding.userView.populate(userDetails.userPayload)
+    }
+
+    private fun navigateBackToUsers(event: SimpleEvent) {
+        router.returnToUsers()
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {

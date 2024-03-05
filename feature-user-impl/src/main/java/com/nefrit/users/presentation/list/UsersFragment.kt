@@ -9,10 +9,14 @@ import com.nefrit.common.di.FeatureUtils
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.R
+import com.nefrit.users.UsersRouter
 import com.nefrit.users.databinding.FragmentUsersBinding
 import com.nefrit.users.di.UserFeatureComponent
+import javax.inject.Inject
 
-class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHandler {
+class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler {
+
+    @Inject lateinit var router: UsersRouter
 
     private lateinit var binding: FragmentUsersBinding
 
@@ -35,19 +39,25 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.InteractionHa
     }
 
     override fun subscribe(viewModel: UsersViewModel) {
-        viewModel.usersLiveData.observe {
-            with(binding) {
-                if (usersRv.adapter == null) {
-                    usersRv.adapter = UsersAdapter(this@UsersFragment)
-                }
-                (usersRv.adapter as UsersAdapter).submitList(it)
-            }
-        }
-
+        viewModel.usersLiveData.observe(::updateUsers)
+        viewModel.openUserEvent.observeEvent(::navigateToUser)
         viewModel.updateUsers()
     }
 
-    override fun clicked(user: User) {
+    private fun updateUsers(users: List<User>) {
+        with(binding) {
+            if (usersRv.adapter == null) {
+                usersRv.adapter = UsersAdapter(this@UsersFragment)
+            }
+            (usersRv.adapter as UsersAdapter).submitList(users)
+        }
+    }
+
+    private fun navigateToUser(user: User) {
+        router.openUser(user.id)
+    }
+
+    override fun userClicked(user: User) {
         viewModel.userClicked(user)
     }
 }

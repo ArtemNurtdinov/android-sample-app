@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.common.base.BaseViewModel
 import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.utils.Event
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
 import com.nefrit.users.UsersRouter
@@ -12,12 +13,14 @@ import io.reactivex.schedulers.Schedulers
 
 class UsersViewModel(
     private val interactor: UserInteractor,
-    private val router: UsersRouter,
     private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 
     private val _usersLiveData = MutableLiveData<List<User>>()
     val usersLiveData: LiveData<List<User>> = _usersLiveData
+
+    private val _openUserEvent = MutableLiveData<Event<User>>()
+    val openUserEvent: LiveData<Event<User>> = _openUserEvent
 
     init {
         disposables += interactor.observeUsers()
@@ -34,7 +37,7 @@ class UsersViewModel(
     }
 
     fun userClicked(user: User) {
-        router.openUser(user.id)
+        _openUserEvent.value = Event(user)
     }
 
     fun updateUsers() {
