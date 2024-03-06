@@ -26,4 +26,12 @@ open class BaseViewModel : ViewModel() {
     operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
         add(disposable)
     }
+
+    protected fun showError(errorText: String) {
+        _errorLiveData.value = Event(errorText)
+    }
+
+    protected fun showErrorDialog(dialogData: DialogData) {
+        _errorWithTitleLiveData.value = Event(dialogData)
+    }
 }

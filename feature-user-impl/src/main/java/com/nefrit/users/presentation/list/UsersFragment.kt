@@ -44,7 +44,7 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
         viewModel.updateUsers()
     }
 
-    private fun updateUsers(users: List<User>) {
+    private fun updateUsers(users: List<UsersAdapter.ListItem>) {
         with(binding) {
             if (usersRv.adapter == null) {
                 usersRv.adapter = UsersAdapter(this@UsersFragment)
@@ -57,7 +57,7 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
         router.openUser(user.id)
     }
 
-    override fun userClicked(user: User) {
-        viewModel.userClicked(user)
+    override fun userClicked(userListItem: UsersAdapter.ListItem.UserListItem) {
+        viewModel.userClicked(userListItem)
     }
 }
