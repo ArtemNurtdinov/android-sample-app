@@ -1,4 +1,4 @@
-package com.nefrit.common.base
+package com.nefrit.common.base.view
 
 import android.content.Context
 import android.util.AttributeSet

@@ -18,7 +18,7 @@ class UserApiImpl @Inject constructor() : UserApi {
 
     private fun mockUsers(): List<UserRemote> {
         return mutableListOf<UserRemote>().apply {
-            add(UserRemote(1, "Василий", "Пупкин"))
+            add(UserRemote(1, "Василий", "Васильев"))
             add(UserRemote(2, "Петр", "Петров"))
             add(UserRemote(3, "Александр", "Иванов"))
         }

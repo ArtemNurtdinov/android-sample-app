@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.nefrit.common.R
-import com.nefrit.common.base.model.DialogData
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject
@@ -24,19 +23,19 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         initViews()
         subscribe(viewModel)
 
-        viewModel.errorLiveData.observeEvent(::showError)
+        viewModel.alertLiveData.observeEvent(::showAlert)
         viewModel.errorWithTitleLiveData.observeEvent(::showErrorWithTitle)
     }
 
-    protected fun showError(errorMessage: String) {
+    protected fun showAlert(alertMessage: String) {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.common_error_general_title)
-            .setMessage(errorMessage)
+            .setMessage(alertMessage)
             .setPositiveButton(R.string.common_ok) { _, _ -> }
             .show()
     }
 
-    protected fun showErrorWithTitle(payload: DialogData) {
+    protected fun showErrorWithTitle(payload: BaseViewModel.BaseDialogData) {
         AlertDialog.Builder(requireContext())
             .setTitle(payload.title)
             .setMessage(payload.message)
