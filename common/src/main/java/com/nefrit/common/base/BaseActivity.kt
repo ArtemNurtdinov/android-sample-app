@@ -21,7 +21,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
         initViews()
         subscribe(viewModel)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 
     abstract fun inject()
