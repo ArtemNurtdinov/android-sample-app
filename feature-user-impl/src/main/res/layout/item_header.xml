@@ -3,20 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorItemHeaderBackground"
     android:orientation="vertical"
-    android:background="@drawable/selectable_background"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
 
     <TextView
-        android:id="@+id/firstNameTv"
+        android:id="@+id/headerTv"
+        style="@style/TextAppearance.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Василий" />
-
-    <TextView
-        android:id="@+id/lastNameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Петров" />
+        tools:text="В" />
 
 </LinearLayout>

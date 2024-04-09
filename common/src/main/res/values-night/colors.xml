@@ -6,8 +6,8 @@
     <color name="white">#fff</color>
     <color name="lightGrey">#c4c4c4</color>
     <color name="colorError">#F44336</color>
-    <color name="colorTextPrimary">#131313</color>
-    <color name="colorTextSecondary">#333333</color>
-    <color name="colorItemHeaderBackground">#AFAFAF</color>
-    <color name="colorItemBackground">#CFCFCF</color>
+    <color name="colorTextPrimary">#dfdfdf</color>
+    <color name="colorTextSecondary">#afafaf</color>
+    <color name="colorItemHeaderBackground">#323232</color>
+    <color name="colorItemBackground">#232323</color>
 </resources>

@@ -11,12 +11,14 @@
         android:id="@+id/firstNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/TextAppearance.Body1"
         tools:text="Василий" />
 
     <TextView
         android:id="@+id/lastNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/TextAppearance.Body2"
         tools:text="Петров" />
 
 </LinearLayout>

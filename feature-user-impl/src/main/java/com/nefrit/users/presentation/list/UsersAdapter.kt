@@ -23,7 +23,7 @@ class UsersAdapter(
         ) : ListItem()
 
         data class HeaderListItem(
-            val title: String,
+            val header: String,
         ) : ListItem()
     }
 
@@ -82,6 +82,7 @@ sealed class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     class HeaderVH(private val itemBinding: ItemHeaderBinding) : UserViewHolder(itemBinding.root) {
 
         fun bind(header: UsersAdapter.ListItem.HeaderListItem) {
+            itemBinding.headerTv.text = header.header
         }
     }
 }
@@ -91,11 +92,15 @@ object UserDiffCallback : DiffUtil.ItemCallback<UsersAdapter.ListItem>() {
     override fun areItemsTheSame(oldItem: UsersAdapter.ListItem, newItem: UsersAdapter.ListItem): Boolean {
         return if (oldItem is UsersAdapter.ListItem.UserListItem && newItem is UsersAdapter.ListItem.UserListItem) {
             oldItem.id == newItem.id
+        } else if (oldItem is UsersAdapter.ListItem.HeaderListItem && newItem is UsersAdapter.ListItem.HeaderListItem) {
+            return oldItem.header == newItem.header
         } else false
     }
 
     override fun areContentsTheSame(oldItem: UsersAdapter.ListItem, newItem: UsersAdapter.ListItem): Boolean {
         return if (oldItem is UsersAdapter.ListItem.UserListItem && newItem is UsersAdapter.ListItem.UserListItem) {
+            oldItem == newItem
+        } else if (oldItem is UsersAdapter.ListItem.HeaderListItem && newItem is UsersAdapter.ListItem.HeaderListItem) {
             oldItem == newItem
         } else false
     }

@@ -30,7 +30,31 @@ class UsersViewModel(
     }
 
     private fun mapUsers(users: List<User>): List<UsersAdapter.ListItem> {
-        return users.map(::mapUser)
+        val sortedByName = users.sortedBy { it.firstName }
+        return addHeaders(sortedByName)
+    }
+
+    private fun addHeaders(users: List<User>): List<UsersAdapter.ListItem> {
+        val resultList = mutableListOf<UsersAdapter.ListItem>()
+
+        val firstUser = users.firstOrNull() ?: return resultList
+        var headerLetter = firstUser.firstName.firstOrNull()?.toString() ?: ""
+
+        val firstHeader = UsersAdapter.ListItem.HeaderListItem(headerLetter)
+        resultList.add(firstHeader)
+
+        users.forEach {
+            val userListItem = mapUser(it)
+            val letter = it.firstName.firstOrNull()?.toString() ?: ""
+            if (headerLetter != letter) {
+                headerLetter = letter
+                val header = UsersAdapter.ListItem.HeaderListItem(letter)
+                resultList.add(header)
+            }
+            resultList.add(userListItem)
+        }
+
+        return resultList
     }
 
     private fun mapUser(user: User): UsersAdapter.ListItem {
