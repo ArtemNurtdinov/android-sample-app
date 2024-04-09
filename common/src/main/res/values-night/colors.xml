@@ -10,4 +10,5 @@
     <color name="colorTextSecondary">#afafaf</color>
     <color name="colorItemHeaderBackground">#323232</color>
     <color name="colorItemBackground">#232323</color>
+    <color name="colorWindowBackground">#2F2F2F</color>
 </resources>

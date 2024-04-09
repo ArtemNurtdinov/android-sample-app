@@ -3,4 +3,6 @@
     <string name="common_error_general_title">Error</string>
     <string name="common_error_network">Please, check internet connection and try again later.</string>
     <string name="common_error_general_message">We are working hard to fix the problem. Please, try again later.</string>
+    <string name="users_title">Contacts</string>
+    <string name="user_title">Contact details</string>
 </resources>
