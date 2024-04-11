@@ -1,6 +1,6 @@
-package com.nefrit.feature_user_api.domain.model
+package com.nefrit.users.data.network.model
 
-data class User(
+data class UserDTO(
     val id: Long,
     val firstName: String,
     val lastName: String,

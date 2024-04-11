@@ -53,8 +53,8 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
         }
     }
 
-    private fun navigateToUser(user: User) {
-        router.openUser(user.id)
+    private fun navigateToUser(userId: Long) {
+        router.openUser(userId)
     }
 
     override fun userClicked(userListItem: UsersAdapter.ListItem.UserListItem) {

@@ -19,7 +19,7 @@ interface UserComponent {
 
         fun create(
             @BindsInstance fragment: Fragment,
-            @BindsInstance userId: Int
+            @BindsInstance userId: Long
         ): UserComponent
     }
 

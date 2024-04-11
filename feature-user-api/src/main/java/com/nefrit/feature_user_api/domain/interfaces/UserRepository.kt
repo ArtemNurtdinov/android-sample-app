@@ -6,11 +6,11 @@ import io.reactivex.Observable
 
 interface UserRepository {
 
-    fun observeUser(id: Int): Observable<User>
+    fun observeUser(id: Long): Observable<User>
 
     fun observeUsers(): Observable<List<User>>
 
-    fun updateUser(id: Int): Completable
+    fun updateUser(id: Long): Completable
 
     fun updateUsers(): Completable
 }

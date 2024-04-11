@@ -21,8 +21,8 @@ class UserFragment : BaseFragment<UserViewModel>() {
     companion object {
         private const val KEY_USER_ID = "user_id"
 
-        fun createBundle(userId: Int): Bundle {
-            return Bundle().apply { putInt(KEY_USER_ID, userId) }
+        fun createBundle(userId: Long): Bundle {
+            return Bundle().apply { putLong(KEY_USER_ID, userId) }
         }
     }
 
@@ -36,7 +36,7 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun inject() {
-        val userId = requireArguments().getInt(KEY_USER_ID, 0)
+        val userId = requireArguments().getLong(KEY_USER_ID, 0)
 
         FeatureUtils.getFeature<UserFeatureComponent>(this, UserFeatureApi::class.java)
             .userComponentFactory()

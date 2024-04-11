@@ -18,8 +18,8 @@ class UsersViewModel(
     private val _usersLiveData = MutableLiveData<List<UsersAdapter.ListItem>>()
     val usersLiveData: LiveData<List<UsersAdapter.ListItem>> = _usersLiveData
 
-    private val _openUserEvent = MutableLiveData<Event<User>>()
-    val openUserEvent: LiveData<Event<User>> = _openUserEvent
+    private val _openUserEvent = MutableLiveData<Event<Long>>()
+    val openUserEvent: LiveData<Event<Long>> = _openUserEvent
 
     init {
         disposables += interactor.observeUsers()
@@ -71,10 +71,7 @@ class UsersViewModel(
     }
 
     fun userClicked(userListItem: UsersAdapter.ListItem.UserListItem) {
-        val user = with(userListItem) {
-            User(id, firstName, lastName)
-        }
-        _openUserEvent.value = Event(user)
+        _openUserEvent.value = Event(userListItem.id)
     }
 
     fun updateUsers() {

@@ -16,11 +16,11 @@ class UserInteractor(
         return userRepository.updateUsers()
     }
 
-    fun updateUser(id: Int): Completable {
+    fun updateUser(id: Long): Completable {
         return userRepository.updateUser(id)
     }
 
-    fun observeUser(id: Int): Observable<User> {
+    fun observeUser(id: Long): Observable<User> {
         return userRepository.observeUser(id)
     }
 }

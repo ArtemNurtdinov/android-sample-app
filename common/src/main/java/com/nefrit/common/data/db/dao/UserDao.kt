@@ -14,7 +14,7 @@ abstract class UserDao {
     abstract fun getUsers(): Observable<List<UserLocal>>
 
     @Query("select * from users where id = :id")
-    abstract fun getUser(id: Int): Observable<UserLocal>
+    abstract fun getUser(id: Long): Observable<UserLocal>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(users: List<UserLocal>)

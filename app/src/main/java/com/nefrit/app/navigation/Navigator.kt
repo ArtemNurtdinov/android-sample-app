@@ -20,7 +20,7 @@ class Navigator : UsersRouter {
         }
     }
 
-    override fun openUser(userId: Int) {
+    override fun openUser(userId: Long) {
         val userBundle = UserFragment.createBundle(userId)
         navController?.navigate(R.id.userFragment, userBundle)
     }

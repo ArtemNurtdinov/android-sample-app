@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
 
 class UserViewModel(
     private val interactor: UserInteractor,
-    private val userId: Int,
+    private val userId: Long,
     private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 

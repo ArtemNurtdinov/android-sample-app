@@ -2,26 +2,26 @@ package com.nefrit.users.data.mappers
 
 import com.nefrit.common.data.db.model.UserLocal
 import com.nefrit.feature_user_api.domain.model.User
-import com.nefrit.users.data.network.model.UserRemote
+import com.nefrit.users.data.network.model.UserDTO
 import javax.inject.Inject
 
 class UserMappers @Inject constructor() {
 
     fun mapUserToUserLocal(user: User): UserLocal {
         return with(user) {
-            UserLocal(id, firstName, lastName)
+            UserLocal(id, firstName, lastName, email)
         }
     }
 
     fun mapUserLocalToUser(user: UserLocal): User {
         return with(user) {
-            User(id, firstName, lastName)
+            User(id, firstName, lastName, email)
         }
     }
 
-    fun mapUserRemoteToUser(user: UserRemote): User {
+    fun mapUserRemoteToUser(user: UserDTO): User {
         return with(user) {
-            User(id, firstName, lastName)
+            User(id, firstName, lastName, email)
         }
     }
 
@@ -29,7 +29,7 @@ class UserMappers @Inject constructor() {
         return list.map(::mapUserLocalToUser)
     }
 
-    fun mapUserRemoteList(list: List<UserRemote>): List<User> {
+    fun mapUserRemoteList(list: List<UserDTO>): List<User> {
         return list.map(::mapUserRemoteToUser)
     }
 }

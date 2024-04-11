@@ -15,7 +15,7 @@ class UserRepositoryImpl @Inject constructor(
     private val userMappers: UserMappers,
 ) : UserRepository {
 
-    override fun observeUser(id: Int): Observable<User> {
+    override fun observeUser(id: Long): Observable<User> {
         return db.userDao().getUser(id)
             .map(userMappers::mapUserLocalToUser)
     }
@@ -25,7 +25,7 @@ class UserRepositoryImpl @Inject constructor(
             .map(userMappers::mapUserLocalList)
     }
 
-    override fun updateUser(id: Int): Completable {
+    override fun updateUser(id: Long): Completable {
         return api.getUser(id)
             .map(userMappers::mapUserRemoteToUser)
             .doOnSuccess(::saveUserInDb)

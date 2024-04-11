@@ -29,7 +29,7 @@ class UserModule {
     @Provides
     @IntoMap
     @ViewModelKey(UserViewModel::class)
-    fun provideSignInViewModel(interactor: UserInteractor, userId: Int, resourceManager: ResourceManager): ViewModel {
+    fun provideSignInViewModel(interactor: UserInteractor, userId: Long, resourceManager: ResourceManager): ViewModel {
         return UserViewModel(interactor, userId, resourceManager)
     }
 }

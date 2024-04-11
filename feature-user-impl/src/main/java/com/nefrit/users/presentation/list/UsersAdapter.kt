@@ -17,7 +17,7 @@ class UsersAdapter(
     sealed class ListItem {
 
         data class UserListItem(
-            val id: Int,
+            val id: Long,
             val firstName: String,
             val lastName: String,
         ) : ListItem()
