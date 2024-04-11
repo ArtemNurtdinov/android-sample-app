@@ -1,31 +1,49 @@
 package com.nefrit.app
 
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.nefrit.app.databinding.ActivityMainBinding
 import com.nefrit.app.di.deps.findComponentDependencies
 import com.nefrit.app.di.main.MainComponent
 import com.nefrit.app.navigation.Navigator
 import com.nefrit.common.base.BaseActivity
+import com.nefrit.common.base.NavigationOwner
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<MainViewModel>() {
+class MainActivity : BaseActivity<MainViewModel>(), NavigationOwner {
 
     @Inject lateinit var navigator: Navigator
 
     private var navController: NavController? = null
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun inject() {
         MainComponent.init(this, findComponentDependencies())
             .inject(this)
     }
 
-    override fun layoutResource(): Int {
-        return R.layout.activity_main
+    override fun rootView(): View {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun initViews() {
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navigator.attachNavController(navController!!, R.navigation.main_nav_graph)
+    }
+
+    override fun showBottomNav() {
+        binding.bottomNavigation.visibility = View.VISIBLE
+    }
+
+    override fun hideBottomNav() {
+        binding.bottomNavigation.visibility = View.GONE
     }
 
     override fun subscribe(viewModel: MainViewModel) {

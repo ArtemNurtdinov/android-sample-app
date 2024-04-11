@@ -23,6 +23,12 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         initViews()
         subscribe(viewModel)
 
+        if (showNavigationBar()) {
+            (activity as NavigationOwner).showBottomNav()
+        } else {
+            (activity as NavigationOwner).hideBottomNav()
+        }
+
         viewModel.alertLiveData.observeEvent(::showAlert)
         viewModel.errorWithTitleLiveData.observeEvent(::showErrorWithTitle)
     }
@@ -68,4 +74,6 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     abstract fun inject()
 
     abstract fun subscribe(viewModel: T)
+
+    abstract fun showNavigationBar(): Boolean
 }

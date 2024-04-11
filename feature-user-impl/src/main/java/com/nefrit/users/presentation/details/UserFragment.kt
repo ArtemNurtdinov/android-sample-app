@@ -59,6 +59,10 @@ class UserFragment : BaseFragment<UserViewModel>() {
         viewModel.updateUser()
     }
 
+    override fun showNavigationBar(): Boolean {
+        return false
+    }
+
     private fun updateUserDetails(userDetails: UserDetailsModel) {
         binding.userView.populate(userDetails.userPayload)
     }

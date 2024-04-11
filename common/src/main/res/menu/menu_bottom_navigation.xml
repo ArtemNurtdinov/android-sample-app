@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@drawable/ic_contacts_white_24"
+        android:title="@string/menu_item_contacts_title"/>
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_white_24"
+        android:title="@string/menu_item_settings_title"/>
+</menu>

@@ -44,6 +44,10 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
         viewModel.updateUsers()
     }
 
+    override fun showNavigationBar(): Boolean {
+        return true
+    }
+
     private fun updateUsers(users: List<UsersAdapter.ListItem>) {
         with(binding) {
             if (usersRv.adapter == null) {

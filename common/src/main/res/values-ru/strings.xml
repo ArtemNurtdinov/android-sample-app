@@ -5,4 +5,6 @@
     <string name="common_error_general_message">Мы усиленно работаем над устранением проблемы. Пожалуйста, попробуйте снова позднее.</string>
     <string name="users_title">Контакты</string>
     <string name="user_title">Контактные данные</string>
+    <string name="menu_item_contacts_title">Контакты</string>
+    <string name="menu_item_settings_title">Настройки</string>
 </resources>

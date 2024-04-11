@@ -1,6 +1,7 @@
 package com.nefrit.common.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -15,7 +16,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
-        setContentView(layoutResource())
+        setContentView(rootView())
         setBarColorBackground(R.color.colorPrimaryDark)
         inject()
         initViews()
@@ -26,7 +27,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
     abstract fun inject()
 
-    abstract fun layoutResource(): Int
+    abstract fun rootView(): View
 
     abstract fun initViews()
 
