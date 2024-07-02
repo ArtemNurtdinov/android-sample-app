@@ -1,24 +1,24 @@
-def rootProjectPathLength = rootDir.absolutePath.length()
-def excludedProjects = [new File(rootDir, "buildSrc")]
+val rootProjectPathLength = rootDir.absolutePath.length
+val excludedProjects = listOf(File(rootDir, "buildSrc"))
 
-findAllPotentialModuleDirs(rootDir).findAll { moduleDir ->
-    moduleDir.list().any { child -> child.startsWith("build.gradle") }
-}.findAll { moduleDir ->
-    !excludedProjects.contains(moduleDir)
-}.each { moduleDir ->
-    def moduleName = moduleDir.absolutePath
+rootDir.findAllPotentialModuleDirs()
+    .filter { it.list()!!.any { child -> child.startsWith("build.gradle") } }
+    .filterNot { it in excludedProjects }
+    .forEach { moduleDir ->
+
+        val moduleName = moduleDir.absolutePath
             .substring(rootProjectPathLength)
             .replace(File.separator, "-")
             .replaceFirst('-', ':')
 
-    include(moduleName)
-    project(moduleName).projectDir = moduleDir
-}
+        include(moduleName)
+        project(moduleName).projectDir = moduleDir
+    }
 
-def findAllPotentialModuleDirs(File dir) {
-    dir.listFiles().findAll {
-        it.directory && !it.hidden && !it.name.startsWith('.') && !['build', 'src'].contains(it.name)
-    }.collect {
-        [it] + findAllPotentialModuleDirs(it)
-    }.flatten()
-}
+fun File.findAllPotentialModuleDirs(): Sequence<File> = listFiles()!!.asSequence()
+    .filter { it.isDirectory }
+    .filterNot { it.isHidden }
+    .filterNot { it.name.startsWith('.') }
+    .filterNot { it.name == "build" }
+    .filterNot { it.name == "src" }
+    .flatMap { sequenceOf(it) + it.findAllPotentialModuleDirs() }
