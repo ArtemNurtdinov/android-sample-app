@@ -6,9 +6,9 @@ import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.common.data.db.di.DbHolder
-import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.settings.di.SettingsApi
 import com.nefrit.settings.di.SettingsFeatureHolder
+import com.nefrit.users.di.UserFeatureApi
 import com.nefrit.users.di.UserFeatureHolder
 import dagger.Binds
 import dagger.Module
