@@ -1,0 +1,7 @@
+<resources>
+    <string name="settings_app_theme_title">Тема приложения</string>
+    <string name="settings_app_theme_light">Светлая</string>
+    <string name="settings_app_theme_dark">Темная</string>
+    <string name="settings_app_theme_system">Системная</string>
+    <string name="settings_title">Настройки</string>
+</resources>

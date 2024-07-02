@@ -2,10 +2,11 @@ package com.nefrit.app.navigation
 
 import androidx.navigation.NavController
 import com.nefrit.app.R
-import com.nefrit.users.UsersRouter
+import com.nefrit.settings.presentation.SettingsRouter
+import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.presentation.details.UserFragment
 
-class Navigator : UsersRouter {
+class Navigator : UsersRouter, SettingsRouter {
 
     private var navController: NavController? = null
 

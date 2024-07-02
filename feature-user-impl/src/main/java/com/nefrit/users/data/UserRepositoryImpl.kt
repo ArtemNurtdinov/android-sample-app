@@ -1,4 +1,4 @@
-package com.nefrit.users.data.repository
+package com.nefrit.users.data
 
 import com.nefrit.common.data.db.AppDatabase
 import com.nefrit.feature_user_api.domain.interfaces.UserRepository

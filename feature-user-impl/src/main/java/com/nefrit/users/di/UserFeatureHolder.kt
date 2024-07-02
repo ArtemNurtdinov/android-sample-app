@@ -4,7 +4,7 @@ import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.common.data.db.di.DbApi
-import com.nefrit.users.UsersRouter
+import com.nefrit.users.presentation.UsersRouter
 import javax.inject.Inject
 
 @ApplicationScope

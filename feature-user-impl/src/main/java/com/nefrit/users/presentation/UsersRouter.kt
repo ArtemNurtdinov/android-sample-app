@@ -1,4 +1,4 @@
-package com.nefrit.users
+package com.nefrit.users.presentation
 
 interface UsersRouter {
 

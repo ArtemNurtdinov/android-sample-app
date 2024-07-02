@@ -8,7 +8,6 @@ import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.model.User
-import com.nefrit.users.UsersRouter
 import com.nefrit.users.presentation.details.model.UserDetailsModel
 import com.nefrit.users.presentation.details.view.UserView
 import io.reactivex.android.schedulers.AndroidSchedulers

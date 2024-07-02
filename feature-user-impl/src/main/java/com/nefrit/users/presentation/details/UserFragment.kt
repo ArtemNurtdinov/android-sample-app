@@ -10,7 +10,7 @@ import com.nefrit.common.di.FeatureUtils
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.feature_user_api.di.UserFeatureApi
 import com.nefrit.users.R
-import com.nefrit.users.UsersRouter
+import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.databinding.FragmentUserBinding
 import com.nefrit.users.di.UserFeatureComponent
 import com.nefrit.users.presentation.details.model.UserDetailsModel

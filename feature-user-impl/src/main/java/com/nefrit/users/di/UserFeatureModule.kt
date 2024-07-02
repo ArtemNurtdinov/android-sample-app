@@ -6,7 +6,7 @@ import com.nefrit.feature_user_api.domain.interfaces.UserInteractor
 import com.nefrit.feature_user_api.domain.interfaces.UserRepository
 import com.nefrit.users.data.network.UserApi
 import com.nefrit.users.data.network.UserApiImpl
-import com.nefrit.users.data.repository.UserRepositoryImpl
+import com.nefrit.users.data.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
 

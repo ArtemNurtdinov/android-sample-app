@@ -3,6 +3,7 @@ package com.nefrit.app
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import com.nefrit.app.databinding.ActivityMainBinding
 import com.nefrit.app.di.deps.findComponentDependencies
 import com.nefrit.app.di.main.MainComponent
@@ -36,6 +37,7 @@ class MainActivity : BaseActivity<MainViewModel>(), NavigationOwner {
     private fun setupNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navigator.attachNavController(navController!!, R.navigation.main_nav_graph)
+        binding.bottomNavigation.setupWithNavController(navController!!)
     }
 
     override fun showBottomNav() {

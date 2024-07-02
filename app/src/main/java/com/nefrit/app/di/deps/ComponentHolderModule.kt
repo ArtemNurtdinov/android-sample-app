@@ -7,6 +7,8 @@ import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.common.data.db.di.DbHolder
 import com.nefrit.feature_user_api.di.UserFeatureApi
+import com.nefrit.settings.di.SettingsApi
+import com.nefrit.settings.di.SettingsFeatureHolder
 import com.nefrit.users.di.UserFeatureHolder
 import dagger.Binds
 import dagger.Module
@@ -31,4 +33,10 @@ interface ComponentHolderModule {
     @ClassKey(DbApi::class)
     @IntoMap
     fun provideDbFeature(dbHolder: DbHolder): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
+    @ClassKey(SettingsApi::class)
+    @IntoMap
+    fun provideSettingsFeature(settingsFeatureHolder: SettingsFeatureHolder): FeatureApiHolder
 }

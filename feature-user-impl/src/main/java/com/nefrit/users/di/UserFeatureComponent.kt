@@ -4,7 +4,7 @@ import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.scope.FeatureScope
 import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.feature_user_api.di.UserFeatureApi
-import com.nefrit.users.UsersRouter
+import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.presentation.details.di.UserComponent
 import com.nefrit.users.presentation.list.di.UsersComponent
 import dagger.BindsInstance

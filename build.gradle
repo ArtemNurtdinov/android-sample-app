@@ -3,9 +3,9 @@ buildscript {
         versionName = '1.0.0'
         versionCode = 1
 
-        compileSdkVersion = 33
+        compileSdkVersion = 34
         minSdkVersion = 23
-        targetSdkVersion = 33
+        targetSdkVersion = 34
 
         kotlinVersion = '1.8.0'
 
@@ -30,7 +30,7 @@ buildscript {
 
         zXingVersion = '3.5.0'
 
-        navControllerVersion = '2.0.0-rc02'
+        navControllerVersion = '2.7.7'
 
         junitVersion = '4.12'
         mockitoVersion = '2.23.0'
