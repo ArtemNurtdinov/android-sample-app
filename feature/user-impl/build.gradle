@@ -26,12 +26,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':common')
-    implementation project(':feature-settings-api')
+    implementation project(':core-common')
+    implementation project(':feature-user-api')
 
-    implementation androidDep
     implementation kotlinDep
 
+    implementation androidDep
     implementation materialDep
     implementation cardViewDep
     implementation constraintDep
