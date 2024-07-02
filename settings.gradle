@@ -11,8 +11,6 @@ findAllPotentialModuleDirs(rootDir).findAll { moduleDir ->
             .replace(File.separator, "-")
             .replaceFirst('-', ':')
 
-    println(moduleName)
-
     include(moduleName)
     project(moduleName).projectDir = moduleDir
 }
