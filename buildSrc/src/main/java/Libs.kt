@@ -5,7 +5,7 @@ object Libs {
     private const val supportVersion = "1.6.0"
     private const val constraintVersion = "1.1.3"
     private const val recyclerViewVersion = "1.2.1"
-    const val architectureComponentVersion = "2.5.0"
+    private const val architectureComponentVersion = "2.5.0"
 
     private const val lifecycleVersion = "2.2.0"
     private const val navigationVersion = "2.7.7"
@@ -98,6 +98,8 @@ object Libs {
         )
 
         val splashScreen = arrayOf("androidx.core:core-splashscreen:$splashScreenVersion")
+
+        const val unitTestsRunner = "android.support.test.runner.AndroidJUnitRunner"
 
         val unitTests = arrayOf(
             "junit:junit:$junitVersion",

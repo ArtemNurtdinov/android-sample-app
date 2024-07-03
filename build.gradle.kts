@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath(Libs.classpath.android_gradle)
         classpath(Libs.classpath.kotlin_gradle)
+        classpath(Libs.classpath.kotlinter)
     }
 }
 
