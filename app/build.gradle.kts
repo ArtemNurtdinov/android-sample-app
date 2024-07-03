@@ -6,10 +6,8 @@ android("com.nefrit.app")
 
 dependencies {
     implementation(projects.coreCommon)
-    implementation(projects.featureUserApi)
-    implementation(projects.featureUserImpl)
-    implementation(projects.featureSettingsApi)
-    implementation(projects.featureSettingsImpl)
+    implementation(projects.featureUser)
+    implementation(projects.featureSettings)
 
     implementation(*Libs.bundle.navigation)
 
