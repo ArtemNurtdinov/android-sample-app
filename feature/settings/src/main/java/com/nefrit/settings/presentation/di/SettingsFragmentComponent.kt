@@ -2,11 +2,15 @@ package com.nefrit.settings.presentation.di
 
 import androidx.fragment.app.Fragment
 import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.settings.di.SettingsDependencies
 import com.nefrit.settings.presentation.SettingsFragment
 import dagger.BindsInstance
-import dagger.Subcomponent
+import dagger.Component
 
-@Subcomponent(
+@Component(
+    dependencies = [
+        SettingsDependencies::class
+    ],
     modules = [
         SettingsModule::class
     ]
@@ -14,11 +18,18 @@ import dagger.Subcomponent
 @ScreenScope
 interface SettingsFragmentComponent {
 
-    @Subcomponent.Factory
+    companion object {
+        fun create(fragment: Fragment, dependencies: SettingsDependencies): SettingsFragmentComponent {
+            return DaggerSettingsFragmentComponent.factory().create(fragment, dependencies)
+        }
+    }
+
+    @Component.Factory
     interface Factory {
 
         fun create(
-            @BindsInstance fragment: Fragment
+            @BindsInstance fragment: Fragment,
+            dependencies: SettingsDependencies
         ): SettingsFragmentComponent
     }
 

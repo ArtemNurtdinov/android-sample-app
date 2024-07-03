@@ -2,19 +2,14 @@ package com.nefrit.app
 
 import android.app.Application
 import com.nefrit.app.di.app.AppComponent
-import com.nefrit.app.di.deps.ComponentDependenciesProvider
-import com.nefrit.app.di.deps.FeatureHolderManager
-import com.nefrit.common.di.CommonApi
-import com.nefrit.common.di.FeatureContainer
+import com.nefrit.app.di.main.MainDependencies
+import com.nefrit.app.di.main.MainDependenciesProvider
+import com.nefrit.settings.di.SettingsDependencies
+import com.nefrit.settings.presentation.di.SettingsDependenciesProvider
 import com.nefrit.users.di.UserFeatureDependencies
 import com.nefrit.users.di.UserFeatureDependenciesProvider
-import javax.inject.Inject
 
-open class App : Application(), FeatureContainer, UserFeatureDependenciesProvider {
-
-    @Inject lateinit var featureHolderManager: FeatureHolderManager
-
-    @Inject lateinit var dependencies: ComponentDependenciesProvider
+open class App : Application(), UserFeatureDependenciesProvider, SettingsDependenciesProvider, MainDependenciesProvider {
 
     private lateinit var appComponent: AppComponent
 
@@ -25,19 +20,15 @@ open class App : Application(), FeatureContainer, UserFeatureDependenciesProvide
         appComponent.inject(this)
     }
 
-    override fun <T> getFeature(key: Class<*>): T {
-        return featureHolderManager.getFeature<T>(key)!!
-    }
-
-    override fun releaseFeature(key: Class<*>) {
-        featureHolderManager.releaseFeature(key)
-    }
-
-    override fun commonApi(): CommonApi {
+    override fun provideUserFeatureDependencies(): UserFeatureDependencies {
         return appComponent
     }
 
-    override fun provideUserFeatureDependencies(): UserFeatureDependencies {
+    override fun provideSettingsDependencies(): SettingsDependencies {
+        return appComponent
+    }
+
+    override fun provideMainDependencies(): MainDependencies {
         return appComponent
     }
 }

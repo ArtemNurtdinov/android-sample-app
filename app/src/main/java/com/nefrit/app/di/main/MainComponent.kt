@@ -19,7 +19,7 @@ interface MainComponent {
 
     companion object {
 
-        fun init(activity: AppCompatActivity, deps: MainDependencies): MainComponent {
+        fun create(activity: AppCompatActivity, deps: MainDependencies): MainComponent {
             return DaggerMainComponent.factory().create(activity, deps)
         }
     }

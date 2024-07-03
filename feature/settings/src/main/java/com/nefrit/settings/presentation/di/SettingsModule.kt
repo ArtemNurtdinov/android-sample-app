@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.di.viewmodel.ViewModelKey
 import com.nefrit.common.di.viewmodel.ViewModelModule
+import com.nefrit.settings.data.SettingsRepositoryImpl
+import com.nefrit.settings.domain.SettingsInteractor
+import com.nefrit.settings.domain.SettingsRepository
 import com.nefrit.settings.presentation.SettingsViewModel
 import dagger.Module
 import dagger.Provides
@@ -28,5 +31,13 @@ class SettingsModule {
     @ViewModelKey(SettingsViewModel::class)
     fun provideViewModel(resourceManager: ResourceManager): ViewModel {
         return SettingsViewModel(resourceManager)
+    }
+
+    @Provides
+    fun provideSettingsRepository(settingsRepository: SettingsRepositoryImpl): SettingsRepository = settingsRepository
+
+    @Provides
+    fun provideSettingsInteractor(repository: SettingsRepository): SettingsInteractor {
+        return SettingsInteractor(repository)
     }
 }

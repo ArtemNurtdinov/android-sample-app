@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.data.network.NetworkApiCreator
-import com.nefrit.common.di.scope.FeatureScope
 import com.nefrit.common.di.viewmodel.ViewModelKey
 import com.nefrit.common.di.viewmodel.ViewModelModule
 import com.nefrit.users.data.UserRepositoryImpl

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import com.nefrit.common.base.BaseFragment
-import com.nefrit.common.di.FeatureUtils
 import com.nefrit.settings.R
 import com.nefrit.settings.databinding.FragmentSettingsBinding
 import com.nefrit.settings.di.SettingsApi
-import com.nefrit.settings.di.SettingsComponent
+import com.nefrit.settings.presentation.di.SettingsDependenciesProvider
+import com.nefrit.settings.presentation.di.SettingsFragmentComponent
 import com.nefrit.settings.presentation.mapper.AppThemeModeMapper
 import javax.inject.Inject
 
@@ -42,10 +42,8 @@ class SettingsFragment: BaseFragment<SettingsViewModel>() {
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<SettingsComponent>(this, SettingsApi::class.java)
-            .settingsFragmentComponentFactory()
-            .create(this)
-            .inject(this)
+        val dependencies = (context?.applicationContext as SettingsDependenciesProvider).provideSettingsDependencies()
+        SettingsFragmentComponent.create(this, dependencies).inject(this)
     }
 
     override fun showNavigationBar(): Boolean {

@@ -1,14 +1,12 @@
 package com.nefrit.app.di.app
 
 import com.nefrit.app.App
-import com.nefrit.app.di.deps.ComponentDependenciesModule
-import com.nefrit.app.di.deps.ComponentHolderModule
 import com.nefrit.app.di.main.MainDependencies
 import com.nefrit.common.data.db.di.DbModule
-import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.modules.CommonModule
 import com.nefrit.common.di.modules.NetworkModule
 import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.settings.di.SettingsDependencies
 import com.nefrit.users.di.UserFeatureDependencies
 import dagger.BindsInstance
 import dagger.Component
@@ -20,13 +18,10 @@ import dagger.Component
         CommonModule::class,
         DbModule::class,
         NetworkModule::class,
-        NavigationModule::class,
-        ComponentHolderModule::class,
-        ComponentDependenciesModule::class,
-        FeatureManagerModule::class
+        NavigationModule::class
     ]
 )
-interface AppComponent : MainDependencies, CommonApi, UserFeatureDependencies {
+interface AppComponent : MainDependencies, UserFeatureDependencies, SettingsDependencies {
 
     companion object {
 

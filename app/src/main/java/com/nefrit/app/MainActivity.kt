@@ -5,8 +5,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.nefrit.app.databinding.ActivityMainBinding
-import com.nefrit.app.di.deps.findComponentDependencies
 import com.nefrit.app.di.main.MainComponent
+import com.nefrit.app.di.main.MainDependenciesProvider
 import com.nefrit.app.navigation.Navigator
 import com.nefrit.common.base.BaseActivity
 import com.nefrit.common.base.NavigationOwner
@@ -21,8 +21,8 @@ class MainActivity : BaseActivity<MainViewModel>(), NavigationOwner {
     private lateinit var binding: ActivityMainBinding
 
     override fun inject() {
-        MainComponent.init(this, findComponentDependencies())
-            .inject(this)
+        val dependencies = (applicationContext as MainDependenciesProvider).provideMainDependencies()
+        MainComponent.create(this, dependencies).inject(this)
     }
 
     override fun rootView(): View {
