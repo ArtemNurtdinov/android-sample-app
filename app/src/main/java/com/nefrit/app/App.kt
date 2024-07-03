@@ -5,7 +5,7 @@ import com.nefrit.app.di.app.AppComponent
 import com.nefrit.app.di.main.MainDependencies
 import com.nefrit.app.di.main.MainDependenciesProvider
 import com.nefrit.settings.di.SettingsDependencies
-import com.nefrit.settings.presentation.di.SettingsDependenciesProvider
+import com.nefrit.settings.di.SettingsDependenciesProvider
 import com.nefrit.users.di.UserFeatureDependencies
 import com.nefrit.users.di.UserFeatureDependenciesProvider
 

@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.settings.R
 import com.nefrit.settings.databinding.FragmentSettingsBinding
-import com.nefrit.settings.di.SettingsApi
-import com.nefrit.settings.presentation.di.SettingsDependenciesProvider
+import com.nefrit.settings.di.SettingsDependenciesProvider
 import com.nefrit.settings.presentation.di.SettingsFragmentComponent
 import com.nefrit.settings.presentation.mapper.AppThemeModeMapper
 import javax.inject.Inject

@@ -1,6 +1,4 @@
-package com.nefrit.settings.presentation.di
-
-import com.nefrit.settings.di.SettingsDependencies
+package com.nefrit.settings.di
 
 interface SettingsDependenciesProvider {
 
