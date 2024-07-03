@@ -5,11 +5,11 @@ plugins {
 android("com.nefrit.app")
 
 dependencies {
-    implementation(project(":core-common"))
-    implementation(project(":feature-user-api"))
-    implementation(project(":feature-user-impl"))
-    implementation(project(":feature-settings-api"))
-    implementation(project(":feature-settings-impl"))
+    implementation(projects.coreCommon)
+    implementation(projects.featureUserApi)
+    implementation(projects.featureUserImpl)
+    implementation(projects.featureSettingsApi)
+    implementation(projects.featureSettingsImpl)
 
     implementation(*Libs.bundle.navigation)
 

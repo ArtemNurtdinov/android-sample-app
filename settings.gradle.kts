@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 val rootProjectPathLength = rootDir.absolutePath.length
 val excludedProjects = listOf(File(rootDir, "buildSrc"))
 

@@ -5,8 +5,8 @@ plugins {
 android("com.nefrit.settings")
 
 dependencies {
-    implementation(project(":core-common"))
-    implementation(project(":feature-settings-api"))
+    implementation(projects.coreCommon)
+    implementation(projects.featureSettingsApi)
 
     testImplementation(*Libs.bundle.unitTests)
 }

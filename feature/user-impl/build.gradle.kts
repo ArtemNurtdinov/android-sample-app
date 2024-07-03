@@ -5,8 +5,8 @@ plugins {
 android("com.nefrit.users")
 
 dependencies {
-    implementation(project(":core-common"))
-    implementation(project(":feature-user-api"))
+    implementation(projects.coreCommon)
+    implementation(projects.featureUserApi)
 
     testImplementation(*Libs.bundle.unitTests)
 }
