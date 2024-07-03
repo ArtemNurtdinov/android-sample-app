@@ -1,20 +1,20 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    id(Libs.plugin.library)
+    id(Libs.plugin.kotlin_android)
+    id(Libs.plugin.kotlin_kapt)
 }
 
 android {
-    compileSdkVersion(rootProject.extra["compileSdkVersion"] as Int)
+    compileSdk = App.compileSdk
 
     defaultConfig {
-        minSdkVersion(rootProject.extra["minSdkVersion"] as Int)
-        targetSdkVersion(rootProject.extra["targetSdkVersion"] as Int)
+        minSdk = App.minSdk
+        targetSdk = App.targetSdk
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        getByName("release") {
+        getByName(BuildTypes.release) {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -32,7 +32,6 @@ dependencies {
 
     implementation(rootProject.extra["androidDep"] as String)
     implementation(rootProject.extra["materialDep"] as String)
-    implementation(rootProject.extra["cardViewDep"] as String)
     implementation(rootProject.extra["recyclerViewDep"] as String)
     implementation(rootProject.extra["constraintDep"] as String)
 

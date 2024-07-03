@@ -1,77 +1,44 @@
+plugins {
+    id(Libs.plugin.gradleVersionsPlugin) version (Libs.gradleVersionsPluginVersion)
+}
+
 buildscript {
     extra.apply {
-        set("versionName", "1.0.0")
-        set("versionCode", 1)
+        set("kotlinDep", "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Libs.kotlinVersion}")
 
-        set("compileSdkVersion", 34)
-        set("minSdkVersion", 23)
-        set("targetSdkVersion", 34)
+        set("androidDep", "androidx.appcompat:appcompat:${Libs.supportVersion}")
+        set("recyclerViewDep", "androidx.recyclerview:recyclerview:${Libs.recyclerViewVersion}")
+        set("constraintDep", "androidx.constraintlayout:constraintlayout:${Libs.constraintVersion}")
+        set("materialDep", "com.google.android.material:material:${Libs.supportVersion}")
 
-        set("kotlinVersion", "1.8.0")
+        set("rxJavaDep", "io.reactivex.rxjava2:rxjava:${Libs.rxJavaVersion}")
+        set("rxAndroidDep", "io.reactivex.rxjava2:rxandroid:${Libs.rxAndroidVersion}")
 
-        set("supportVersion", "1.6.0")
-        set("cardViewVersion", "1.0.0")
-        set("constraintVersion", "1.1.3")
-        set("recyclerViewVersion", "1.2.1")
+        set("daggerDep", "com.google.dagger:dagger:${Libs.daggerVersion}")
+        set("daggerKapt", "com.google.dagger:dagger-compiler:${Libs.daggerVersion}")
 
-        set("rxJavaVersion", "2.2.7")
-        set("rxAndroidVersion", "2.1.0")
+        set("lifecycleDep", "androidx.lifecycle:lifecycle-extensions:${Libs.lifecycleVersion}")
+        set("lifecycleKapt", "androidx.lifecycle:lifecycle-compiler:${Libs.lifecycleVersion}")
 
-        set("daggerVersion", "2.44.2")
+        set("roomDep", "androidx.room:room-runtime:${Libs.architectureComponentVersion}")
+        set("rxRoomDep", "androidx.room:room-rxjava2:${Libs.architectureComponentVersion}")
+        set("roomKapt", "androidx.room:room-compiler:${Libs.architectureComponentVersion}")
 
-        set("architectureComponentVersion", "2.5.0")
-        set("lifecycleVersion", "2.2.0")
+        set("navigationFragmentDep", "androidx.navigation:navigation-fragment:${Libs.navControllerVersion}")
+        set("navigationUiDep", "androidx.navigation:navigation-ui:${Libs.navControllerVersion}")
 
-        set("retrofitVersion", "2.4.0")
-        set("okhttpVersion", "3.8.0")
-        set("gsonVersion", "2.8.2")
+        set("retrofitDep", "com.squareup.retrofit2:retrofit:${Libs.retrofitVersion}")
+        set("rxCallAdapterDep", "com.squareup.retrofit2:adapter-rxjava2:${Libs.retrofitVersion}")
+        set("gsonConvertedDep", "com.squareup.retrofit2:converter-gson:${Libs.retrofitVersion}")
+        set("gsonDep", "com.google.code.gson:gson:${Libs.gsonVersion}")
 
-        set("splashScreenVersion", "1.0.0")
+        set("splashScreenDep", "androidx.core:core-splashscreen:${Libs.splashScreenVersion}")
 
-        set("zXingVersion", "3.5.0")
-
-        set("navControllerVersion", "2.7.7")
-
-        set("junitVersion", "4.12")
-        set("mockitoVersion", "2.23.0")
-        set("robolectricVersion", "4.1")
-
-        set("kotlinDep", "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${property("kotlinVersion")}")
-
-        set("androidDep", "androidx.appcompat:appcompat:${property("supportVersion")}")
-        set("cardViewDep", "androidx.cardview:cardview:${property("cardViewVersion")}")
-        set("recyclerViewDep", "androidx.recyclerview:recyclerview:${property("recyclerViewVersion")}")
-        set("constraintDep", "androidx.constraintlayout:constraintlayout:${property("constraintVersion")}")
-        set("materialDep", "com.google.android.material:material:${property("supportVersion")}")
-
-        set("rxJavaDep", "io.reactivex.rxjava2:rxjava:${property("rxJavaVersion")}")
-        set("rxAndroidDep", "io.reactivex.rxjava2:rxandroid:${property("rxAndroidVersion")}")
-
-        set("daggerDep", "com.google.dagger:dagger:${property("daggerVersion")}")
-        set("daggerKapt", "com.google.dagger:dagger-compiler:${property("daggerVersion")}")
-
-        set("lifecycleDep", "androidx.lifecycle:lifecycle-extensions:${property("lifecycleVersion")}")
-        set("lifecycleKapt", "androidx.lifecycle:lifecycle-compiler:${property("lifecycleVersion")}")
-
-        set("roomDep", "androidx.room:room-runtime:${property("architectureComponentVersion")}")
-        set("rxRoomDep", "androidx.room:room-rxjava2:${property("architectureComponentVersion")}")
-        set("roomKapt", "androidx.room:room-compiler:${property("architectureComponentVersion")}")
-
-        set("navigationFragmentDep", "androidx.navigation:navigation-fragment:${property("navControllerVersion")}")
-        set("navigationUiDep", "androidx.navigation:navigation-ui:${property("navControllerVersion")}")
-
-        set("retrofitDep", "com.squareup.retrofit2:retrofit:${property("retrofitVersion")}")
-        set("rxCallAdapterDep", "com.squareup.retrofit2:adapter-rxjava2:${property("retrofitVersion")}")
-        set("gsonConvertedDep", "com.squareup.retrofit2:converter-gson:${property("retrofitVersion")}")
-        set("gsonDep", "com.google.code.gson:gson:${property("gsonVersion")}")
-
-        set("splashScreenDep", "androidx.core:core-splashscreen:${property("splashScreenVersion")}")
-
-        set("jUnitDep", "junit:junit:${property("junitVersion")}")
-        set("mockitoDep", "org.mockito:mockito-inline:${property("mockitoVersion")}")
-        set("robolectricDep", "org.robolectric:robolectric:${property("robolectricVersion")}")
-        set("robolectricMultidexDep", "org.robolectric:shadows-multidex:${property("robolectricVersion")}")
-        set("archCoreTestDep", "androidx.arch.core:core-testing:${property("architectureComponentVersion")}")
+        set("jUnitDep", "junit:junit:${Libs.junitVersion}")
+        set("mockitoDep", "org.mockito:mockito-inline:${Libs.mockitoVersion}")
+        set("robolectricDep", "org.robolectric:robolectric:${Libs.robolectricVersion}")
+        set("robolectricMultidexDep", "org.robolectric:shadows-multidex:${Libs.robolectricVersion}")
+        set("archCoreTestDep", "androidx.arch.core:core-testing:${Libs.architectureComponentVersion}")
     }
 
     repositories {
@@ -80,8 +47,8 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${property("kotlinVersion")}")
+        classpath("com.android.tools.build:gradle:${Libs.gradleVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.kotlinVersion}")
     }
 }
 

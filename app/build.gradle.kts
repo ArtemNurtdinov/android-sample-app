@@ -1,21 +1,21 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    id(Libs.plugin.application)
+    id(Libs.plugin.kotlin_android)
+    id(Libs.plugin.kotlin_kapt)
 }
 
 android {
-    compileSdk = rootProject.extra["compileSdkVersion"] as Int
+    compileSdk = App.compileSdk
     defaultConfig {
         applicationId = "com.nefrit.app"
-        minSdk = rootProject.extra["minSdkVersion"] as Int
-        targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = rootProject.extra["versionCode"] as Int
-        versionName = rootProject.extra["versionName"] as String
+        minSdk = App.minSdk
+        targetSdk = App.targetSdk
+        versionCode = App.code
+        versionName = App.name
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        getByName("release") {
+        getByName(BuildTypes.release) {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
