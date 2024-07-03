@@ -1,4 +1,4 @@
-# Android feature-modules
+# Android sample app
 
 This scheme demonstrates a dependency graph in a project built by feature-modules architecture.
 
