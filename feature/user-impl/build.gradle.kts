@@ -30,25 +30,21 @@ dependencies {
     implementation(project(":core-common"))
     implementation(project(":feature-user-api"))
 
-    implementation(rootProject.extra["kotlinDep"] as String)
+    implementation(*Libs.bundle.kotlin)
 
-    implementation(rootProject.extra["androidDep"] as String)
-    implementation(rootProject.extra["materialDep"] as String)
-    implementation(rootProject.extra["constraintDep"] as String)
+    implementation(*Libs.bundle.androidx)
 
-    implementation(rootProject.extra["rxJavaDep"] as String)
-    implementation(rootProject.extra["rxAndroidDep"] as String)
+    implementation(*Libs.bundle.rxJava)
+    implementation(*Libs.bundle.rxJavaAndroid)
 
-    implementation(rootProject.extra["daggerDep"] as String)
-    kapt(rootProject.extra["daggerKapt"] as String)
+    implementation(*Libs.bundle.dagger)
+    kapt(*Libs.bundle.daggerKapt)
 
-    implementation(rootProject.extra["roomDep"] as String)
-    implementation(rootProject.extra["rxRoomDep"] as String)
-    kapt(rootProject.extra["roomKapt"] as String)
+    implementation(*Libs.bundle.room)
+    kapt(*Libs.bundle.roomKapt)
 
-    implementation(rootProject.extra["lifecycleDep"] as String)
-    kapt(rootProject.extra["lifecycleKapt"] as String)
+    implementation(*Libs.bundle.lifecycle)
+    kapt(*Libs.bundle.lifecycleKapt)
 
-    testImplementation(rootProject.extra["jUnitDep"] as String)
-    testImplementation(rootProject.extra["mockitoDep"] as String)
+    testImplementation(*Libs.bundle.unitTests)
 }

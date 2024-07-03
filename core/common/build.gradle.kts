@@ -28,31 +28,25 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(rootProject.extra["kotlinDep"] as String)
+    implementation(*Libs.bundle.kotlin)
 
-    implementation(rootProject.extra["androidDep"] as String)
-    implementation(rootProject.extra["materialDep"] as String)
-    implementation(rootProject.extra["recyclerViewDep"] as String)
-    implementation(rootProject.extra["constraintDep"] as String)
+    implementation(*Libs.bundle.androidx)
 
-    implementation(rootProject.extra["rxJavaDep"] as String)
+    implementation(*Libs.bundle.rxJava)
+    implementation(*Libs.bundle.rxJavaAndroid)
 
-    implementation(rootProject.extra["daggerDep"] as String)
-    kapt(rootProject.extra["daggerKapt"] as String)
+    implementation(*Libs.bundle.dagger)
+    kapt(*Libs.bundle.daggerKapt)
 
-    implementation(rootProject.extra["lifecycleDep"] as String)
-    kapt(rootProject.extra["lifecycleKapt"] as String)
+    implementation(*Libs.bundle.lifecycle)
+    kapt(*Libs.bundle.lifecycleKapt)
 
-    implementation(rootProject.extra["retrofitDep"] as String)
-    implementation(rootProject.extra["gsonConvertedDep"] as String)
-    implementation(rootProject.extra["rxCallAdapterDep"] as String)
+    implementation(*Libs.bundle.network)
 
-    implementation(rootProject.extra["roomDep"] as String)
-    implementation(rootProject.extra["rxRoomDep"] as String)
-    kapt(rootProject.extra["roomKapt"] as String)
+    implementation(*Libs.bundle.room)
+    kapt(*Libs.bundle.roomKapt)
 
-    testImplementation(rootProject.extra["jUnitDep"] as String)
-    testImplementation(rootProject.extra["mockitoDep"] as String)
+    implementation(*Libs.bundle.splashScreen)
 
-    implementation(rootProject.extra["splashScreenDep"] as String)
+    testImplementation(*Libs.bundle.unitTests)
 }

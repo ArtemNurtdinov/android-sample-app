@@ -1,24 +1,23 @@
 object Libs {
-    const val gradleVersion = "7.2.2"
-    const val kotlinVersion = "1.8.0"
+    private const val gradleVersion = "7.2.2"
+    private const val kotlinVersion = "1.8.0"
 
-    const val supportVersion = "1.6.0"
-    const val constraintVersion = "1.1.3"
-    const val recyclerViewVersion = "1.2.1"
+    private const val supportVersion = "1.6.0"
+    private const val constraintVersion = "1.1.3"
+    private const val recyclerViewVersion = "1.2.1"
     const val architectureComponentVersion = "2.5.0"
 
-    const val lifecycleVersion = "2.2.0"
+    private const val lifecycleVersion = "2.2.0"
     private const val navigationVersion = "2.7.7"
     const val retrofitVersion = "2.4.0"
-    const val gsonVersion = "2.8.2"
 
     private const val kotlinterVersion = "4.2.0"
     private const val rulerVersion = "1.4.0"
 
-    const val rxJavaVersion = "2.2.7"
-    const val rxAndroidVersion = "2.1.0"
+    private const val rxJavaVersion = "2.2.7"
+    private const val rxAndroidVersion = "2.1.0"
 
-    const val daggerVersion = "2.44.2"
+    private const val daggerVersion = "2.44.2"
 
     private const val hiltVersion = "2.51"
     private const val hiltJetpackVersion = "1.2.0"
@@ -29,7 +28,7 @@ object Libs {
     private const val messagingVersion = "23.4.1"
     private const val configVersion = "21.6.2"
 
-    const val splashScreenVersion = "1.0.0"
+    private const val splashScreenVersion = "1.0.0"
     const val navControllerVersion = "2.7.7"
 
     const val junitVersion = "4.12"
@@ -62,5 +61,47 @@ object Libs {
         const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:$kotlinterVersion"
         const val ruler = "com.spotify.ruler:ruler-gradle-plugin:$rulerVersion"
         const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:$gradleVersionsPluginVersion"
+    }
+
+    object bundle {
+        val kotlin = arrayOf("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+        val androidx = arrayOf(
+            "androidx.appcompat:appcompat:$supportVersion",
+            "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            "com.google.android.material:material:$supportVersion"
+        )
+        val rxJava = arrayOf("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
+        val rxJavaAndroid = arrayOf("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
+
+        val dagger = arrayOf("com.google.dagger:dagger:$daggerVersion")
+        val daggerKapt = arrayOf("com.google.dagger:dagger-compiler:$daggerVersion")
+
+        val lifecycle = arrayOf("androidx.lifecycle:lifecycle-extensions:$lifecycleVersion")
+        val lifecycleKapt = arrayOf("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
+
+        val room = arrayOf(
+            "androidx.room:room-runtime:$architectureComponentVersion",
+            "androidx.room:room-rxjava2:$architectureComponentVersion"
+        )
+        val roomKapt = arrayOf("androidx.room:room-compiler:$architectureComponentVersion")
+
+        val navigation = arrayOf(
+            "androidx.navigation:navigation-fragment:$navControllerVersion",
+            "androidx.navigation:navigation-ui:$navControllerVersion"
+        )
+
+        val network = arrayOf(
+            "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        )
+
+        val splashScreen = arrayOf("androidx.core:core-splashscreen:$splashScreenVersion")
+
+        val unitTests = arrayOf(
+            "junit:junit:$junitVersion",
+            "org.mockito:mockito-inline:$mockitoVersion"
+        )
     }
 }

@@ -4,6 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation(rootProject.extra["kotlinDep"] as String)
-    implementation(rootProject.extra["rxJavaDep"] as String)
+    implementation(*Libs.bundle.kotlin)
+    implementation(*Libs.bundle.rxJava)
 }
