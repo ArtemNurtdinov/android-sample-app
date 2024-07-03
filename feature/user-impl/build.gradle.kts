@@ -2,12 +2,7 @@ plugins {
     id(Libs.plugin.library)
 }
 
-common("com.nefrit.users")
-uiComponents()
-rxJavaAndroid()
-dagger()
-lifecycle()
-room()
+android("com.nefrit.users")
 
 dependencies {
     implementation(project(":core-common"))

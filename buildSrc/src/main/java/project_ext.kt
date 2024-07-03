@@ -89,3 +89,12 @@ fun Project.room() {
         kapt(*Libs.bundle.roomKapt)
     }
 }
+
+fun Project.android(namespace: String) {
+    common(namespace)
+    uiComponents()
+    dagger()
+    rxJavaAndroid()
+    lifecycle()
+    room()
+}
