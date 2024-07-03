@@ -6,13 +6,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.nefrit.common.base.BaseFragment
-import com.nefrit.common.di.FeatureUtils
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.users.R
-import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.databinding.FragmentUserBinding
-import com.nefrit.users.di.UserFeatureApi
-import com.nefrit.users.di.UserFeatureComponent
+import com.nefrit.users.di.UserFeatureDependenciesProvider
+import com.nefrit.users.presentation.UsersRouter
+import com.nefrit.users.presentation.details.di.UserComponent
 import com.nefrit.users.presentation.details.model.UserDetailsModel
 import javax.inject.Inject
 
@@ -37,11 +36,8 @@ class UserFragment : BaseFragment<UserViewModel>() {
 
     override fun inject() {
         val userId = requireArguments().getLong(KEY_USER_ID, 0)
-
-        FeatureUtils.getFeature<UserFeatureComponent>(this, UserFeatureApi::class.java)
-            .userComponentFactory()
-            .create(this, userId)
-            .inject(this)
+        val dependencies = (context?.applicationContext as UserFeatureDependenciesProvider).provideUserFeatureDependencies()
+        UserComponent.create(this, userId, dependencies).inject(this)
     }
 
     override fun initViews() {

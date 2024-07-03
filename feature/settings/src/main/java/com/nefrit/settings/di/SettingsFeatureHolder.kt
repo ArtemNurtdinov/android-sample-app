@@ -3,7 +3,6 @@ package com.nefrit.settings.di
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.settings.presentation.SettingsRouter
 import javax.inject.Inject
 
@@ -16,7 +15,6 @@ class SettingsFeatureHolder @Inject constructor(
     override fun initializeDependencies(): Any {
         val settingsDependencies = DaggerSettingsComponent_SettingsDependenciesComponent.builder()
             .commonApi(commonApi())
-            .dbApi(getFeature(DbApi::class.java))
             .build()
         return DaggerSettingsComponent.builder()
             .withDependencies(settingsDependencies)

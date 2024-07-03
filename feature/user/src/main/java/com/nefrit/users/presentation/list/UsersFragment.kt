@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nefrit.common.base.BaseFragment
-import com.nefrit.common.di.FeatureUtils
 import com.nefrit.users.R
 import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.databinding.FragmentUsersBinding
-import com.nefrit.users.di.UserFeatureApi
-import com.nefrit.users.di.UserFeatureComponent
+import com.nefrit.users.di.UserFeatureDependencies
+import com.nefrit.users.di.UserFeatureDependenciesProvider
+import com.nefrit.users.presentation.list.di.UsersComponent
 import javax.inject.Inject
 
 class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler {
@@ -25,10 +25,8 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
     }
 
     override fun inject() {
-        FeatureUtils.getFeature<UserFeatureComponent>(this, UserFeatureApi::class.java)
-            .usersComponentFactory()
-            .create(this)
-            .inject(this)
+        val dependencies = (context?.applicationContext as UserFeatureDependenciesProvider).provideUserFeatureDependencies()
+        UsersComponent.create(this, dependencies).inject(this)
     }
 
     override fun initViews() {

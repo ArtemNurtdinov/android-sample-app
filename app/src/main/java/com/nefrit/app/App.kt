@@ -6,9 +6,11 @@ import com.nefrit.app.di.deps.ComponentDependenciesProvider
 import com.nefrit.app.di.deps.FeatureHolderManager
 import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.FeatureContainer
+import com.nefrit.users.di.UserFeatureDependencies
+import com.nefrit.users.di.UserFeatureDependenciesProvider
 import javax.inject.Inject
 
-open class App : Application(), FeatureContainer {
+open class App : Application(), FeatureContainer, UserFeatureDependenciesProvider {
 
     @Inject lateinit var featureHolderManager: FeatureHolderManager
 
@@ -32,6 +34,10 @@ open class App : Application(), FeatureContainer {
     }
 
     override fun commonApi(): CommonApi {
+        return appComponent
+    }
+
+    override fun provideUserFeatureDependencies(): UserFeatureDependencies {
         return appComponent
     }
 }

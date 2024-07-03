@@ -2,11 +2,16 @@ package com.nefrit.users.presentation.list.di
 
 import androidx.fragment.app.Fragment
 import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.users.di.UserFeatureDependencies
 import com.nefrit.users.presentation.list.UsersFragment
 import dagger.BindsInstance
+import dagger.Component
 import dagger.Subcomponent
 
-@Subcomponent(
+@Component(
+    dependencies = [
+        UserFeatureDependencies::class
+    ],
     modules = [
         UsersModule::class
     ]
@@ -14,11 +19,20 @@ import dagger.Subcomponent
 @ScreenScope
 interface UsersComponent {
 
-    @Subcomponent.Factory
+    companion object {
+
+        fun create(fragment: Fragment, dependencies: UserFeatureDependencies): UsersComponent {
+            return DaggerUsersComponent.factory()
+                .create(fragment, dependencies)
+        }
+    }
+
+    @Component.Factory
     interface Factory {
 
         fun create(
-            @BindsInstance fragment: Fragment
+            @BindsInstance fragment: Fragment,
+            dependencies: UserFeatureDependencies
         ): UsersComponent
     }
 

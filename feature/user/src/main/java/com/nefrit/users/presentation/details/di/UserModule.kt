@@ -4,9 +4,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.data.network.NetworkApiCreator
 import com.nefrit.common.di.viewmodel.ViewModelKey
 import com.nefrit.common.di.viewmodel.ViewModelModule
+import com.nefrit.users.data.UserRepositoryImpl
+import com.nefrit.users.data.network.UserApi
+import com.nefrit.users.data.network.UserApiImpl
 import com.nefrit.users.domain.UserInteractor
+import com.nefrit.users.domain.UserRepository
 import com.nefrit.users.presentation.details.UserViewModel
 import dagger.Module
 import dagger.Provides
@@ -29,5 +34,18 @@ class UserModule {
     @ViewModelKey(UserViewModel::class)
     fun provideViewModel(interactor: UserInteractor, userId: Long, resourceManager: ResourceManager): ViewModel {
         return UserViewModel(interactor, userId, resourceManager)
+    }
+
+    @Provides
+    fun provideUserRepository(userRepository: UserRepositoryImpl): UserRepository = userRepository
+
+    @Provides
+    fun provideUserInteractor(repository: UserRepository): UserInteractor {
+        return UserInteractor(repository)
+    }
+
+    @Provides
+    fun provideUserApi(apiCreator: NetworkApiCreator): UserApi {
+        return UserApiImpl()
     }
 }

@@ -2,7 +2,6 @@ package com.nefrit.settings.di
 
 import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.scope.FeatureScope
-import com.nefrit.common.data.db.di.DbApi
 import com.nefrit.settings.presentation.SettingsRouter
 import com.nefrit.settings.presentation.di.SettingsFragmentComponent
 import dagger.BindsInstance
@@ -34,8 +33,7 @@ interface SettingsComponent : SettingsApi {
 
     @Component(
         dependencies = [
-            CommonApi::class,
-            DbApi::class
+            CommonApi::class
         ]
     )
     interface SettingsDependenciesComponent : SettingsDependencies
