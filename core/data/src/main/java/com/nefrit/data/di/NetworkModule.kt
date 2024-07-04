@@ -10,6 +10,7 @@ import com.nefrit.data.network.RxCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
@@ -24,13 +25,33 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideOkHttpClient(networkProperties: NetworkProperties): OkHttpClient {
-        return OkHttpClient.Builder()
+    fun provideHttpLoggingInterceptor(networkProperties: NetworkProperties): HttpLoggingInterceptor {
+        val logLevel = when(networkProperties.loggingLeveL) {
+            NetworkProperties.LogLevel.NONE -> HttpLoggingInterceptor.Level.NONE
+            NetworkProperties.LogLevel.BASIC -> HttpLoggingInterceptor.Level.BASIC
+            NetworkProperties.LogLevel.BODY -> HttpLoggingInterceptor.Level.BODY
+            NetworkProperties.LogLevel.HEADERS -> HttpLoggingInterceptor.Level.HEADERS
+        }
+        return HttpLoggingInterceptor().apply {
+            level = logLevel
+        }
+    }
+
+    @Provides
+    @ApplicationScope
+    fun provideOkHttpClient(
+        networkProperties: NetworkProperties,
+        loggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
+        val builder = OkHttpClient.Builder()
             .connectTimeout(networkProperties.connectTimeout, TimeUnit.SECONDS)
             .writeTimeout(networkProperties.writeTimeout, TimeUnit.SECONDS)
             .readTimeout(networkProperties.readTimeout, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
-            .build()
+
+        builder.addInterceptor(loggingInterceptor)
+
+        return builder.build()
     }
 
     @Provides

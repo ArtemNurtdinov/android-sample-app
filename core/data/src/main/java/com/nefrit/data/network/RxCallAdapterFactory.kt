@@ -45,10 +45,11 @@ class RxCallAdapterFactory(
         private fun mapException(throwable: Throwable): BaseError {
             return when (throwable) {
                 is HttpException -> {
-                    val errorCode = throwable.response().code()
-                    throwable.response().errorBody()?.close()
+                    val errorCode = throwable.response()?.code() ?: 0
+                    throwable.response()?.errorBody()?.close()
                     BaseError.connection(errorCode, resourceManager.getString(R.string.common_error_general_message))
                 }
+
                 is IOException -> BaseError.network(resourceManager.getString(R.string.common_error_network), throwable)
                 else -> BaseError.unexpected(throwable)
             }

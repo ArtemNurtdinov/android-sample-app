@@ -9,7 +9,9 @@ object Libs {
 
     private const val lifecycleVersion = "2.2.0"
     private const val navigationVersion = "2.7.7"
-    const val retrofitVersion = "2.4.0"
+
+    private const val okHttpVersion = "4.12.0"
+    private const val retrofitVersion = "2.9.0"
 
     private const val kotlinterVersion = "4.2.0"
     private const val rulerVersion = "1.4.0"
@@ -92,6 +94,8 @@ object Libs {
         )
 
         val network = arrayOf(
+            "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             "com.squareup.retrofit2:retrofit:$retrofitVersion",
             "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
             "com.squareup.retrofit2:converter-gson:$retrofitVersion"

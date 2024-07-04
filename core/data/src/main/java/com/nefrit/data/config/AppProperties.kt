@@ -21,7 +21,14 @@ class AppProperties(context: Context) {
         val connectTimeout = properties["http.timeout.connect"]?.toLong() ?: 0
         val readTimeout = properties["http.timeout.read"]?.toLong() ?: 0
         val writeTimeout = properties["http.timeout.write"]?.toLong() ?: 0
-        return NetworkProperties(connectTimeout, readTimeout, writeTimeout)
+        val logLevelProperty = properties["http.log.level"]
+        val logLevel = when (logLevelProperty) {
+            "BASIC" -> NetworkProperties.LogLevel.BASIC
+            "BODY" -> NetworkProperties.LogLevel.BODY
+            "HEADERS" -> NetworkProperties.LogLevel.HEADERS
+            else -> NetworkProperties.LogLevel.NONE
+        }
+        return NetworkProperties(connectTimeout, readTimeout, writeTimeout, logLevel)
     }
 
     fun getBaseUrl(): String = properties["base_url"] ?: ""
