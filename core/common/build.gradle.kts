@@ -6,6 +6,7 @@ android("com.nefrit.common")
 
 dependencies {
     implementation(*Libs.bundle.network)
+    implementation(*Libs.bundle.firebase)
 
     implementation(*Libs.bundle.splashScreen)
 

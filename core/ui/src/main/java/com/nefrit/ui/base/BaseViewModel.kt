@@ -27,10 +27,6 @@ open class BaseViewModel : ViewModel() {
         if (!disposables.isDisposed) disposables.dispose()
     }
 
-    operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
-        add(disposable)
-    }
-
     protected fun showAlert(errorText: String) {
         _alertLiveData.value = Event(errorText)
     }

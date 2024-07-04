@@ -2,10 +2,11 @@ package com.nefrit.users.presentation.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nefrit.ui.base.BaseViewModel
 import com.nefrit.common.resources.ResourceManager
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.SimpleEvent
+import com.nefrit.common.utils.plusAssign
+import com.nefrit.ui.base.BaseViewModel
 import com.nefrit.users.domain.UserInteractor
 import com.nefrit.users.domain.model.User
 import com.nefrit.users.presentation.details.model.UserDetailsModel
@@ -16,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 class UserViewModel(
     private val interactor: UserInteractor,
     private val userId: Long,
-    private val resourceManager: ResourceManager
+    private val resourceManager: ResourceManager,
 ) : BaseViewModel() {
 
     private val _userLiveData = MutableLiveData<UserDetailsModel>()
