@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
-import com.nefrit.common.base.BaseFragment
+import com.nefrit.ui.base.BaseFragment
 import com.nefrit.settings.R
 import com.nefrit.settings.databinding.FragmentSettingsBinding
 import com.nefrit.settings.di.SettingsDependenciesProvider

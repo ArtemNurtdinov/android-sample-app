@@ -1,4 +1,4 @@
-package com.nefrit.common.base
+package com.nefrit.ui.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

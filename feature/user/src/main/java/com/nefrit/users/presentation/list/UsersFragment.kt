@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.nefrit.common.base.BaseFragment
+import com.nefrit.ui.base.BaseFragment
 import com.nefrit.users.R
 import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.databinding.FragmentUsersBinding
-import com.nefrit.users.di.UserFeatureDependencies
 import com.nefrit.users.di.UserFeatureDependenciesProvider
 import com.nefrit.users.presentation.list.di.UsersComponent
 import javax.inject.Inject

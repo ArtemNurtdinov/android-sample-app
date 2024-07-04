@@ -1,11 +1,11 @@
-package com.nefrit.common.base
+package com.nefrit.ui.base
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.nefrit.common.R
 import com.nefrit.common.utils.setBarColorBackground
+import com.nefrit.ui.R
 import javax.inject.Inject
 
 abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {

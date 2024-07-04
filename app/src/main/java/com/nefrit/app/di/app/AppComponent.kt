@@ -7,6 +7,7 @@ import com.nefrit.common.di.modules.CommonModule
 import com.nefrit.data.di.NetworkModule
 import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.data.di.StorageModule
+import com.nefrit.di.UIModule
 import com.nefrit.settings.di.SettingsDependencies
 import com.nefrit.users.di.UserFeatureDependencies
 import dagger.BindsInstance
@@ -20,6 +21,7 @@ import dagger.Component
         DbModule::class,
         NetworkModule::class,
         StorageModule::class,
+        UIModule::class,
         NavigationModule::class
     ]
 )

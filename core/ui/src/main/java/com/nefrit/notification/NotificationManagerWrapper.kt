@@ -1,4 +1,4 @@
-package com.nefrit.common.notification
+package com.nefrit.notification
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.nefrit.common.R
+import com.nefrit.ui.R
 
 interface NotificationManagerWrapper {
 

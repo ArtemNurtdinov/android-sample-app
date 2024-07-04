@@ -6,8 +6,6 @@ import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.core.resources.ResourceManagerImpl
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.common.notification.NotificationManagerWrapper
-import com.nefrit.common.notification.NotificationManagerWrapperImpl
 import com.nefrit.common.utils.DateFormatter
 import dagger.Module
 import dagger.Provides
@@ -30,10 +28,5 @@ class CommonModule {
     @Provides
     fun provideDateFormatter(): DateFormatter {
         return DateFormatter()
-    }
-
-    @Provides
-    fun provideNotificationWrapper(context: Context, notificationManager: NotificationManager): NotificationManagerWrapper {
-        return NotificationManagerWrapperImpl(context, notificationManager)
     }
 }

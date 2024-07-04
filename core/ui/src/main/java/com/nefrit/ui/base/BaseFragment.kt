@@ -1,4 +1,4 @@
-package com.nefrit.common.base
+package com.nefrit.ui.base
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.nefrit.common.R
+import com.nefrit.common.base.NavigationOwner
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject

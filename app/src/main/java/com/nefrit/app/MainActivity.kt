@@ -8,7 +8,7 @@ import com.nefrit.app.databinding.ActivityMainBinding
 import com.nefrit.app.di.main.MainComponent
 import com.nefrit.app.di.main.MainDependenciesProvider
 import com.nefrit.app.navigation.Navigator
-import com.nefrit.common.base.BaseActivity
+import com.nefrit.ui.base.BaseActivity
 import com.nefrit.common.base.NavigationOwner
 import javax.inject.Inject
 

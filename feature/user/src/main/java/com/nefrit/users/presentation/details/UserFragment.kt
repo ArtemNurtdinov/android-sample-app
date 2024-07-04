@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import com.nefrit.common.base.BaseFragment
+import com.nefrit.ui.base.BaseFragment
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.users.R
 import com.nefrit.users.databinding.FragmentUserBinding

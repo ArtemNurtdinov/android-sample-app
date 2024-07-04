@@ -2,12 +2,12 @@ plugins {
     id(Libs.plugin.library)
 }
 
-android("com.nefrit.users")
+android("com.nefrit.ui")
 
 dependencies {
     implementation(projects.coreCommon)
-    implementation(projects.coreData)
-    implementation(projects.coreUi)
+
+    implementation(*Libs.bundle.splashScreen)
 
     testImplementation(*Libs.bundle.unitTests)
 }
