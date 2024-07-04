@@ -1,7 +1,7 @@
 package com.nefrit.settings.presentation.di
 
 import androidx.fragment.app.Fragment
-import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.common.di.ScreenScope
 import com.nefrit.settings.di.SettingsDependencies
 import com.nefrit.settings.presentation.SettingsFragment
 import dagger.BindsInstance

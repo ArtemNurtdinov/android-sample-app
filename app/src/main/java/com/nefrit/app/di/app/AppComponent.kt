@@ -3,9 +3,9 @@ package com.nefrit.app.di.app
 import com.nefrit.app.App
 import com.nefrit.app.di.main.MainDependencies
 import com.nefrit.data.di.DbModule
-import com.nefrit.common.di.modules.CommonModule
+import com.nefrit.common.di.CommonModule
 import com.nefrit.data.di.NetworkModule
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.di.ApplicationScope
 import com.nefrit.data.di.StorageModule
 import com.nefrit.di.UIModule
 import com.nefrit.settings.di.SettingsDependencies

@@ -1,8 +1,8 @@
 package com.nefrit.data.network
 
 import com.nefrit.common.R
-import com.nefrit.common.core.error.BaseError
-import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.error.BaseError
+import com.nefrit.common.resources.ResourceManager
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.CallAdapter

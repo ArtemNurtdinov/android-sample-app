@@ -3,7 +3,7 @@ package com.nefrit.users.presentation.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nefrit.ui.base.BaseViewModel
-import com.nefrit.common.core.resources.ResourceManager
+import com.nefrit.common.resources.ResourceManager
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.users.domain.UserInteractor

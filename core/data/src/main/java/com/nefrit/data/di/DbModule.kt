@@ -2,7 +2,7 @@ package com.nefrit.data.di
 
 import android.content.Context
 import com.nefrit.data.db.AppDatabase
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.di.ApplicationScope
 import com.nefrit.data.db.dao.UserDao
 import dagger.Module
 import dagger.Provides

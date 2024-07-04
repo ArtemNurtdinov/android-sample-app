@@ -1,7 +1,7 @@
-package com.nefrit.common.core.config
+package com.nefrit.data.config
 
 import android.content.Context
-import com.nefrit.common.R
+import com.nefrit.data.R
 import java.util.Properties
 
 @Suppress("UNCHECKED_CAST")

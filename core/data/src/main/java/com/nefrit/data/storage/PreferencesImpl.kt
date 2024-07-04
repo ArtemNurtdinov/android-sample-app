@@ -2,7 +2,6 @@ package com.nefrit.data.storage
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nefrit.common.core.preferences.Preferences
 
 class PreferencesImpl(context: Context) : Preferences {
 

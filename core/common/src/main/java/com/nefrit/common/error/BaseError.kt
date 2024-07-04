@@ -1,4 +1,4 @@
-package com.nefrit.common.core.error
+package com.nefrit.common.error
 
 import java.io.IOException
 

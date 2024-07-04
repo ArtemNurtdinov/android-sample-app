@@ -1,4 +1,4 @@
-package com.nefrit.common.di.viewmodel
+package com.nefrit.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

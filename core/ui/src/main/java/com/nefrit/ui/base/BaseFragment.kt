@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.nefrit.common.R
-import com.nefrit.common.base.NavigationOwner
+import com.nefrit.common.navigation.NavigationOwner
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.EventObserver
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.nefrit.common.core.resources
+package com.nefrit.common.resources
 
 import android.content.Context
 import android.graphics.Bitmap

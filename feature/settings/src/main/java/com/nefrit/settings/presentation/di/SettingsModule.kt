@@ -3,9 +3,9 @@ package com.nefrit.settings.presentation.di
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.nefrit.common.core.resources.ResourceManager
-import com.nefrit.common.di.viewmodel.ViewModelKey
-import com.nefrit.common.di.viewmodel.ViewModelModule
+import com.nefrit.common.resources.ResourceManager
+import com.nefrit.ui.viewmodel.ViewModelKey
+import com.nefrit.ui.viewmodel.ViewModelModule
 import com.nefrit.settings.data.SettingsRepositoryImpl
 import com.nefrit.settings.domain.SettingsInteractor
 import com.nefrit.settings.domain.SettingsRepository

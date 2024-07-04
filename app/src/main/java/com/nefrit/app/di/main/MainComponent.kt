@@ -2,7 +2,7 @@ package com.nefrit.app.di.main
 
 import androidx.appcompat.app.AppCompatActivity
 import com.nefrit.app.MainActivity
-import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.common.di.ScreenScope
 import dagger.BindsInstance
 import dagger.Component
 

@@ -1,8 +1,8 @@
 package com.nefrit.data.di
 
 import android.content.Context
-import com.nefrit.common.core.preferences.Preferences
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.data.storage.Preferences
+import com.nefrit.common.di.ApplicationScope
 import com.nefrit.data.storage.PreferencesImpl
 import dagger.Module
 import dagger.Provides

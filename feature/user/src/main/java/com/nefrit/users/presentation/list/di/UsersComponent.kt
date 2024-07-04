@@ -1,12 +1,11 @@
 package com.nefrit.users.presentation.list.di
 
 import androidx.fragment.app.Fragment
-import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.common.di.ScreenScope
 import com.nefrit.users.di.UserFeatureDependencies
 import com.nefrit.users.presentation.list.UsersFragment
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Subcomponent
 
 @Component(
     dependencies = [

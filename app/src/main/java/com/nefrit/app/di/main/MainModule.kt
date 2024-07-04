@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.nefrit.app.MainViewModel
-import com.nefrit.common.di.viewmodel.ViewModelKey
-import com.nefrit.common.di.viewmodel.ViewModelModule
+import com.nefrit.ui.viewmodel.ViewModelKey
+import com.nefrit.ui.viewmodel.ViewModelModule
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap

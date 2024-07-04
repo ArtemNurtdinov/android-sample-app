@@ -1,4 +1,4 @@
-package com.nefrit.common.core.config
+package com.nefrit.data.config
 
 data class NetworkProperties(
     val connectTimeout: Long,

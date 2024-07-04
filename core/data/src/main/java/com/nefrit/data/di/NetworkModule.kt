@@ -1,9 +1,10 @@
 package com.nefrit.data.di
 
-import com.nefrit.common.core.config.AppProperties
-import com.nefrit.common.core.config.NetworkProperties
-import com.nefrit.common.core.resources.ResourceManager
-import com.nefrit.common.di.scope.ApplicationScope
+import android.content.Context
+import com.nefrit.common.di.ApplicationScope
+import com.nefrit.common.resources.ResourceManager
+import com.nefrit.data.config.AppProperties
+import com.nefrit.data.config.NetworkProperties
 import com.nefrit.data.network.NetworkApiCreator
 import com.nefrit.data.network.RxCallAdapterFactory
 import dagger.Module
@@ -40,7 +41,7 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideRxCallAdapterFactoryWrapped(resourceManager: ResourceManager, origin: RxJava2CallAdapterFactory): com.nefrit.data.network.RxCallAdapterFactory {
+    fun provideRxCallAdapterFactoryWrapped(resourceManager: ResourceManager, origin: RxJava2CallAdapterFactory): RxCallAdapterFactory {
         return RxCallAdapterFactory(resourceManager, origin)
     }
 
@@ -52,5 +53,11 @@ class NetworkModule {
         appProperties: AppProperties,
     ): NetworkApiCreator {
         return NetworkApiCreator(okHttpClient, appProperties.getBaseUrl(), rxCallAdapterFactory)
+    }
+
+    @Provides
+    @ApplicationScope
+    fun provideAppProperties(context: Context): AppProperties {
+        return AppProperties(context)
     }
 }

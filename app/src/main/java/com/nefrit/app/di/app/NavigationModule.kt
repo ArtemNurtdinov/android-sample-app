@@ -1,7 +1,7 @@
 package com.nefrit.app.di.app
 
 import com.nefrit.app.navigation.Navigator
-import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.common.di.ApplicationScope
 import com.nefrit.settings.presentation.SettingsRouter
 import com.nefrit.users.presentation.UsersRouter
 import dagger.Module
