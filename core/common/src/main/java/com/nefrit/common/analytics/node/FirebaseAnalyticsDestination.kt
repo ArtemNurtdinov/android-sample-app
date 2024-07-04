@@ -32,6 +32,8 @@ class FirebaseAnalyticsDestination @Inject constructor() : AnalyticsDestination 
 
     private fun log(event: BaseAnalyticsEvent) {
         val bundle = bundleOf(*event.value.map { it.key to it.value }.toTypedArray())
-        firebaseAnalytics.logEvent("event_${event.clazz.simpleName}", bundle)
+        val logEvent = "event_${event.clazz.simpleName}"
+
+        firebaseAnalytics.logEvent(logEvent, bundle)
     }
 }
