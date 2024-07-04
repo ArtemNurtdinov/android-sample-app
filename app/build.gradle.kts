@@ -6,6 +6,7 @@ android("com.nefrit.app")
 
 dependencies {
     implementation(projects.coreCommon)
+    implementation(projects.coreData)
     implementation(projects.featureUser)
     implementation(projects.featureSettings)
 

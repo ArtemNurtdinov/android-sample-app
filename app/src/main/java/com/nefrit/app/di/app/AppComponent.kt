@@ -2,10 +2,11 @@ package com.nefrit.app.di.app
 
 import com.nefrit.app.App
 import com.nefrit.app.di.main.MainDependencies
-import com.nefrit.common.data.db.di.DbModule
+import com.nefrit.data.di.DbModule
 import com.nefrit.common.di.modules.CommonModule
-import com.nefrit.common.di.modules.NetworkModule
+import com.nefrit.data.di.NetworkModule
 import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.data.di.StorageModule
 import com.nefrit.settings.di.SettingsDependencies
 import com.nefrit.users.di.UserFeatureDependencies
 import dagger.BindsInstance
@@ -18,6 +19,7 @@ import dagger.Component
         CommonModule::class,
         DbModule::class,
         NetworkModule::class,
+        StorageModule::class,
         NavigationModule::class
     ]
 )

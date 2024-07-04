@@ -1,4 +1,4 @@
-package com.nefrit.common.data.network
+package com.nefrit.data.network
 
 import com.nefrit.common.R
 import com.nefrit.common.core.error.BaseError

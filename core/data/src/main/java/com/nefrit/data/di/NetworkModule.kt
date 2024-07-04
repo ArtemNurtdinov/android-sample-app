@@ -1,11 +1,11 @@
-package com.nefrit.common.di.modules
+package com.nefrit.data.di
 
 import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.core.config.NetworkProperties
 import com.nefrit.common.core.resources.ResourceManager
-import com.nefrit.common.data.network.NetworkApiCreator
-import com.nefrit.common.data.network.RxCallAdapterFactory
 import com.nefrit.common.di.scope.ApplicationScope
+import com.nefrit.data.network.NetworkApiCreator
+import com.nefrit.data.network.RxCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -40,7 +40,7 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideRxCallAdapterFactoryWrapped(resourceManager: ResourceManager, origin: RxJava2CallAdapterFactory): RxCallAdapterFactory {
+    fun provideRxCallAdapterFactoryWrapped(resourceManager: ResourceManager, origin: RxJava2CallAdapterFactory): com.nefrit.data.network.RxCallAdapterFactory {
         return RxCallAdapterFactory(resourceManager, origin)
     }
 

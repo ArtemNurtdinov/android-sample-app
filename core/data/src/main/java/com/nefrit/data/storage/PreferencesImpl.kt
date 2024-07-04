@@ -1,4 +1,4 @@
-package com.nefrit.common.data.storage
+package com.nefrit.data.storage
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,4 +1,4 @@
-package com.nefrit.common.data.network
+package com.nefrit.data.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

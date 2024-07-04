@@ -2,11 +2,11 @@ plugins {
     id(Libs.plugin.library)
 }
 
-android("com.nefrit.users")
+android("com.nefrit.data")
 
 dependencies {
     implementation(projects.coreCommon)
-    implementation(projects.coreData)
+    implementation(*Libs.bundle.network)
 
     testImplementation(*Libs.bundle.unitTests)
 }

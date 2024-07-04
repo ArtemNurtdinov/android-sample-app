@@ -1,6 +1,6 @@
 package com.nefrit.users.data
 
-import com.nefrit.common.data.db.AppDatabase
+import com.nefrit.data.db.AppDatabase
 import com.nefrit.users.data.mappers.UserMappers
 import com.nefrit.users.data.network.UserApi
 import com.nefrit.users.domain.UserRepository

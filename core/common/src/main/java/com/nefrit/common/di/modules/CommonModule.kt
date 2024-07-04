@@ -5,8 +5,6 @@ import android.content.Context
 import com.nefrit.common.core.config.AppProperties
 import com.nefrit.common.core.resources.ResourceManager
 import com.nefrit.common.core.resources.ResourceManagerImpl
-import com.nefrit.common.core.preferences.Preferences
-import com.nefrit.common.data.storage.PreferencesImpl
 import com.nefrit.common.di.scope.ApplicationScope
 import com.nefrit.common.notification.NotificationManagerWrapper
 import com.nefrit.common.notification.NotificationManagerWrapperImpl
@@ -27,12 +25,6 @@ class CommonModule {
     @ApplicationScope
     fun provideAppProperties(context: Context): AppProperties {
         return AppProperties(context)
-    }
-
-    @Provides
-    @ApplicationScope
-    fun providePreferences(context: Context): Preferences {
-        return PreferencesImpl(context)
     }
 
     @Provides

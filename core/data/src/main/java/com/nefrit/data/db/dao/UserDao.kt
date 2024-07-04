@@ -1,10 +1,10 @@
-package com.nefrit.common.data.db.dao
+package com.nefrit.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.nefrit.common.data.db.model.UserLocal
+import com.nefrit.data.db.model.UserLocal
 import io.reactivex.Observable
 
 @Dao
