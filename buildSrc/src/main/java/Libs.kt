@@ -93,6 +93,12 @@ object Libs {
             "androidx.navigation:navigation-ui:$navControllerVersion"
         )
 
+        val firebase = arrayOf(
+            "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsVersion",
+            "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
+            "com.google.firebase:firebase-messaging-ktx:$messagingVersion",
+            "com.google.firebase:firebase-config-ktx:$configVersion")
+
         val network = arrayOf(
             "com.squareup.okhttp3:okhttp:$okHttpVersion",
             "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",

@@ -14,4 +14,5 @@ dependencies {
     implementation(*Libs.bundle.navigation)
 
     implementation(*Libs.bundle.network)
+    implementation(*Libs.bundle.firebase)
 }
