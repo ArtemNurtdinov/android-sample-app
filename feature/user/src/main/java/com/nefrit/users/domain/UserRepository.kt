@@ -3,14 +3,15 @@ package com.nefrit.users.domain
 import com.nefrit.users.domain.model.User
 import io.reactivex.Completable
 import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
 
-    fun observeUser(id: Long): Observable<User>
+    fun observeUser(id: Long): Flow<User>
 
-    fun observeUsers(): Observable<List<User>>
+    fun observeUsers(): Flow<List<User>>
 
-    fun updateUser(id: Long): Completable
+    suspend fun updateUser(id: Long)
 
-    fun updateUsers(): Completable
+    suspend fun updateUsers()
 }

@@ -6,14 +6,12 @@ import javax.inject.Inject
 
 class UserApiImpl @Inject constructor() : UserApi {
 
-    override fun getUsers(): Single<List<UserDTO>> {
-        return Single.just(mockUsers())
+    override suspend fun getUsers(): List<UserDTO> {
+        return mockUsers()
     }
 
-    override fun getUser(id: Long): Single<UserDTO> {
-        return Single.fromCallable {
-            mockUsers().firstOrNull { it.id == id } ?: throw RuntimeException("")
-        }
+    override suspend fun getUser(id: Long): UserDTO {
+        return mockUsers().firstOrNull { it.id == id } ?: throw RuntimeException("")
     }
 
     private fun mockUsers(): List<UserDTO> {

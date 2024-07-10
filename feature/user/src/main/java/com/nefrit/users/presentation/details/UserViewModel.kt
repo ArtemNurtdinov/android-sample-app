@@ -2,6 +2,7 @@ package com.nefrit.users.presentation.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.nefrit.common.resources.ResourceManager
 import com.nefrit.common.utils.Event
 import com.nefrit.common.utils.SimpleEvent
@@ -11,8 +12,11 @@ import com.nefrit.users.domain.UserInteractor
 import com.nefrit.users.domain.model.User
 import com.nefrit.users.presentation.details.model.UserDetailsModel
 import com.nefrit.users.presentation.details.view.UserView
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class UserViewModel(
     private val interactor: UserInteractor,
@@ -20,22 +24,27 @@ class UserViewModel(
     private val resourceManager: ResourceManager,
 ) : BaseViewModel() {
 
-    private val _userLiveData = MutableLiveData<UserDetailsModel>()
-    val userLiveData: LiveData<UserDetailsModel> = _userLiveData
+    private val _user = MutableLiveData<UserDetailsModel>()
+    val user: LiveData<UserDetailsModel> = _user
 
     private val _returnToUsersLiveData = MutableLiveData<Event<SimpleEvent>>()
     val returnToUsersLiveData: LiveData<Event<SimpleEvent>> = _returnToUsersLiveData
 
     init {
-        disposables += interactor.observeUser(userId)
-            .subscribeOn(Schedulers.io())
-            .map(::mapUserDetails)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::observeUserSuccess, ::observeUserError)
+        observeUser()
+    }
+
+    private fun observeUser() {
+        viewModelScope.launch {
+            interactor.observeUser(userId)
+                .map(::mapUserDetails)
+                .catch { e -> observeUserError(e) }
+                .collect(::observeUserSuccess)
+        }
     }
 
     private fun observeUserSuccess(user: UserDetailsModel) {
-        _userLiveData.value = user
+        _user.value = user
     }
 
     private fun observeUserError(error: Throwable) {
@@ -49,19 +58,14 @@ class UserViewModel(
     }
 
     fun updateUser() {
-        disposables += interactor.updateUser(userId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::userUpdateSuccess, ::userUpdateError)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                interactor.updateUser(userId)
+            }
+        }
     }
 
     fun backClicked() {
         _returnToUsersLiveData.value = Event(SimpleEvent())
-    }
-
-    private fun userUpdateSuccess() {
-    }
-
-    private fun userUpdateError(error: Throwable) {
     }
 }

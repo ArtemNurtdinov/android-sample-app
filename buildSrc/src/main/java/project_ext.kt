@@ -57,16 +57,9 @@ fun Project.dagger() {
     }
 }
 
-fun Project.rxJava() {
+fun Project.coroutines() {
     dependencies {
-        implementation(*Libs.bundle.rxJava)
-    }
-}
-
-fun Project.rxJavaAndroid() {
-    rxJava()
-    dependencies {
-        implementation(*Libs.bundle.rxJavaAndroid)
+        implementation(*Libs.bundle.coroutines)
     }
 }
 
@@ -94,7 +87,7 @@ fun Project.android(namespace: String) {
     common(namespace)
     uiComponents()
     dagger()
-    rxJavaAndroid()
+    coroutines()
     lifecycle()
     room()
 }

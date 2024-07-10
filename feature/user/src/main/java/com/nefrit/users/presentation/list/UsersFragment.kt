@@ -35,7 +35,7 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
     }
 
     override fun subscribe(viewModel: UsersViewModel) {
-        viewModel.usersLiveData.observe(::updateUsers)
+        viewModel.users.observe(::updateUsers)
         viewModel.openUserEvent.observeEvent(::navigateToUser)
         viewModel.updateUsers()
     }

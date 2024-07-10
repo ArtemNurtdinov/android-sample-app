@@ -5,8 +5,8 @@ import com.nefrit.users.data.mappers.UserMappers
 import com.nefrit.users.data.network.UserApi
 import com.nefrit.users.domain.UserRepository
 import com.nefrit.users.domain.model.User
-import io.reactivex.Completable
-import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -15,28 +15,25 @@ class UserRepositoryImpl @Inject constructor(
     private val userMappers: UserMappers,
 ) : UserRepository {
 
-    override fun observeUser(id: Long): Observable<User> {
+    override fun observeUser(id: Long): Flow<User> {
         return db.userDao().getUser(id)
             .map(userMappers::mapUserLocalToUser)
     }
 
-    override fun observeUsers(): Observable<List<User>> {
+    override fun observeUsers(): Flow<List<User>> {
         return db.userDao().getUsers()
             .map(userMappers::mapUserLocalList)
     }
 
-    override fun updateUser(id: Long): Completable {
-        return api.getUser(id)
-            .map(userMappers::mapUserRemoteToUser)
-            .doOnSuccess(::saveUserInDb)
-            .ignoreElement()
+    override suspend fun updateUser(id: Long) {
+        val userDto = api.getUser(id)
+        val user = userMappers.mapUserRemoteToUser(userDto)
+        saveUserInDb(user)
     }
 
-    override fun updateUsers(): Completable {
-        return api.getUsers()
-            .map(userMappers::mapUserRemoteList)
-            .doOnSuccess(::saveUsersInDb)
-            .ignoreElement()
+    override suspend fun updateUsers() {
+        val users = api.getUsers().map(userMappers::mapUserRemoteToUser)
+        saveUsersInDb(users)
     }
 
     private fun saveUsersInDb(users: List<User>) {

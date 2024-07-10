@@ -49,7 +49,7 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun subscribe(viewModel: UserViewModel) {
-        viewModel.userLiveData.observe(::updateUserDetails)
+        viewModel.user.observe(::updateUserDetails)
         viewModel.returnToUsersLiveData.observeEvent(::navigateBackToUsers)
 
         viewModel.updateUser()

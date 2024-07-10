@@ -7,7 +7,7 @@ object Libs {
     private const val recyclerViewVersion = "1.2.1"
     private const val architectureComponentVersion = "2.5.0"
 
-    private const val lifecycleVersion = "2.2.0"
+    private const val lifecycleVersion = "2.5.1"
     private const val navigationVersion = "2.7.7"
 
     private const val okHttpVersion = "4.12.0"
@@ -16,8 +16,7 @@ object Libs {
     private const val kotlinterVersion = "4.2.0"
     private const val rulerVersion = "1.4.0"
 
-    private const val rxJavaVersion = "2.2.7"
-    private const val rxAndroidVersion = "2.1.0"
+    private const val coroutinesVersion = "1.8.0"
 
     private const val daggerVersion = "2.44.2"
 
@@ -73,18 +72,25 @@ object Libs {
             "androidx.constraintlayout:constraintlayout:$constraintVersion",
             "com.google.android.material:material:$supportVersion"
         )
-        val rxJava = arrayOf("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
-        val rxJavaAndroid = arrayOf("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
+        val coroutines = arrayOf(
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion")
 
         val dagger = arrayOf("com.google.dagger:dagger:$daggerVersion")
         val daggerKapt = arrayOf("com.google.dagger:dagger-compiler:$daggerVersion")
 
-        val lifecycle = arrayOf("androidx.lifecycle:lifecycle-extensions:$lifecycleVersion")
+        val lifecycle = arrayOf(
+            "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion",
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
+        )
         val lifecycleKapt = arrayOf("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
 
         val room = arrayOf(
             "androidx.room:room-runtime:$architectureComponentVersion",
-            "androidx.room:room-rxjava2:$architectureComponentVersion"
+            "androidx.room:room-rxjava2:$architectureComponentVersion",
+            "androidx.room:room-ktx:$architectureComponentVersion"
         )
         val roomKapt = arrayOf("androidx.room:room-compiler:$architectureComponentVersion")
 

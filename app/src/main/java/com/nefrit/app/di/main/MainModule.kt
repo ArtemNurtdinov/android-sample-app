@@ -3,7 +3,6 @@ package com.nefrit.app.di.main
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.nefrit.app.MainViewModel
 import com.nefrit.ui.viewmodel.ViewModelKey
 import com.nefrit.ui.viewmodel.ViewModelModule
@@ -27,6 +26,6 @@ class MainModule {
 
     @Provides
     fun provideViewModelCreator(activity: AppCompatActivity, viewModelFactory: ViewModelProvider.Factory): MainViewModel {
-        return ViewModelProviders.of(activity, viewModelFactory).get(MainViewModel::class.java)
+        return ViewModelProvider(activity, viewModelFactory)[MainViewModel::class.java]
     }
 }
