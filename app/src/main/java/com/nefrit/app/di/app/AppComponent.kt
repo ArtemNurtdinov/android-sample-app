@@ -6,6 +6,7 @@ import com.nefrit.data.di.DbModule
 import com.nefrit.common.di.CommonModule
 import com.nefrit.data.di.NetworkModule
 import com.nefrit.common.di.ApplicationScope
+import com.nefrit.data.di.FilesModule
 import com.nefrit.data.di.StorageModule
 import com.nefrit.di.UIModule
 import com.nefrit.settings.di.SettingsDependencies
@@ -22,7 +23,8 @@ import dagger.Component
         NetworkModule::class,
         StorageModule::class,
         UIModule::class,
-        NavigationModule::class
+        NavigationModule::class,
+        FilesModule::class
     ]
 )
 interface AppComponent : MainDependencies, UserFeatureDependencies, SettingsDependencies {

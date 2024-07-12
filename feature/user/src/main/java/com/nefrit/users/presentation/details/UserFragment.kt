@@ -52,7 +52,7 @@ class UserFragment : BaseFragment<UserViewModel>() {
 
     override fun subscribe(viewModel: UserViewModel) {
         lifecycleScope.launch {
-            launch {
+            launch() {
                 viewModel.user.collect(::updateUserDetails)
             }
             launch {
