@@ -1,6 +1,7 @@
 package com.nefrit.common.utils
 
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.flow.FlowCollector
 
 open class Event<out T>(private val content: T) {
 
@@ -27,5 +28,14 @@ class EventObserver<T>(
 
     override fun onChanged(event: Event<T>?) {
         event?.getContentIfNotHandled()?.let(onEventUnhandledContent)
+    }
+}
+
+class EventCollector<T>(
+    private val onEventUnhandledContent: (T) -> Unit
+): FlowCollector<Event<T>> {
+
+    override suspend fun emit(event: Event<T>) {
+        event.getContentIfNotHandled()?.let(onEventUnhandledContent)
     }
 }

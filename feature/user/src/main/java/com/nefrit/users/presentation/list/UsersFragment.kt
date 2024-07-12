@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.nefrit.ui.base.BaseFragment
 import com.nefrit.users.R
 import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.databinding.FragmentUsersBinding
 import com.nefrit.users.di.UserFeatureDependenciesProvider
 import com.nefrit.users.presentation.list.di.UsersComponent
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler {
@@ -35,8 +37,15 @@ class UsersFragment : BaseFragment<UsersViewModel>(), UsersAdapter.ClickHandler 
     }
 
     override fun subscribe(viewModel: UsersViewModel) {
-        viewModel.users.observe(::updateUsers)
-        viewModel.openUserEvent.observeEvent(::navigateToUser)
+        lifecycleScope.launch {
+            launch {
+                viewModel.users.collect(::updateUsers)
+            }
+            launch {
+                viewModel.openUserEvent.collectEvent(::navigateToUser)
+            }
+        }
+
         viewModel.updateUsers()
     }
 

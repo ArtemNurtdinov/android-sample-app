@@ -1,9 +1,11 @@
 package com.nefrit.ui.base
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nefrit.common.utils.Event
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.launch
 
 open class BaseViewModel : ViewModel() {
 
@@ -12,17 +14,21 @@ open class BaseViewModel : ViewModel() {
         val message: String,
     )
 
-    private val _alertLiveData = MutableLiveData<Event<String>>()
-    val alertLiveData: LiveData<Event<String>> = _alertLiveData
+    private val _alert = MutableSharedFlow<Event<String>>()
+    val alert: SharedFlow<Event<String>> = _alert
 
-    private val _errorWithTitleLiveData = MutableLiveData<Event<BaseDialogData>>()
-    val errorWithTitleLiveData: LiveData<Event<BaseDialogData>> = _errorWithTitleLiveData
+    private val _errorWithTitle = MutableSharedFlow<Event<BaseDialogData>>()
+    val errorWithTitle: SharedFlow<Event<BaseDialogData>> = _errorWithTitle
 
     protected fun showAlert(errorText: String) {
-        _alertLiveData.value = Event(errorText)
+        viewModelScope.launch {
+            _alert.emit(Event(errorText))
+        }
     }
 
     protected fun showErrorDialog(dialogData: BaseDialogData) {
-        _errorWithTitleLiveData.value = Event(dialogData)
+        viewModelScope.launch {
+            _errorWithTitle.emit(Event(dialogData))
+        }
     }
 }

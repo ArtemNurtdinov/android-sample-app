@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.nefrit.common.R
 import com.nefrit.common.navigation.NavigationOwner
 import com.nefrit.common.utils.Event
-import com.nefrit.common.utils.EventObserver
+import com.nefrit.common.utils.EventCollector
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     @Inject protected open lateinit var viewModel: T
-
-    private val observables = mutableListOf<LiveData<*>>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,8 +29,14 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
             (activity as NavigationOwner).hideBottomNav()
         }
 
-        viewModel.alertLiveData.observeEvent(::showAlert)
-        viewModel.errorWithTitleLiveData.observeEvent(::showErrorWithTitle)
+        lifecycleScope.launch {
+            launch {
+                viewModel.alert.collectEvent(::showAlert)
+            }
+            launch {
+                viewModel.errorWithTitle.collectEvent(::showErrorWithTitle)
+            }
+        }
     }
 
     protected fun showAlert(alertMessage: String) {
@@ -50,24 +55,12 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
             .show()
     }
 
-    override fun onDestroyView() {
-        observables.forEach { it.removeObservers(this) }
-        super.onDestroyView()
+    protected suspend fun <T> Flow<Event<T>>.collectEvent(collector: EventCollector<T>) {
+        collect(collector)
     }
 
-    protected fun <T> LiveData<T>.observe(observer: Observer<T>) {
-        observe(viewLifecycleOwner, observer)
-        observables.add(this)
-    }
-
-    protected fun <T> LiveData<Event<T>>.observeEvent(observer: EventObserver<T>) {
-        observe(viewLifecycleOwner, observer)
-        observables.add(this)
-    }
-
-    protected fun <T> LiveData<Event<T>>.observeEvent(observer: (T) -> Unit) {
-        observe(viewLifecycleOwner, EventObserver { observer(it) })
-        observables.add(this)
+    protected suspend fun <T> Flow<Event<T>>.collectEvent(collector: (T) -> Unit) {
+        collect(EventCollector { collector(it) })
     }
 
     abstract fun initViews()

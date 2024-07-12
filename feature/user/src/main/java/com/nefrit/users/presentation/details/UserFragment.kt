@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.nefrit.ui.base.BaseFragment
 import com.nefrit.common.utils.SimpleEvent
 import com.nefrit.users.R
@@ -13,6 +14,7 @@ import com.nefrit.users.di.UserFeatureDependenciesProvider
 import com.nefrit.users.presentation.UsersRouter
 import com.nefrit.users.presentation.details.di.UserComponent
 import com.nefrit.users.presentation.details.model.UserDetailsModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class UserFragment : BaseFragment<UserViewModel>() {
@@ -49,8 +51,14 @@ class UserFragment : BaseFragment<UserViewModel>() {
     }
 
     override fun subscribe(viewModel: UserViewModel) {
-        viewModel.user.observe(::updateUserDetails)
-        viewModel.returnToUsersLiveData.observeEvent(::navigateBackToUsers)
+        lifecycleScope.launch {
+            launch {
+                viewModel.user.collect(::updateUserDetails)
+            }
+            launch {
+                viewModel.returnToUsers.collectEvent(::navigateBackToUsers)
+            }
+        }
 
         viewModel.updateUser()
     }

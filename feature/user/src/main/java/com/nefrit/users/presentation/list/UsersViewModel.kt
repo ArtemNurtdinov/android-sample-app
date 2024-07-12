@@ -1,7 +1,5 @@
 package com.nefrit.users.presentation.list
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nefrit.common.resources.ResourceManager
 import com.nefrit.common.utils.Event
@@ -9,6 +7,8 @@ import com.nefrit.ui.base.BaseViewModel
 import com.nefrit.users.domain.UserInteractor
 import com.nefrit.users.domain.model.User
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -19,11 +19,11 @@ class UsersViewModel(
     private val resourceManager: ResourceManager,
 ) : BaseViewModel() {
 
-    private val _users = MutableLiveData<List<UsersAdapter.ListItem>>()
-    val users: LiveData<List<UsersAdapter.ListItem>> = _users
+    private val _users = MutableSharedFlow<List<UsersAdapter.ListItem>>()
+    val users: SharedFlow<List<UsersAdapter.ListItem>> = _users
 
-    private val _openUserEvent = MutableLiveData<Event<Long>>()
-    val openUserEvent: LiveData<Event<Long>> = _openUserEvent
+    private val _openUserEvent = MutableSharedFlow<Event<Long>>()
+    val openUserEvent: SharedFlow<Event<Long>> = _openUserEvent
 
     init {
         observeUsers()
@@ -73,14 +73,18 @@ class UsersViewModel(
     }
 
     private fun observeUsersSuccess(users: List<UsersAdapter.ListItem>) {
-        _users.value = users
+        viewModelScope.launch {
+            _users.emit(users)
+        }
     }
 
     private fun observeUsersError(error: Throwable) {
     }
 
     fun userClicked(userListItem: UsersAdapter.ListItem.UserListItem) {
-        _openUserEvent.value = Event(userListItem.id)
+        viewModelScope.launch {
+            _openUserEvent.emit(Event(userListItem.id))
+        }
     }
 
     fun updateUsers() {
